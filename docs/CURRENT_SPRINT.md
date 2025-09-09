@@ -61,3 +61,11 @@ Successfully validated the complete Cursor update loop workflow through implemen
 **Epic:** Epic 1 – Foundations & MVP
 
 Enhanced development experience with comprehensive dev container and editor configuration. Created .devcontainer/devcontainer.json with Node.js 20 runtime, PostgreSQL, Redis, and Coturn services matching docker-compose setup. Pre-installed essential extensions including ESLint, Prettier, Prisma, Docker, and GitLens for immediate productivity. Established .editorconfig with standard settings for consistent formatting across all editors (2 spaces, LF, UTF-8, trim whitespace). Updated README.md and CONTRIBUTING.md with clear instructions for dev container usage and editorconfig benefits. All acceptance criteria satisfied providing optional but valuable developer experience improvements for VS Code and Cursor users.
+
+### CARD-008: ADR starter entries (seed DECISIONS.md and workflow)
+
+**Status:** ✅ Completed  
+**Owner:** cursor  
+**Epic:** Epic 1 – Foundations & MVP
+
+Seeded Architecture Decision Records with three foundational ADRs documenting key architectural choices. Added ADR entries for trunk-based development over Git Flow, WebRTC mesh for MVP with SFU adapter planning, and JSON/YAML template system with Zod validation. Each ADR follows the established template format with Context, Decision, Consequences, and Links sections. Enhanced CONTRIBUTING.md with comprehensive ADR guidance including when to write ADRs and proper format requirements. Cross-linked DECISIONS.md from README.md for discoverability. All acceptance criteria satisfied establishing a solid foundation for documenting future architectural decisions and maintaining decision history.

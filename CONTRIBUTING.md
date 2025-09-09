@@ -61,6 +61,30 @@ npm run format        # Format code with Prettier
 npm run format:check  # Check code formatting
 ```
 
+## Architecture Decision Records (ADRs)
+
+We maintain Architecture Decision Records in [docs/DECISIONS.md](docs/DECISIONS.md) to document significant architectural choices and their rationale.
+
+### When to write an ADR
+
+Write an ADR when making decisions that affect:
+
+- **Non-trivial architectural choices or tradeoffs** - Technology selections, design patterns, system boundaries
+- **Policy/process changes** - Branching strategies, release cadence, development workflows
+- **Data model or contract decisions** - Error shapes, API contracts, template schemas
+- **Reversals** - When reversing a previous decision, add a new ADR and cross-link the old one
+
+### ADR Format
+
+Each ADR should include:
+
+- **Context** - What problem are we solving? What constraints exist?
+- **Decision** - What we chose and the scope of the decision
+- **Consequences** - Upsides, downsides, risks, and follow-up actions
+- **Links** - References to related PRs, issues, docs, and specifications
+
+Keep ADRs concise (10-20 lines) and focused on one decision per entry.
+
 ## Commit Guidelines
 
 We use [Conventional Commits](https://www.conventionalcommits.org/) to maintain a consistent and parseable commit history. This enables automated changelog generation and better project management.
