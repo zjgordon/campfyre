@@ -37,3 +37,11 @@ Established a comprehensive GitHub Actions CI pipeline that mirrors local develo
 **Epic:** Epic 1 – Foundations & MVP
 
 Implemented comprehensive commit message standardization using Conventional Commits specification. Created commitlint configuration with strict rules for type, scope, and description formatting. Established CONTRIBUTING.md with detailed commit guidelines and examples. Updated commit template to align with commitlint rules for consistent developer experience. Added README.md section referencing Conventional Commits with link to contributing guidelines. The commit-msg hook automatically validates all commit messages, rejecting non-conforming commits with helpful error messages. This enables automated changelog generation and maintains parseable commit history for better project management. All acceptance criteria satisfied with robust commit message enforcement.
+
+### CARD-005: Repo docs sync (baseline discoverability & cross-links)
+
+**Status:** ✅ Completed  
+**Owner:** cursor  
+**Epic:** Epic 1 – Foundations & MVP
+
+Synchronized repository documentation for comprehensive discoverability and cross-linking. Enhanced README.md with project elevator pitch, quickstart instructions, repository layout, and links to all core documentation. Expanded CONTRIBUTING.md with prerequisites, development commands, task workflow, pre-commit setup, and CI overview. Created UX_GUIDE.md to complement existing UX_PLAN.md with design language and accessibility guidelines. Verified all core docs exist with consistent titles and descriptions. Added AGPL-3.0 license badge and CI status badge to README.md. All documentation now provides clear navigation paths and comprehensive development guidance for contributors. All acceptance criteria satisfied with robust documentation foundation.

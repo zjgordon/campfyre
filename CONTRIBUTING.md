@@ -2,6 +2,37 @@
 
 Thank you for your interest in contributing to Campfyre! This document provides guidelines for contributing to the project.
 
+## Prerequisites
+
+- Node.js 18+ (see [engines](package.json) for exact version)
+- npm (comes with Node.js)
+- Git
+
+## Repository Layout
+
+- `/web` - Frontend React application
+- `/api` - Backend Node.js/Express API
+- `/docs` - Project documentation and specifications
+- `/tasks` - Sprint task cards and templates
+- `/meta` - Project metadata and state tracking
+
+## Development Commands
+
+```bash
+# Install dependencies
+npm install
+
+# Development commands
+npm run lint          # Run ESLint
+npm run lint:fix      # Fix ESLint issues
+npm run typecheck     # Run TypeScript type checking
+npm run test          # Run unit tests
+npm run test:watch    # Run tests in watch mode
+npm run build         # Build all packages
+npm run format        # Format code with Prettier
+npm run format:check  # Check code formatting
+```
+
 ## Commit Guidelines
 
 We use [Conventional Commits](https://www.conventionalcommits.org/) to maintain a consistent and parseable commit history. This enables automated changelog generation and better project management.
@@ -56,6 +87,68 @@ ci(workflow): add automated testing to GitHub Actions
 ### Commit Message Validation
 
 All commit messages are automatically validated using commitlint. If your commit message doesn't follow the conventional format, the commit will be rejected with a helpful error message.
+
+## Task Workflow
+
+We use a structured task management system for development:
+
+### Task Cards
+
+- Task cards are located in `/tasks/<sprint>/CARD-*.yaml`
+- Each card contains acceptance criteria, artifacts, and implementation notes
+- Cards are tracked in `/meta/TASK_STATE.yaml`
+
+### Update Loop
+
+When working on a task card:
+
+1. Set the card as active in `TASK_STATE.yaml`
+2. Implement the acceptance criteria
+3. Update `docs/CURRENT_SPRINT.md` with a 5-8 line summary
+4. Update `docs/PROJECT_STATUS.md` with a single-line entry
+5. Update `TASK_STATE.yaml` to mark the card complete
+6. Commit with `[CARD-XXX]` in the subject line
+
+### Definition of Done
+
+- All acceptance criteria satisfied
+- Tests pass and code is properly formatted
+- Documentation updated
+- Single conventional commit created
+
+## Pre-commit Setup
+
+Pre-commit hooks are automatically installed when you run `npm install`. The hooks run:
+
+- **lint-staged**: ESLint and Prettier on staged files
+- **typecheck**: TypeScript compilation check
+- **tests**: Unit test execution
+- **commitlint**: Conventional commit message validation
+
+### Bypassing Hooks (Not Recommended)
+
+In emergencies, you can bypass hooks with:
+
+```bash
+git commit --no-verify -m "emergency fix"
+```
+
+## CI Overview
+
+Our GitHub Actions pipeline runs on every push and pull request:
+
+- **lint**: ESLint code quality checks
+- **typecheck**: TypeScript compilation validation
+- **test**: Unit test execution
+- **build**: Package compilation
+
+To re-run checks, push an empty commit:
+
+```bash
+git commit --allow-empty -m "ci: trigger pipeline"
+```
+
+**Note**: Update the CI badge URL in README.md after publishing the repository.
 
 ## Development Workflow
 

@@ -6,6 +6,7 @@
 - ✅ CARD-002: Configure pre-commit + lint-staged hooks (lint/format/typecheck/tests) completed
 - ✅ CARD-003: CI pipeline skeleton (GitHub Actions: lint, typecheck, test, build) completed
 - ✅ CARD-004: Conventional Commits + commitlint setup completed
+- ✅ CARD-005: Repo docs sync (baseline discoverability & cross-links) completed
 
 ## <Future Sprint Placeholder>
 
