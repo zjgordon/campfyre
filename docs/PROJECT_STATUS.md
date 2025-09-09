@@ -16,6 +16,7 @@
 - ✅ CARD-012: PR template + Issue templates (GitHub workflow) completed
 - ✅ CARD-013: CODEOWNERS & review rules (baseline reviews for main) completed
 - ✅ CARD-014: Release & tagging groundwork (v0.0.x pre-releases) completed
+- ✅ CARD-015: CHANGELOG bootstrap (pre-v1 optional setup) completed
 
 ## <Future Sprint Placeholder>
 

@@ -107,6 +107,10 @@ docker compose logs [service-name]
 
 This project is licensed under the GNU Affero General Public License v3.0. See [LICENSE](LICENSE) for details.
 
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a detailed list of changes and version history.
+
 ## Contributing
 
 We follow trunk-based development with feature branches and pull requests. We use [Conventional Commits](https://www.conventionalcommits.org/) for consistent commit messages. See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines including our branching & PR policy and how to open issues/PRs.

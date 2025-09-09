@@ -9,16 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Initial repository structure with monorepo setup
-- Pre-commit hooks with lint-staged, ESLint, Prettier, and TypeScript checking
-- CI pipeline with GitHub Actions (lint, typecheck, test, build)
-- Docker Compose configuration with all required services
-- Health check endpoints for API and web services
-- Bootstrap script for development environment setup
-- Branch protection and trunk-based development policies
-- PR and issue templates for standardized workflow
-- CODEOWNERS file with review requirements
-- Release and tagging automation with Conventional Commits
+- N/A
 
 ### Changed
 
@@ -31,6 +22,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - N/A
+
+### Fixed
+
+- N/A
+
+### Security
+
+- N/A
+
+## [0.0.1] - 2025-09-10
+
+### Added
+
+- Initial repository structure with monorepo setup (CARD-001)
+- Pre-commit hooks with lint-staged, ESLint, Prettier, and TypeScript checking (CARD-002)
+- CI pipeline with GitHub Actions (lint, typecheck, test, build) (CARD-003)
+- Conventional Commits and commitlint setup (CARD-004)
+- Repository documentation sync and cross-linking (CARD-005)
+- Cursor update loop smoke test with /ping endpoint (CARD-006)
+- Dev container and editor configuration (CARD-007)
+- Architecture Decision Records (ADRs) starter entries (CARD-008)
+- Health check stubs for all services (CARD-009)
+- Local bootstrap script for development environment (CARD-010)
+- Branch protection and trunk-based development policies (CARD-011)
+- PR and issue templates for standardized workflow (CARD-012)
+- CODEOWNERS file with review requirements (CARD-013)
+- Release and tagging automation infrastructure (CARD-014)
+- CHANGELOG bootstrap with Keep a Changelog format (CARD-015)
+
+### Changed
+
+- Documentation synchronized and updated across README/CONTRIBUTING
+- Development workflow standardized with trunk-based development
+- Code quality enforcement through automated hooks and CI
 
 ### Fixed
 

@@ -404,6 +404,64 @@ If you need to create a release manually:
 3. Check the GitHub Actions tab for the release workflow
 4. Review and publish the draft release on GitHub
 
+## CHANGELOG Maintenance
+
+We maintain a [CHANGELOG.md](CHANGELOG.md) following the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format to document all notable changes to the project.
+
+### Automatic vs Manual Updates
+
+- **Automatic**: The release workflow automatically generates changelog entries from Conventional Commits when creating releases
+- **Manual**: For now, CHANGELOG may be updated manually alongside releases for additional context or clarification
+
+### Conventional Commit to Changelog Mapping
+
+When updating the changelog manually, map Conventional Commit types to changelog sections:
+
+- **feat** → **Added** (new features)
+- **fix** → **Fixed** (bug fixes)
+- **chore/refactor/style** → **Changed** (internal changes, refactoring, formatting)
+- **docs** → **Documentation** (not always included unless significant)
+- **perf** → **Changed** (performance improvements)
+- **test** → **Changed** (test additions or improvements)
+
+### Changelog Structure
+
+Each version entry should include:
+
+```markdown
+## [X.Y.Z] - YYYY-MM-DD
+
+### Added
+
+- New features and capabilities
+
+### Changed
+
+- Changes to existing functionality
+
+### Deprecated
+
+- Features marked for removal
+
+### Removed
+
+- Features removed in this version
+
+### Fixed
+
+- Bug fixes
+
+### Security
+
+- Security improvements or fixes
+```
+
+### When to Update
+
+- **Before releases**: Ensure CHANGELOG.md is up to date before tagging a new version
+- **During development**: Add entries to the `[Unreleased]` section for significant changes
+- **After releases**: Move `[Unreleased]` entries to the new version section
+
 ## Getting Help
 
 If you have questions about contributing, please open an issue or reach out to the maintainers.

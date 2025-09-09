@@ -117,3 +117,11 @@ Established comprehensive code ownership and review requirements for the reposit
 **Epic:** Epic 1 – Foundations & MVP
 
 Implemented comprehensive release and tagging automation for the repository. Created .github/workflows/release.yml with automated release pipeline that triggers on v*.*.\* tags, runs full test and build pipeline, and generates changelog from Conventional Commits. Established CHANGELOG.md following Keep a Changelog structure with seeded placeholder sections for foundational work. Enhanced CONTRIBUTING.md with detailed "How to Cut a Release" section explaining semantic versioning, release process, and automation workflow. Added release badge to README.md and created DECISIONS.md entry documenting release strategy. All acceptance criteria satisfied providing automated release infrastructure with semantic versioning and changelog generation for maintainable project evolution.
+
+### CARD-015: CHANGELOG bootstrap (pre-v1 optional setup)
+
+**Status:** ✅ Completed  
+**Owner:** cursor  
+**Epic:** Epic 1 – Foundations & MVP
+
+Completed CHANGELOG bootstrap with comprehensive version 0.0.1 entry capturing all Phase 1 foundation cards. Updated CHANGELOG.md with proper Keep a Changelog format including detailed Added section with all 15 foundation cards (CARD-001 through CARD-015) and Changed section documenting documentation synchronization and workflow standardization. Enhanced CONTRIBUTING.md with detailed "CHANGELOG Maintenance" section explaining automatic vs manual updates, Conventional Commit to changelog mapping, structure guidelines, and update timing. Added CHANGELOG link to README.md for discoverability. All acceptance criteria satisfied providing complete changelog foundation with contributor guidance for maintaining project change history.
