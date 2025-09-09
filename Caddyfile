@@ -1,0 +1,20 @@
+# Campfyre reverse proxy configuration
+{
+    # Enable automatic HTTPS
+    auto_https off
+}
+
+# API service
+api.campfyre.local {
+    reverse_proxy api:3000
+}
+
+# Web service
+web.campfyre.local {
+    reverse_proxy web:3000
+}
+
+# Default route (web)
+localhost, 127.0.0.1 {
+    reverse_proxy web:3000
+}

@@ -1,0 +1,62 @@
+id: CARD-001
+title: Setup spike – baseline repo skeleton & guardrails
+epic: Epic 1 – Foundations & MVP
+sprint: 2025-09-sprint-01
+status: done   # todo | doing | review | done | blocked
+owner: cursor
+links:
+  - /docs/EPIC1_OVERVIEW.md#phase-1--development-environment--guardrails
+  - /docs/SPRINT_WORKFLOW.md
+  - /docs/TECH_CHOICES.md
+  - /docs/UX_GUIDE.md
+acceptance:
+  - Repo builds locally; lint, typecheck, and test commands exist and succeed
+  - Pre-commit hook runs lint/format/typecheck/tests on staged files
+  - Conventional Commits ready (commit-msg guidance present)
+  - docker compose up brings up placeholders (api, web, db, redis, coturn, reverse-proxy) with health endpoints stubbed
+  - Error-shape contract file added (shared schema + example responses)
+  - Update /docs/CURRENT_SPRINT.md with a 5–8 line summary
+  - Update /docs/PROJECT_STATUS.md with a single-line entry under this sprint
+  - Update /meta/TASK_STATE.yaml breadcrumb/active status
+  - Single Conventional Commit created including [CARD-001]
+artifacts:
+  - created:
+      - docker-compose.yml
+      - .editorconfig
+      - .gitignore
+      - .gitattributes
+      - .commitlintrc.cjs
+      - package.json
+      - packages/
+      - api/README.md
+      - web/README.md
+      - docs/ERROR_SHAPES.md
+  - modified:
+      - docs/CURRENT_SPRINT.md
+      - docs/PROJECT_STATUS.md
+      - meta/TASK_STATE.yaml
+notes: |
+  Scope:
+    - Create minimal, runnable skeleton without business features.
+    - Commands:
+        - "pnpm i" (or npm/yarn) at repo root sets up workspaces.
+        - "pnpm lint", "pnpm typecheck", "pnpm test" are wired.
+        - "pnpm commit" suggests Conventional Commit format.
+    - docker-compose services (all stubs OK for spike):
+        - api: Node service with /health endpoint returning { ok: true, service: "api" }
+        - web: static dev server with /health.txt
+        - db: Postgres (no schema required yet)
+        - redis: for presence/pubsub later
+        - coturn: TURN server with default creds from .env
+        - reverse-proxy: Caddy/Traefik routing web/api with self-signed or HTTP
+    - Pre-commit (lint-staged) runs:
+        - format (Prettier), eslint, typecheck (tsc --noEmit), tests (changed scope OK)
+    - Error shapes:
+        - Add docs/ERROR_SHAPES.md with JSON envelopes:
+            { "ok": false, "code": "VALIDATION_ERROR", "message": "Bad input", "details": {...} }
+            { "ok": true, "data": {...} }
+    - Definition of Done for this card:
+        - Local "docker compose up" succeeds and /health endpoints respond.
+        - CI workflow placeholder added (lint + typecheck + test jobs).
+        - Logs to CURRENT_SPRINT and one-liner to PROJECT_STATUS committed.
+
