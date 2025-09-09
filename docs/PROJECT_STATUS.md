@@ -10,6 +10,7 @@
 - ✅ CARD-006: Cursor update loop smoke test (trivial feature + doc sync) completed
 - ✅ CARD-007: Dev container + editor config (optional polish) completed
 - ✅ CARD-008: ADR starter entries (seed DECISIONS.md and workflow) completed
+- ✅ CARD-009: Healthcheck stubs for services (API, Web, Redis, DB) completed
 
 ## <Future Sprint Placeholder>
 

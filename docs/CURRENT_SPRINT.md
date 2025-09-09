@@ -69,3 +69,11 @@ Enhanced development experience with comprehensive dev container and editor conf
 **Epic:** Epic 1 – Foundations & MVP
 
 Seeded Architecture Decision Records with three foundational ADRs documenting key architectural choices. Added ADR entries for trunk-based development over Git Flow, WebRTC mesh for MVP with SFU adapter planning, and JSON/YAML template system with Zod validation. Each ADR follows the established template format with Context, Decision, Consequences, and Links sections. Enhanced CONTRIBUTING.md with comprehensive ADR guidance including when to write ADRs and proper format requirements. Cross-linked DECISIONS.md from README.md for discoverability. All acceptance criteria satisfied establishing a solid foundation for documenting future architectural decisions and maintaining decision history.
+
+### CARD-009: Healthcheck stubs for services (API, Web, Redis, DB)
+
+**Status:** ✅ Completed  
+**Owner:** cursor  
+**Epic:** Epic 1 – Foundations & MVP
+
+Implemented comprehensive health check system for all services with proper monitoring and debugging capabilities. Enhanced API service with JSON health endpoint returning service status, timestamp, and uptime. Created web service health.txt endpoint and static file for lightweight health checks. Added Docker Compose healthcheck blocks for all services including API, Web, PostgreSQL, Redis, and Coturn with appropriate test commands and timing configurations. Updated README.md with detailed Service Healthchecks section including endpoint URLs, response formats, and Docker Compose health status commands. All acceptance criteria satisfied providing robust service monitoring foundation for development and production environments.

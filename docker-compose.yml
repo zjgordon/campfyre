@@ -7,7 +7,7 @@ services:
       context: ./api
       dockerfile: Dockerfile
     ports:
-      - "3001:3000"
+      - '3001:3000'
     environment:
       - NODE_ENV=development
       - PORT=3000
@@ -21,6 +21,12 @@ services:
       - /app/node_modules
     networks:
       - campfyre-network
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:3000/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   # Web service
   web:
@@ -28,7 +34,7 @@ services:
       context: ./web
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       - NODE_ENV=development
       - PORT=3000
@@ -38,6 +44,12 @@ services:
       - /app/node_modules
     networks:
       - campfyre-network
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:3000/health.txt']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   # PostgreSQL database
   db:
@@ -47,29 +59,41 @@ services:
       - POSTGRES_USER=campfyre
       - POSTGRES_PASSWORD=campfyre
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - campfyre-network
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U campfyre -d campfyre']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   # Redis for caching and pub/sub
   redis:
     image: redis:7-alpine
     ports:
-      - "6380:6379"
+      - '6380:6379'
     volumes:
       - redis_data:/data
     networks:
       - campfyre-network
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   # TURN server for WebRTC
   coturn:
     image: coturn/coturn:latest
     ports:
-      - "3478:3478"
-      - "3478:3478/udp"
-      - "49152-65535:49152-65535/udp"
+      - '3478:3478'
+      - '3478:3478/udp'
+      - '49152-65535:49152-65535/udp'
     environment:
       - TURN_USERNAME=campfyre
       - TURN_PASSWORD=campfyre123
@@ -91,13 +115,19 @@ services:
       --lt-cred-mech
     networks:
       - campfyre-network
+    healthcheck:
+      test: ['CMD-SHELL', 'netstat -an | grep 3478']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   # Reverse proxy
   reverse-proxy:
     image: caddy:2-alpine
     ports:
-      - "80:80"
-      - "443:443"
+      - '80:80'
+      - '443:443'
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data

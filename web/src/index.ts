@@ -24,7 +24,7 @@ app.get('/health', (req, res) => {
 // Health text endpoint
 app.get('/health.txt', (req, res) => {
   res.set('Content-Type', 'text/plain');
-  res.send('OK');
+  res.send('ok');
 });
 
 // Root endpoint

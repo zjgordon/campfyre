@@ -31,6 +31,37 @@ For VS Code / Cursor users, a dev container is available for quick setup:
 4. The container will automatically set up Node.js, PostgreSQL, Redis, and Coturn services
 5. Pre-installed extensions include ESLint, Prettier, Prisma, Docker, and GitLens
 
+## Service Healthchecks
+
+All services include health check endpoints for monitoring and debugging:
+
+### API Service
+
+- **Endpoint**: `GET http://localhost:3001/health`
+- **Response**: `{ "ok": true, "service": "api", "timestamp": "...", "uptime": 123.45 }`
+- **Check**: `curl http://localhost:3001/health`
+
+### Web Service
+
+- **Endpoint**: `GET http://localhost:3000/health.txt`
+- **Response**: `ok`
+- **Check**: `curl http://localhost:3000/health.txt`
+
+### Database Services
+
+- **PostgreSQL**: `pg_isready -U campfyre -d campfyre`
+- **Redis**: `redis-cli ping`
+
+### Docker Compose Health Status
+
+```bash
+# Check all service health status
+docker compose ps
+
+# View health check logs
+docker compose logs [service-name]
+```
+
 ## Repository Layout
 
 - `/web` - Frontend React application
