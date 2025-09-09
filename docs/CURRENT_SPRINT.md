@@ -93,3 +93,11 @@ Created comprehensive bootstrap script for streamlined development environment s
 **Epic:** Epic 1 – Foundations & MVP
 
 Established comprehensive branch protection and trunk-based development policies for the repository. Configured GitHub repository settings with main as the default branch and implemented branch protection rules requiring status checks, preventing force pushes, and mandating pull requests for all changes. Enhanced CONTRIBUTING.md with detailed branching & PR policy section including feature branch workflow, protection rules, and example commands. Updated README.md to reference trunk-based development approach and link to contributing guidelines. All acceptance criteria satisfied providing robust repository governance and clear development workflow documentation for contributors.
+
+### CARD-012: PR template + Issue templates (GitHub workflow)
+
+**Status:** ✅ Completed  
+**Owner:** cursor  
+**Epic:** Epic 1 – Foundations & MVP
+
+Implemented comprehensive GitHub workflow templates to standardize issue and pull request processes. Created .github/PULL_REQUEST_TEMPLATE.md with card reference tracking, acceptance criteria checklist, and sections for change summaries and screenshots. Established three issue templates in .github/ISSUE_TEMPLATE/ including bug_report.md, feature_request.md, and chore_task.md with appropriate metadata and structured fields. Enhanced CONTRIBUTING.md with detailed "Submitting Issues & PRs" section explaining template usage and emphasizing card ID references. Updated README.md to reference contributing guidelines for issue/PR creation. All acceptance criteria satisfied providing standardized workflow templates that maintain task card visibility and improve contributor experience.

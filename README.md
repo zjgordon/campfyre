@@ -108,4 +108,4 @@ This project is licensed under the GNU Affero General Public License v3.0. See [
 
 ## Contributing
 
-We follow trunk-based development with feature branches and pull requests. We use [Conventional Commits](https://www.conventionalcommits.org/) for consistent commit messages. See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines including our branching & PR policy.
+We follow trunk-based development with feature branches and pull requests. We use [Conventional Commits](https://www.conventionalcommits.org/) for consistent commit messages. See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines including our branching & PR policy and how to open issues/PRs.

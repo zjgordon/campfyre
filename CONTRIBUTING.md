@@ -284,6 +284,37 @@ git push origin feat/add-user-authentication
 4. Write a conventional commit message
 5. Push your changes and create a pull request
 
+## Submitting Issues & PRs
+
+We use GitHub templates to standardize our workflow and keep task cards visible:
+
+### Issue Templates
+
+When opening a new issue, you'll be presented with three templates:
+
+- **Bug Report** - For reporting bugs with reproduction steps, expected vs actual behavior, and environment details
+- **Feature Request** - For suggesting new features with problem description, desired outcome, and alternatives considered
+- **Chore Task** - For maintenance tasks and internal improvements
+
+**Always reference the relevant card ID** (e.g., `[CARD-XXX]`) in your issue title and description.
+
+### Pull Request Template
+
+When creating a pull request, the template will automatically include:
+
+- Summary of changes
+- Linked card reference (`[CARD-XXX]`)
+- Checklist for acceptance criteria, documentation updates, and CI status
+- Sections for screenshots/logs and additional notes
+
+**Always reference the relevant card ID** in your PR title and linked cards section.
+
+### Template Usage
+
+1. **Issues**: Use the appropriate template when creating issues to ensure all necessary information is captured
+2. **PRs**: The PR template will be pre-filled - complete all sections and check all boxes before submitting
+3. **Card References**: Always include `[CARD-XXX]` in titles and descriptions to maintain traceability
+
 ## Getting Help
 
 If you have questions about contributing, please open an issue or reach out to the maintainers.
