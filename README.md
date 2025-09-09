@@ -21,6 +21,16 @@ npm run build
 npm run dev
 ```
 
+### Dev Container (VS Code / Cursor)
+
+For VS Code / Cursor users, a dev container is available for quick setup:
+
+1. Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+2. Open the repository in VS Code / Cursor
+3. When prompted, click "Reopen in Container"
+4. The container will automatically set up Node.js, PostgreSQL, Redis, and Coturn services
+5. Pre-installed extensions include ESLint, Prettier, Prisma, Docker, and GitLens
+
 ## Repository Layout
 
 - `/web` - Frontend React application

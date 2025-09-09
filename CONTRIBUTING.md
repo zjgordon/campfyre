@@ -8,6 +8,34 @@ Thank you for your interest in contributing to Campfyre! This document provides 
 - npm (comes with Node.js)
 - Git
 
+## Development Environment
+
+### EditorConfig
+
+EditorConfig enforces consistent style across different editors and IDEs. Most editors respect it automatically, ensuring consistent formatting with:
+
+- 2 spaces for indentation
+- LF line endings
+- UTF-8 encoding
+- Trim trailing whitespace
+- Insert final newline
+
+### Dev Container (Optional)
+
+For the smoothest development experience, use the provided dev container:
+
+1. Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+2. Open the repository in VS Code / Cursor
+3. When prompted, click "Reopen in Container"
+
+The dev container includes:
+
+- Node.js 20 runtime
+- PostgreSQL, Redis, and Coturn services
+- Pre-installed extensions (ESLint, Prettier, Prisma, Docker, GitLens)
+- Automatic dependency installation
+- Proper port forwarding for all services
+
 ## Repository Layout
 
 - `/web` - Frontend React application

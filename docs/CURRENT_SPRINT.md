@@ -53,3 +53,11 @@ Synchronized repository documentation for comprehensive discoverability and cros
 **Epic:** Epic 1 – Foundations & MVP
 
 Successfully validated the complete Cursor update loop workflow through implementation of a trivial /ping endpoint. Added GET /ping endpoint to API returning { ok: true, msg: "pong" } as specified. Tested endpoint functionality and confirmed proper JSON response. Executed full development cycle: implement → test → commit with proper documentation updates. Verified pre-commit hooks run correctly (lint, typecheck, tests, CURRENT_SPRINT check). All acceptance criteria satisfied demonstrating the workflow is functional and repeatable for future card execution. This smoke test establishes confidence in the development process and validates all tooling integration.
+
+### CARD-007: Dev container + editor config (optional polish)
+
+**Status:** ✅ Completed  
+**Owner:** cursor  
+**Epic:** Epic 1 – Foundations & MVP
+
+Enhanced development experience with comprehensive dev container and editor configuration. Created .devcontainer/devcontainer.json with Node.js 20 runtime, PostgreSQL, Redis, and Coturn services matching docker-compose setup. Pre-installed essential extensions including ESLint, Prettier, Prisma, Docker, and GitLens for immediate productivity. Established .editorconfig with standard settings for consistent formatting across all editors (2 spaces, LF, UTF-8, trim whitespace). Updated README.md and CONTRIBUTING.md with clear instructions for dev container usage and editorconfig benefits. All acceptance criteria satisfied providing optional but valuable developer experience improvements for VS Code and Cursor users.
