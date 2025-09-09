@@ -462,6 +462,60 @@ Each version entry should include:
 - **During development**: Add entries to the `[Unreleased]` section for significant changes
 - **After releases**: Move `[Unreleased]` entries to the new version section
 
+## Dependency Updates
+
+We use [Dependabot](https://docs.github.com/en/code-security/dependabot) to automatically keep our dependencies up to date and secure.
+
+### How Dependabot Works
+
+Dependabot automatically:
+
+- **Scans dependencies** weekly (Mondays at 5:00 AM)
+- **Opens pull requests** for security patches immediately
+- **Batches minor/patch updates** weekly to reduce noise
+- **Labels PRs** with `dependencies` and `automated` for easy identification
+- **Assigns reviewers** automatically to the maintainer
+
+### Handling Dependency Update PRs
+
+#### Security Updates
+
+- **Review immediately** - security patches should be merged promptly
+- **Run CI** to ensure no breaking changes
+- **Merge quickly** after CI passes
+
+#### Minor/Patch Updates
+
+- **Review weekly** - these are batched for efficiency
+- **Always run CI** to ensure compatibility
+- **Merge promptly** after CI passes unless there are issues
+
+#### Major Updates
+
+- **Require manual review** - major version updates need careful consideration
+- **Check for breaking changes** in the dependency's changelog
+- **Consider creating an ADR** if the update significantly alters our stack
+- **Test thoroughly** before merging
+- **Update documentation** if the change affects our development workflow
+
+### Best Practices
+
+1. **Always run CI** on dependency update PRs before merging
+2. **Review changelogs** for breaking changes, especially for major updates
+3. **Merge patch/minor updates promptly** to stay current
+4. **Document significant changes** in ADRs when major updates affect architecture
+5. **Keep dependencies current** to avoid security vulnerabilities
+
+### Dependabot Configuration
+
+Our Dependabot configuration (`.github/dependabot.yml`) covers:
+
+- **NPM packages** (weekly updates, 5 PR limit)
+- **Docker images** (weekly updates, 3 PR limit)
+- **GitHub Actions** (weekly updates, 3 PR limit)
+
+All updates are scheduled for Monday mornings to minimize disruption to development.
+
 ## Getting Help
 
 If you have questions about contributing, please open an issue or reach out to the maintainers.

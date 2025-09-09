@@ -125,3 +125,11 @@ Implemented comprehensive release and tagging automation for the repository. Cre
 **Epic:** Epic 1 – Foundations & MVP
 
 Completed CHANGELOG bootstrap with comprehensive version 0.0.1 entry capturing all Phase 1 foundation cards. Updated CHANGELOG.md with proper Keep a Changelog format including detailed Added section with all 15 foundation cards (CARD-001 through CARD-015) and Changed section documenting documentation synchronization and workflow standardization. Enhanced CONTRIBUTING.md with detailed "CHANGELOG Maintenance" section explaining automatic vs manual updates, Conventional Commit to changelog mapping, structure guidelines, and update timing. Added CHANGELOG link to README.md for discoverability. All acceptance criteria satisfied providing complete changelog foundation with contributor guidance for maintaining project change history.
+
+### CARD-016: Dependency updates bot (Renovate or Dependabot config)
+
+**Status:** ✅ Completed  
+**Owner:** cursor  
+**Epic:** Epic 1 – Foundations & MVP
+
+Implemented comprehensive automated dependency management using Dependabot for security and maintenance. Created .github/dependabot.yml configuration covering NPM packages, Docker images, and GitHub Actions with weekly scheduling and appropriate PR limits. Enhanced CONTRIBUTING.md with detailed "Dependency Updates" section explaining Dependabot workflow, handling procedures for security/minor/major updates, and best practices for dependency management. Updated README.md to reference automated dependency updates via Dependabot. All acceptance criteria satisfied providing automated dependency maintenance with clear contributor guidance for handling update PRs and maintaining project security.

@@ -113,4 +113,4 @@ See [CHANGELOG.md](CHANGELOG.md) for a detailed list of changes and version hist
 
 ## Contributing
 
-We follow trunk-based development with feature branches and pull requests. We use [Conventional Commits](https://www.conventionalcommits.org/) for consistent commit messages. See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines including our branching & PR policy and how to open issues/PRs.
+We follow trunk-based development with feature branches and pull requests. We use [Conventional Commits](https://www.conventionalcommits.org/) for consistent commit messages. Dependencies are updated via automated PRs using [Dependabot](https://docs.github.com/en/code-security/dependabot). See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines including our branching & PR policy and how to open issues/PRs.
