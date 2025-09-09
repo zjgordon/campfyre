@@ -18,6 +18,7 @@
 - ✅ CARD-014: Release & tagging groundwork (v0.0.x pre-releases) completed
 - ✅ CARD-015: CHANGELOG bootstrap (pre-v1 optional setup) completed
 - ✅ CARD-016: Dependency updates bot (Renovate or Dependabot config) completed
+- ✅ CARD-017: Security policy & code scanning (baseline security posture) completed
 
 ## <Future Sprint Placeholder>
 

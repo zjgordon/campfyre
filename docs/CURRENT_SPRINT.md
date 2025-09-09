@@ -133,3 +133,11 @@ Completed CHANGELOG bootstrap with comprehensive version 0.0.1 entry capturing a
 **Epic:** Epic 1 – Foundations & MVP
 
 Implemented comprehensive automated dependency management using Dependabot for security and maintenance. Created .github/dependabot.yml configuration covering NPM packages, Docker images, and GitHub Actions with weekly scheduling and appropriate PR limits. Enhanced CONTRIBUTING.md with detailed "Dependency Updates" section explaining Dependabot workflow, handling procedures for security/minor/major updates, and best practices for dependency management. Updated README.md to reference automated dependency updates via Dependabot. All acceptance criteria satisfied providing automated dependency maintenance with clear contributor guidance for handling update PRs and maintaining project security.
+
+### CARD-017: Security policy & code scanning (baseline security posture)
+
+**Status:** ✅ Completed  
+**Owner:** cursor  
+**Epic:** Epic 1 – Foundations & MVP
+
+Established comprehensive baseline security posture with vulnerability reporting policy and automated code scanning. Created SECURITY.md with private vulnerability reporting process, supported versions table, response timeline, and security best practices. Implemented GitHub CodeQL scanning workflow (.github/workflows/codeql.yml) for continuous JavaScript/TypeScript vulnerability detection with weekly scheduled scans. Enhanced README.md with Security section linking to SECURITY.md and CONTRIBUTING.md with security issue reporting guidelines. Added DECISIONS.md entry documenting baseline security approach. All acceptance criteria satisfied providing proactive security foundation with clear vulnerability reporting process and automated security scanning for early threat detection.

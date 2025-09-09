@@ -516,6 +516,10 @@ Our Dependabot configuration (`.github/dependabot.yml`) covers:
 
 All updates are scheduled for Monday mornings to minimize disruption to development.
 
+## Security
+
+**Do not file security issues in public tracker.** Please report security vulnerabilities privately via email to zjgordon.dev@gmail.com. See [SECURITY.md](SECURITY.md) for our complete security policy and response process.
+
 ## Getting Help
 
 If you have questions about contributing, please open an issue or reach out to the maintainers.

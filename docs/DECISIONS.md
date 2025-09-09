@@ -31,6 +31,25 @@ Upsides, downsides, risks, follow-ups, and any TODOs.
 
 ---
 
+## 2025-09-11 — Baseline security: policy + CodeQL scanning
+
+**Context**  
+Need proactive security posture before first public contributions. Require vulnerability reporting process and automated code scanning for early detection.
+
+**Decision**  
+Add SECURITY.md with private vulnerability reporting policy and GitHub CodeQL scanning workflow for continuous security analysis.
+
+**Consequences**  
+Contributors know how to report security issues privately. Repository scanned continuously for vulnerabilities. Security alerts visible in GitHub Security tab.
+
+**Links**
+
+- Security policy: `SECURITY.md`
+- Code scanning: `.github/workflows/codeql.yml`
+- Contributing: `CONTRIBUTING.md#security`
+
+---
+
 ## 2025-09-09 — Release & tagging strategy: semver, Conventional Commits, changelog
 
 **Context**  
