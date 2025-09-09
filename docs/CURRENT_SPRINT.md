@@ -29,3 +29,11 @@ Enhanced the pre-commit hook system to provide comprehensive code quality enforc
 **Epic:** Epic 1 – Foundations & MVP
 
 Established a comprehensive GitHub Actions CI pipeline that mirrors local development workflows. Created a four-stage pipeline with sequential jobs: lint, typecheck, test, and build, ensuring code quality gates at each stage. Configured Node.js 20 with pnpm package manager caching for optimal performance. Added monorepo support with recursive build commands across all workspace packages. Implemented test artifact upload on failure for debugging purposes. Added CI status badge to README.md for immediate visibility of build health. The pipeline runs on all pushes and pull requests, providing fast feedback for development workflows. All acceptance criteria satisfied with a robust, scalable CI foundation.
+
+### CARD-004: Conventional Commits + commitlint setup
+
+**Status:** ✅ Completed  
+**Owner:** cursor  
+**Epic:** Epic 1 – Foundations & MVP
+
+Implemented comprehensive commit message standardization using Conventional Commits specification. Created commitlint configuration with strict rules for type, scope, and description formatting. Established CONTRIBUTING.md with detailed commit guidelines and examples. Updated commit template to align with commitlint rules for consistent developer experience. Added README.md section referencing Conventional Commits with link to contributing guidelines. The commit-msg hook automatically validates all commit messages, rejecting non-conforming commits with helpful error messages. This enables automated changelog generation and maintains parseable commit history for better project management. All acceptance criteria satisfied with robust commit message enforcement.
