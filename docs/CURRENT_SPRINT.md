@@ -141,3 +141,11 @@ Implemented comprehensive automated dependency management using Dependabot for s
 **Epic:** Epic 1 – Foundations & MVP
 
 Established comprehensive baseline security posture with vulnerability reporting policy and automated code scanning. Created SECURITY.md with private vulnerability reporting process, supported versions table, response timeline, and security best practices. Implemented GitHub CodeQL scanning workflow (.github/workflows/codeql.yml) for continuous JavaScript/TypeScript vulnerability detection with weekly scheduled scans. Enhanced README.md with Security section linking to SECURITY.md and CONTRIBUTING.md with security issue reporting guidelines. Added DECISIONS.md entry documenting baseline security approach. All acceptance criteria satisfied providing proactive security foundation with clear vulnerability reporting process and automated security scanning for early threat detection.
+
+### CARD-018: Env samples & secrets hygiene (baseline configuration)
+
+**Status:** ✅ Completed  
+**Owner:** cursor  
+**Epic:** Epic 1 – Foundations & MVP
+
+Implemented comprehensive environment configuration and secrets hygiene practices for secure development. Created .env.example with all required environment variables for core services (API, database, Redis, TURN server) using safe placeholder values. Enhanced README.md with Configuration section explaining how to copy .env.example and set up local environment. Updated CONTRIBUTING.md with detailed Environment Variables & Secrets section covering never committing secrets, adding new variables safely, and best practices. Enhanced .gitignore with comprehensive .env file patterns and added CI security checks to fail if .env files are accidentally committed. All acceptance criteria satisfied providing secure environment configuration foundation with clear contributor guidance for secrets management.

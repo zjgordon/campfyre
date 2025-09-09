@@ -520,6 +520,39 @@ All updates are scheduled for Monday mornings to minimize disruption to developm
 
 **Do not file security issues in public tracker.** Please report security vulnerabilities privately via email to zjgordon.dev@gmail.com. See [SECURITY.md](SECURITY.md) for our complete security policy and response process.
 
+## Environment Variables & Secrets
+
+### Never Commit Secrets
+
+- **Never commit `.env` files** or any files containing secrets
+- **Always update `.env.example`** when adding or removing environment variables
+- **Use placeholder values** in `.env.example` (e.g., `changeme`, `your-secret-here`)
+- **Generate secure secrets** for production environments
+
+### Adding New Environment Variables
+
+When adding new environment variables:
+
+1. **Update `.env.example`** with the new variable and a safe placeholder value
+2. **Update documentation** (README.md, CONTRIBUTING.md) if the variable affects setup
+3. **Update Docker Compose** if the variable is used in container configuration
+4. **Test locally** with your own `.env` file
+
+### Environment File Structure
+
+- **`.env.example`** - Template with placeholder values (committed to repo)
+- **`.env`** - Your local configuration (ignored by git)
+- **`.env.local`** - Local overrides (ignored by git)
+- **`.env.production`** - Production configuration (ignored by git)
+
+### Best Practices
+
+- Use descriptive variable names (e.g., `DATABASE_URL` not `DB_URL`)
+- Group related variables with comments
+- Include units in variable names when applicable (e.g., `TIMEOUT_MS`)
+- Document required vs optional variables in `.env.example`
+- Use secure random strings for secrets in production
+
 ## Getting Help
 
 If you have questions about contributing, please open an issue or reach out to the maintainers.

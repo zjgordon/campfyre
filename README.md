@@ -6,6 +6,24 @@
 
 Gather, play, and tell your story — anywhere.
 
+## Configuration
+
+Before running the application, you need to set up your environment configuration:
+
+1. **Copy the example environment file:**
+
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Update the values in `.env`** for your environment:
+   - Database credentials
+   - Redis connection details
+   - TURN server configuration
+   - Security secrets (generate secure random strings for production)
+
+The `.env` file is used by both Docker Compose and the application runtime. See [`.env.example`](.env.example) for all available configuration options.
+
 ## Quickstart
 
 ### Docker (Recommended)
