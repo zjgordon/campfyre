@@ -31,6 +31,25 @@ Upsides, downsides, risks, follow-ups, and any TODOs.
 
 ---
 
+## 2025-09-09 — Release & tagging strategy: semver, Conventional Commits, changelog
+
+**Context**  
+Need automated release process with version tracking, changelog generation, and GitHub releases for foundational sprint completion.
+
+**Decision**  
+Use semantic versioning starting at v0.0.x, Conventional Commits for changelog generation, and GitHub Actions for automated releases with draft creation.
+
+**Consequences**  
+Automated changelog generation from commit history. Draft releases allow review before publishing. Pre-release versions (v0.0.x) for foundational work.
+
+**Links**
+
+- Release workflow: `.github/workflows/release.yml`
+- Changelog: `CHANGELOG.md`
+- Contributing: `CONTRIBUTING.md#how-to-cut-a-release`
+
+---
+
 ## 2025-09-09 — Trunk-based development over Git Flow
 
 **Context**  

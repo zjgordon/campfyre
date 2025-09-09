@@ -2,6 +2,7 @@
 
 ![CI](https://github.com/your-org/campfyre/actions/workflows/ci.yml/badge.svg)
 ![License](https://img.shields.io/badge/license-AGPL--3.0-blue.svg)
+![Release](https://img.shields.io/github/v/release/your-org/campfyre?include_prereleases)
 
 Gather, play, and tell your story — anywhere.
 

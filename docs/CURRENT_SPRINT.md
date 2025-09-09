@@ -109,3 +109,11 @@ Implemented comprehensive GitHub workflow templates to standardize issue and pul
 **Epic:** Epic 1 – Foundations & MVP
 
 Established comprehensive code ownership and review requirements for the repository. Created .github/CODEOWNERS file with default ownership assigned to @zjgordon for the entire repository and granular ownership stubs for /web/, /api/, and /docs/ directories. Enhanced CONTRIBUTING.md with detailed "Reviews & CODEOWNERS" section explaining code ownership structure, review requirements, admin bypass policies, and the complete review process. Configured repository settings to require minimum 1 approving review from code owners, enable stale approval dismissal, and enforce code owner approval on all PRs to main. All acceptance criteria satisfied providing robust code review governance and clear ownership structure for maintainable development workflows.
+
+### CARD-014: Release & tagging groundwork (v0.0.x pre-releases)
+
+**Status:** ✅ Completed  
+**Owner:** cursor  
+**Epic:** Epic 1 – Foundations & MVP
+
+Implemented comprehensive release and tagging automation for the repository. Created .github/workflows/release.yml with automated release pipeline that triggers on v*.*.\* tags, runs full test and build pipeline, and generates changelog from Conventional Commits. Established CHANGELOG.md following Keep a Changelog structure with seeded placeholder sections for foundational work. Enhanced CONTRIBUTING.md with detailed "How to Cut a Release" section explaining semantic versioning, release process, and automation workflow. Added release badge to README.md and created DECISIONS.md entry documenting release strategy. All acceptance criteria satisfied providing automated release infrastructure with semantic versioning and changelog generation for maintainable project evolution.

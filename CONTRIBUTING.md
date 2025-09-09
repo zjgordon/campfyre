@@ -359,6 +359,51 @@ Admin bypass is allowed only for:
 4. **Wait for approval** before merging
 5. **Merge via GitHub UI** using squash or rebase (avoid merge commits)
 
+## How to Cut a Release
+
+We use automated releases with semantic versioning and Conventional Commits for changelog generation.
+
+### Release Process
+
+1. **Ensure all changes are merged** to the `main` branch
+2. **Create and push a tag** with the new version:
+   ```bash
+   git tag v0.0.1
+   git push origin v0.0.1
+   ```
+3. **GitHub Actions will automatically**:
+   - Run the full test and build pipeline
+   - Generate changelog from Conventional Commits
+   - Create a draft GitHub release with release notes
+   - Update the CHANGELOG.md file
+
+### Version Numbering
+
+We follow [Semantic Versioning](https://semver.org/):
+
+- **v0.0.x**: Pre-release versions for foundational work
+- **v0.x.0**: Minor versions for new features
+- **vx.0.0**: Major versions for breaking changes
+
+### Release Automation
+
+The release workflow (`.github/workflows/release.yml`) automatically:
+
+- Triggers on any `v*.*.*` tag push
+- Runs tests and builds to ensure quality
+- Uses `conventional-changelog/standard-version` to generate changelog
+- Creates a draft GitHub release with generated notes
+- Updates the CHANGELOG.md file with new entries
+
+### Manual Release Steps
+
+If you need to create a release manually:
+
+1. Tag the commit: `git tag v0.0.1`
+2. Push the tag: `git push origin v0.0.1`
+3. Check the GitHub Actions tab for the release workflow
+4. Review and publish the draft release on GitHub
+
 ## Getting Help
 
 If you have questions about contributing, please open an issue or reach out to the maintainers.

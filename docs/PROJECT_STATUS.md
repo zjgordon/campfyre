@@ -15,6 +15,7 @@
 - ✅ CARD-011: Branch protection & default branch policy (main as trunk) completed
 - ✅ CARD-012: PR template + Issue templates (GitHub workflow) completed
 - ✅ CARD-013: CODEOWNERS & review rules (baseline reviews for main) completed
+- ✅ CARD-014: Release & tagging groundwork (v0.0.x pre-releases) completed
 
 ## <Future Sprint Placeholder>
 
