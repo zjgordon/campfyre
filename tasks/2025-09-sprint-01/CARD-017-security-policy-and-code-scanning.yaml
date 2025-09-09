@@ -1,0 +1,61 @@
+id: CARD-017
+title: Security policy & code scanning (baseline security posture)
+epic: Epic 1 – Foundations & MVP
+sprint: 2025-09-sprint-01
+status: todo # todo | doing | review | done | blocked
+owner: cursor
+links:
+  - /docs/ROADMAP.md
+  - /docs/TECH_CHOICES.md
+  - /docs/SPRINT_WORKFLOW.md
+  - /docs/DECISIONS.md
+acceptance:
+  - SECURITY.md created in repo root with:
+      - How to report vulnerabilities
+      - Disclosure expectations (private report, not public issue)
+      - Maintainer contact (placeholder if solo, update later)
+  - GitHub code scanning (CodeQL) enabled for repo (javascript/typescript workflow)
+  - Workflow config present under .github/workflows/codeql.yml
+  - Code scanning alerts visible in GitHub Security tab
+  - README.md updated with “Security” section linking to SECURITY.md
+  - CONTRIBUTING.md updated with note: “Do not file security issues in public tracker”
+  - DECISIONS.md entry added for “Baseline security: policy + CodeQL scanning”
+  - Update /docs/CURRENT_SPRINT.md with 5–8 line summary
+  - Update /docs/PROJECT_STATUS.md with one-liner entry under this sprint
+  - Update /meta/TASK_STATE.yaml breadcrumb/active status
+  - Single Conventional Commit created including [CARD-017]
+artifacts:
+  created:
+    - SECURITY.md
+    - .github/workflows/codeql.yml
+  modified:
+    - README.md
+    - CONTRIBUTING.md
+    - docs/DECISIONS.md
+    - docs/CURRENT_SPRINT.md
+    - docs/PROJECT_STATUS.md
+    - meta/TASK_STATE.yaml
+notes: |
+  Scope:
+    - SECURITY.md contents:
+        # Security Policy
+        ## Reporting a Vulnerability
+        Please report vulnerabilities privately via email (replace with maintainer email, zjgordon.dev@gmail.com ).
+        Do not open public issues for security problems.
+        We aim to respond within 7 days.
+        ## Supported Versions
+        Only the latest release is actively supported for security fixes.
+    - CodeQL workflow:
+        - Uses GitHub’s starter CodeQL workflow for js/ts.
+        - Runs on push, PR, and weekly schedule.
+        - Alerts appear in Security > Code scanning.
+    - DECISIONS.md entry example:
+        2025-09-11 — Baseline security: policy + CodeQL scanning
+        Context: need proactive posture before first public contributions.
+        Decision: add SECURITY.md and CodeQL scanning workflow.
+        Consequences: contributors know how to report issues; repo scanned continuously.
+    - DoD:
+        - SECURITY.md visible in repo root.
+        - CodeQL workflow runs and passes on CI.
+        - Alerts tab functional in GitHub Security.
+        - Docs updated for contributor awareness.

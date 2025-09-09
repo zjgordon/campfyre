@@ -1,0 +1,76 @@
+id: CARD-005
+title: Repo docs sync (baseline discoverability & cross-links)
+epic: Epic 1 – Foundations & MVP
+sprint: 2025-09-sprint-01
+status: todo # todo | doing | review | done | blocked
+owner: cursor
+links:
+  - /docs/EPIC1_OVERVIEW.md
+  - /docs/ROADMAP.md
+  - /docs/SPRINT_WORKFLOW.md
+  - /docs/TECH_CHOICES.md
+  - /docs/UX_GUIDE.md
+  - /docs/DECISIONS.md
+acceptance:
+  - README.md includes: project elevator pitch, quickstart, one-line docker compose, links to all core docs
+  - CONTRIBUTING.md includes: repo layout, local dev commands, task card workflow, Conventional Commits, pre-commit install, CI overview
+  - All core docs exist and are discoverable from README (Roadmap, Epic 1 Overview, Tech Choices, UX Guide, Sprint Workflow, ADRs)
+  - Add CI badge to README (placeholder URL OK if repo private; note to update org/repo)
+  - Add LICENSE section referencing AGPL-3.0 in README
+  - Ensure docs have consistent titles, H1s, and short descriptions
+  - Update /docs/CURRENT_SPRINT.md with a 5–8 line summary
+  - Update /docs/PROJECT_STATUS.md with a single-line entry under this sprint
+  - Update /meta/TASK_STATE.yaml breadcrumb/active status
+  - Single Conventional Commit created including [CARD-005]
+artifacts:
+  created: []
+  modified:
+    - README.md
+    - CONTRIBUTING.md
+    - docs/CURRENT_SPRINT.md
+    - docs/PROJECT_STATUS.md
+    - meta/TASK_STATE.yaml
+notes: |
+  README content checklist (baseline):
+    - # Campfyre — modern, modular TTRPG hub
+    - Badges: CI (actions/workflows/ci.yml), License (AGPL-3.0)
+    - Quickstart:
+        - docker compose up -d (one-liner)
+        - local dev: install deps, run web/api
+    - Repo layout:
+        - /web, /api, /docs, /tasks, /meta
+    - Core docs links:
+        - Roadmap → /docs/ROADMAP.md
+        - Epic 1 Overview → /docs/EPIC1_OVERVIEW.md
+        - Tech Choices → /docs/TECH_CHOICES.md
+        - UX Guide → /docs/UX_GUIDE.md
+        - Sprint Workflow → /docs/SPRINT_WORKFLOW.md
+        - Decisions (ADRs) → /docs/DECISIONS.md
+    - License: AGPL-3.0 (short blurb + link to LICENSE)
+    - Contributing: link to CONTRIBUTING.md
+
+  CONTRIBUTING content checklist:
+    - Prereqs (Node version, package manager; e.g., pnpm + corepack)
+    - Install & dev commands (lint, typecheck, test, build)
+    - Task workflow:
+        - Cards in /tasks/<sprint>/CARD-*.yaml
+        - Update loop: CURRENT_SPRINT.md, PROJECT_STATUS.md, TASK_STATE.yaml
+        - Definition of Done bullets
+    - Commit rules:
+        - Conventional Commits + commitlint
+        - Include [CARD-XXX] in subject
+    - Pre-commit setup:
+        - Husky/lint-staged install steps
+        - Hook behavior & how to bypass in emergencies (not recommended)
+    - CI overview:
+        - What the pipeline runs; how to re-run checks
+        - Badge note: update org/repo in badge URL after publishing
+
+  Style & consistency:
+    - Ensure each core doc starts with a one-line purpose sentence.
+    - Normalize headings and internal links (relative paths).
+    - Keep README succinct; push depth into /docs.
+  DoD:
+    - README + CONTRIBUTING render cleanly on GitHub with working relative links.
+    - All core docs discoverable from README.
+    - CI badge visible (placeholder acceptable until repo public).

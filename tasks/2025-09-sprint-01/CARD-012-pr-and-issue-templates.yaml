@@ -1,0 +1,58 @@
+id: CARD-012
+title: PR template + Issue templates (GitHub workflow)
+epic: Epic 1 – Foundations & MVP
+sprint: 2025-09-sprint-01
+status: todo # todo | doing | review | done | blocked
+owner: cursor
+links:
+  - /docs/SPRINT_WORKFLOW.md
+  - /docs/ROADMAP.md
+  - /docs/TECH_CHOICES.md
+acceptance:
+  - .github/PULL_REQUEST_TEMPLATE.md exists with:
+      - Card reference line ([CARD-XXX])
+      - Checklist: acceptance criteria met, docs updated, CI green
+      - Section for summary of changes
+      - Section for screenshots/logs if relevant
+  - Issue templates exist in .github/ISSUE_TEMPLATE/:
+      - bug_report.md → includes repro steps, expected vs actual, environment
+      - feature_request.md → includes problem, desired outcome, alternatives
+      - chore_task.md → for maintenance/internal improvements
+  - CONTRIBUTING.md updated with reference to PR/Issue templates
+  - README.md updated with “Contributing” section linking to CONTRIBUTING.md
+  - Update /docs/CURRENT_SPRINT.md with a 5–8 line summary
+  - Update /docs/PROJECT_STATUS.md with a single-line entry under this sprint
+  - Update /meta/TASK_STATE.yaml breadcrumb/active status
+  - Single Conventional Commit created including [CARD-012]
+artifacts:
+  created:
+    - .github/PULL_REQUEST_TEMPLATE.md
+    - .github/ISSUE_TEMPLATE/bug_report.md
+    - .github/ISSUE_TEMPLATE/feature_request.md
+    - .github/ISSUE_TEMPLATE/chore_task.md
+  modified:
+    - CONTRIBUTING.md
+    - README.md
+    - docs/CURRENT_SPRINT.md
+    - docs/PROJECT_STATUS.md
+    - meta/TASK_STATE.yaml
+notes: |
+  Scope:
+    - Templates help standardize workflow and keep cards visible in PRs/issues.
+    - PR template example sections:
+        ## Summary
+        ## Linked Card(s)
+        - [CARD-012]
+        ## Checklist
+        - [ ] Acceptance criteria met
+        - [ ] Docs updated (CURRENT_SPRINT, PROJECT_STATUS)
+        - [ ] CI passes
+    - Issue templates use GitHub standard frontmatter for template metadata.
+    - CONTRIBUTING: add “Submitting Issues & PRs” section:
+        - Link to templates
+        - Emphasize always reference [CARD-XXX]
+    - README: add one-liner “See CONTRIBUTING.md for how to open issues/PRs.”
+    - DoD:
+        - Opening a new issue in GitHub presents the three templates.
+        - Opening a new PR shows the PR template pre-filled.
+        - Docs updated and commit follows rules.

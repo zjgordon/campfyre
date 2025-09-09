@@ -1,0 +1,52 @@
+id: CARD-010
+title: Local bootstrap script (quickstart dev + demo seed)
+epic: Epic 1 – Foundations & MVP
+sprint: 2025-09-sprint-01
+status: todo # todo | doing | review | done | blocked
+owner: cursor
+links:
+  - /docs/EPIC1_OVERVIEW.md#phase-1--development-environment--guardrails
+  - /docs/ROADMAP.md
+  - /docs/SPRINT_WORKFLOW.md
+acceptance:
+  - A bootstrap script exists (`scripts/bootstrap.sh` or Makefile target) that:
+      - Runs docker compose up for core services
+      - Waits until healthchecks pass (API + DB at minimum)
+      - Runs package install + db migrate + seed (trivial data)
+      - Prints a friendly "Campfyre ready → http://localhost:3000" message
+  - Demo seed creates a "Hello World Campaign" with one sample session
+  - Script documented in README.md ("Quickstart Dev Environment")
+  - CONTRIBUTING.md updated with how to use bootstrap script
+  - Update /docs/CURRENT_SPRINT.md with a 5–8 line summary
+  - Update /docs/PROJECT_STATUS.md with a single-line entry under this sprint
+  - Update /meta/TASK_STATE.yaml breadcrumb/active status
+  - Single Conventional Commit created including [CARD-010]
+artifacts:
+  created:
+    - scripts/bootstrap.sh
+    - prisma/seed.ts (or trivial SQL seed file)
+  modified:
+    - docker-compose.yml (if tweaks needed)
+    - README.md
+    - CONTRIBUTING.md
+    - docs/CURRENT_SPRINT.md
+    - docs/PROJECT_STATUS.md
+    - meta/TASK_STATE.yaml
+notes: |
+  Scope:
+    - Keep bootstrap minimal but repeatable.
+    - Example flow:
+        1. docker compose up -d
+        2. Wait until curl http://localhost:3000/health returns ok
+        3. pnpm install (or yarn/npm) in root
+        4. pnpm prisma migrate dev
+        5. pnpm prisma db seed
+        6. echo "Campfyre ready → http://localhost:3000"
+    - Demo seed can be ultra-simple:
+        - Campaign: "Hello World Campaign"
+        - Session: "First Session"
+        - Template: D&D 5e stub
+    - Document both *first-time dev setup* and *resetting environment*.
+    - DoD:
+        - New contributor can run ./scripts/bootstrap.sh and land in a working local environment.
+        - Docs explain when to run, how to reset, and what to expect.

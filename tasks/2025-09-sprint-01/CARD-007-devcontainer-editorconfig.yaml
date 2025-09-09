@@ -1,0 +1,57 @@
+id: CARD-007
+title: Dev container + editor config (optional polish)
+epic: Epic 1 – Foundations & MVP
+sprint: 2025-09-sprint-01
+status: todo # todo | doing | review | done | blocked
+owner: cursor
+links:
+  - /docs/EPIC1_OVERVIEW.md#phase-1--development-environment--guardrails
+  - /docs/SPRINT_WORKFLOW.md
+  - /docs/TECH_CHOICES.md
+acceptance:
+  - '.devcontainer/devcontainer.json created for VS Code / Cursor use'
+  - Config includes Node.js runtime, Postgres, Redis services (matching docker-compose)
+  - Extensions: ESLint, Prettier, Prisma, Docker, GitLens pre-installed
+  - '.editorconfig created at repo root with standard settings (2 spaces, LF, UTF-8, trim trailing whitespace)'
+  - README.md updated with section about optional dev container usage
+  - CONTRIBUTING.md updated with editorconfig + dev container notes
+  - Update /docs/CURRENT_SPRINT.md with a 5–8 line summary
+  - Update /docs/PROJECT_STATUS.md with a single-line entry under this sprint
+  - Update /meta/TASK_STATE.yaml breadcrumb/active status
+  - Single Conventional Commit created including [CARD-007]
+artifacts:
+  created:
+    - .devcontainer/devcontainer.json
+    - .editorconfig
+  modified:
+    - README.md
+    - CONTRIBUTING.md
+    - docs/CURRENT_SPRINT.md
+    - docs/PROJECT_STATUS.md
+    - meta/TASK_STATE.yaml
+notes: |
+  Scope:
+    - Provide a smoother DX for contributors using VS Code / Cursor.
+    - Dev container includes:
+        - Base: node:20-bullseye
+        - Services: postgres, redis, coturn (mirroring docker-compose)
+        - Post-create command: pnpm install (or yarn/npm depending on package manager)
+        - Mounts: workspace source
+        - Features: Git, Docker CLI, Node.js
+    - Example editorconfig:
+        root = true
+        [*]
+        charset = utf-8
+        end_of_line = lf
+        indent_style = space
+        indent_size = 2
+        insert_final_newline = true
+        trim_trailing_whitespace = true
+        [*.md]
+        trim_trailing_whitespace = false
+    - README should state: "For VS Code / Cursor users, a dev container is available for quick setup."
+    - CONTRIBUTING should note: "Editorconfig enforces consistent style; most editors respect it automatically."
+    - DoD:
+        - Opening repo in VS Code with dev containers enabled spins up usable environment.
+        - Editorconfig applies formatting rules automatically.
+        - Documentation updated for discoverability.

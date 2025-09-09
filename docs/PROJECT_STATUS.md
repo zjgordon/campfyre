@@ -20,6 +20,7 @@
 - ✅ CARD-016: Dependency updates bot (Renovate or Dependabot config) completed
 - ✅ CARD-017: Security policy & code scanning (baseline security posture) completed
 - ✅ CARD-018: Env samples & secrets hygiene (baseline configuration) completed
+- ✅ CARD-019: Compose profiles & Make targets (dev/infra convenience) completed
 
 ## <Future Sprint Placeholder>
 

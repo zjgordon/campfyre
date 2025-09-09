@@ -1,0 +1,45 @@
+id: CARD-006
+title: Cursor update loop smoke test (trivial feature + doc sync)
+epic: Epic 1 – Foundations & MVP
+sprint: 2025-09-sprint-01
+status: todo # todo | doing | review | done | blocked
+owner: cursor
+links:
+  - /docs/SPRINT_WORKFLOW.md
+  - /docs/PROJECT_STATUS.md
+  - /docs/CURRENT_SPRINT.md
+  - /meta/TASK_STATE.yaml
+acceptance:
+  - 'Add a trivial feature (e.g., /ping endpoint in API returning { ok: true, msg: "pong" })'
+  - Run through full Cursor update loop:
+      - Implement → test → commit
+      - Update docs/CURRENT_SPRINT.md with 5–8 line entry
+      - Update docs/PROJECT_STATUS.md with a one-liner under this sprint
+      - Update meta/TASK_STATE.yaml (active_card breadcrumb or mark done)
+  - Commit message follows Conventional Commits and includes [CARD-006]
+  - Verify pre-commit hooks run (lint, typecheck, tests, CURRENT_SPRINT check)
+  - CI pipeline runs and passes with new feature
+  - Confirm all acceptance steps are visible in PR/commit history
+  - Single commit added for this smoke test feature
+artifacts:
+  created:
+    - api/src/routes/ping.ts (or equivalent)
+  modified:
+    - package.json (scripts if needed)
+    - docs/CURRENT_SPRINT.md
+    - docs/PROJECT_STATUS.md
+    - meta/TASK_STATE.yaml
+notes: |
+  Purpose:
+    - Validate that the Cursor update loop (cards → code → docs → commit) works in practice.
+    - Trivial feature keeps risk low while testing workflow end-to-end.
+    - Example implementation:
+        GET /ping → { "ok": true, "msg": "pong" }
+    - E2E verification:
+        1. Start stack with docker compose up.
+        2. curl localhost:<api-port>/ping returns pong JSON.
+        3. Commit history shows Conventional Commit with [CARD-006].
+        4. CURRENT_SPRINT.md has detailed log entry.
+        5. PROJECT_STATUS.md has concise summary line.
+        6. TASK_STATE.yaml reflects completion.
+    - DoD: All steps proven functional and repeatable, establishing confidence in future card execution.

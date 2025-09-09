@@ -1,0 +1,47 @@
+id: CARD-009
+title: Healthcheck stubs for services (API, Web, Redis, DB)
+epic: Epic 1 – Foundations & MVP
+sprint: 2025-09-sprint-01
+status: todo # todo | doing | review | done | blocked
+owner: cursor
+links:
+  - /docs/EPIC1_OVERVIEW.md#phase-2--framework-foundations
+  - /docs/TECH_CHOICES.md
+  - /docs/SPRINT_WORKFLOW.md
+acceptance:
+  - 'API service responds to GET /health with { ok: true, service: "api" }'
+  - Web service serves /health.txt with "ok"
+  - Docker-compose config includes healthcheck blocks for API, Web, Postgres, Redis, Coturn
+  - docker compose ps shows services as healthy when running
+  - Add a section in README.md describing how to check health endpoints
+  - Update /docs/CURRENT_SPRINT.md with a 5–8 line summary
+  - Update /docs/PROJECT_STATUS.md with a one-liner entry under this sprint
+  - Update /meta/TASK_STATE.yaml breadcrumb/active status
+  - Single Conventional Commit created including [CARD-009]
+artifacts:
+  created:
+    - api/src/routes/health.ts
+    - web/public/health.txt
+  modified:
+    - docker-compose.yml
+    - README.md
+    - docs/CURRENT_SPRINT.md
+    - docs/PROJECT_STATUS.md
+    - meta/TASK_STATE.yaml
+notes: |
+  Scope:
+    - API healthcheck should return JSON envelope:
+        { "ok": true, "service": "api", "uptime": <seconds> }
+    - Web healthcheck can be static text file (health.txt with "ok").
+    - Docker-compose healthcheck examples:
+        - API: curl -f http://localhost:3000/health || exit 1
+        - Web: curl -f http://localhost:8080/health.txt || exit 1
+        - Postgres: pg_isready -U postgres
+        - Redis: redis-cli ping
+        - Coturn: netstat -an | grep 3478
+    - Keep healthchecks lightweight; failure should mean container is genuinely not ready.
+    - README: add section "Service Healthchecks" with endpoints/commands.
+    - DoD:
+        - Running docker compose up shows all services healthy.
+        - curl endpoints return correct responses.
+        - Docs updated with discoverability.

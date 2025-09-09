@@ -1,0 +1,47 @@
+id: CARD-011
+title: Branch protection & default branch policy (main as trunk)
+epic: Epic 1 – Foundations & MVP
+sprint: 2025-09-sprint-01
+status: todo # todo | doing | review | done | blocked
+owner: cursor
+links:
+  - /docs/DECISIONS.md
+  - /docs/SPRINT_WORKFLOW.md
+  - /docs/EPIC1_OVERVIEW.md#phase-1--development-environment--guardrails
+acceptance:
+  - main is set as the default branch
+  - Branch protection enabled on main with:
+      - Require status checks to pass (CI pipeline jobs)
+      - Disallow force pushes and deletions
+      - Require pull request before merging (allow bypass for repo admin if solo)
+      - (Optional) Require linear history
+  - CONTRIBUTING.md updated with “Branching & PR policy” section (feature branches → PR → merge to main)
+  - README.md mentions trunk-based development and links to CONTRIBUTING
+  - Update /docs/CURRENT_SPRINT.md with a 5–8 line summary
+  - Update /docs/PROJECT_STATUS.md with a single-line entry under this sprint
+  - Update /meta/TASK_STATE.yaml breadcrumb/active status
+  - Single Conventional Commit created including [CARD-011] (docs-only)
+artifacts:
+  created: []
+  modified:
+    - CONTRIBUTING.md
+    - README.md
+    - docs/CURRENT_SPRINT.md
+    - docs/PROJECT_STATUS.md
+    - meta/TASK_STATE.yaml
+notes: |
+  Scope:
+    - Configure GitHub repository settings:
+        * Default branch: main
+        * Protect main: required checks (lint, typecheck, test, build), no force-push, no deletion
+        * Require PRs: yes (rebase+merge or squash allowed; disable merge commits if linear history desired)
+    - Document a lightweight feature branch flow:
+        1) Create branch from main: feat/short-description
+        2) Work a single card; commit with [CARD-XXX]
+        3) Open PR; CI must be green
+        4) Merge to main via squash or rebase
+    - If you remain solo, note the admin bypass option but keep CI required to avoid accidental merges.
+    - DoD:
+        - Settings confirmed in GitHub UI
+        - Policies documented and visible to contributors
+        - Sprint docs updated

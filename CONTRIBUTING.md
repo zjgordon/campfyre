@@ -71,6 +71,35 @@ docker compose down -v && ./scripts/bootstrap.sh
 - `/tasks` - Sprint task cards and templates
 - `/meta` - Project metadata and state tracking
 
+## Docker Compose Profiles
+
+Campfyre uses Docker Compose profiles to provide flexible development environments. Choose the appropriate profile based on your development needs:
+
+### Profile Usage
+
+- **`dev`** - Web + API only
+  - Use when: Developing frontend/backend with external infrastructure (cloud databases, etc.)
+  - Services: `api`, `web`
+  - Command: `make dev` or `docker compose up -d --profile dev`
+
+- **`infra`** - Infrastructure services only
+  - Use when: Integration testing, database development, or when you need infrastructure without the application
+  - Services: `db`, `redis`, `coturn`, `minio`
+  - Command: `make infra` or `docker compose up -d --profile infra`
+
+- **`all`** - Full stack
+  - Use when: Complete development environment with all services
+  - Services: All services including `reverse-proxy`
+  - Command: `make up` or `docker compose up -d --profile all`
+
+### When to Use Each Profile
+
+- **Frontend development**: Use `dev` profile if you have external API/database
+- **Backend development**: Use `dev` profile if you have external database, or `all` for full stack
+- **Database work**: Use `infra` profile to work with database schemas and data
+- **Integration testing**: Use `infra` or `all` depending on what you're testing
+- **Full development**: Use `all` profile for complete local development environment
+
 ## Development Commands
 
 ```bash
@@ -86,6 +115,14 @@ npm run test:watch    # Run tests in watch mode
 npm run build         # Build all packages
 npm run format        # Format code with Prettier
 npm run format:check  # Check code formatting
+
+# Docker Compose shortcuts
+make up               # Start all services
+make dev              # Start dev profile + pnpm dev
+make infra            # Start infrastructure services
+make down             # Stop all services
+make logs             # Show service logs
+make clean            # Stop services and remove volumes
 ```
 
 ## Architecture Decision Records (ADRs)

@@ -1,0 +1,68 @@
+id: CARD-016
+title: Dependency updates bot (Renovate or Dependabot config)
+epic: Epic 1 – Foundations & MVP
+sprint: 2025-09-sprint-01
+status: todo # todo | doing | review | done | blocked
+owner: cursor
+links:
+  - /docs/ROADMAP.md
+  - /docs/TECH_CHOICES.md
+  - /docs/SPRINT_WORKFLOW.md
+acceptance:
+  - A dependency update bot is configured for the repo (choose Renovate or Dependabot)
+  - Config file present in repo root:
+      - For Renovate: renovate.json
+      - For Dependabot: .github/dependabot.yml
+  - Bot opens PRs for:
+      - Security patches immediately
+      - Minor/patch version updates (weekly batch)
+      - Major updates marked with label “major-update” and reviewed manually
+  - PRs include [CARD-016] in commit message/body automatically or by template
+  - CONTRIBUTING.md updated with “Dependency Updates” section (how to handle bot PRs)
+  - README.md updated with note: “This repo uses automated dependency updates”
+  - Update /docs/CURRENT_SPRINT.md with a 5–8 line summary
+  - Update /docs/PROJECT_STATUS.md with a one-liner entry under this sprint
+  - Update /meta/TASK_STATE.yaml breadcrumb/active status
+  - Single Conventional Commit created including [CARD-016]
+artifacts:
+  created:
+    - .github/dependabot.yml (if using Dependabot) OR renovate.json (if using Renovate)
+  modified:
+    - CONTRIBUTING.md
+    - README.md
+    - docs/CURRENT_SPRINT.md
+    - docs/PROJECT_STATUS.md
+    - meta/TASK_STATE.yaml
+notes: |
+  Scope:
+    - If using Dependabot:
+        .github/dependabot.yml example:
+        version: 2
+        updates:
+          - package-ecosystem: "npm"
+            directory: "/"
+            schedule:
+              interval: "weekly"
+            open-pull-requests-limit: 5
+            labels: ["dependencies"]
+          - package-ecosystem: "docker"
+            directory: "/"
+            schedule:
+              interval: "weekly"
+    - If using Renovate:
+        renovate.json example:
+        {
+          "extends": ["config:base"],
+          "labels": ["dependencies"],
+          "schedule": ["before 5am on monday"],
+          "major": { "dependencyDashboardApproval": true }
+        }
+    - CONTRIBUTING.md:
+        - Add guidance: always run CI, review carefully, merge patch/minor promptly
+        - Major updates require manual ADR if they alter stack
+    - README.md:
+        - Add a line in “Project Status” or “Contributing”: “Dependencies are updated via automated PRs (Dependabot/Renovate).”
+    - DoD:
+        - Bot PRs appear in GitHub with correct labels
+        - CI runs on bot PRs successfully
+        - Contributor guidance clear and discoverable

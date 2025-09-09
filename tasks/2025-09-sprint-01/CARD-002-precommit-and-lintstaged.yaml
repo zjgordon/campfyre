@@ -1,0 +1,57 @@
+id: CARD-002
+title: Configure pre-commit + lint-staged hooks (lint/format/typecheck/tests)
+epic: Epic 1 – Foundations & MVP
+sprint: 2025-09-sprint-01
+status: todo # todo | doing | review | done | blocked
+owner: cursor
+links:
+  - /docs/EPIC1_OVERVIEW.md#phase-1--development-environment--guardrails
+  - /docs/SPRINT_WORKFLOW.md
+  - /docs/TECH_CHOICES.md
+acceptance:
+  - Husky (or equivalent) pre-commit hook runs on staged files only
+  - lint-staged configured to run Prettier + ESLint on affected files
+  - Typecheck runs in pre-commit (tsc --noEmit) with fast-path for staged packages
+  - Unit tests run in pre-commit for changed scopes (or minimal smoke test) and must pass
+  - Pre-commit guard prevents commit if docs/CURRENT_SPRINT.md not updated while active card set in meta/TASK_STATE.yaml
+  - Hook is idempotent and documented in README/CONTRIBUTING (quick install steps)
+  - Update /docs/CURRENT_SPRINT.md with a 5–8 line summary
+  - Update /docs/PROJECT_STATUS.md with a single-line entry under this sprint
+  - Update /meta/TASK_STATE.yaml breadcrumb/active status
+  - Single Conventional Commit created including [CARD-002]
+artifacts:
+  - created:
+      - .husky/pre-commit
+      - .husky/_/husky.sh
+      - package.json (scripts, lint-staged block)
+      - .lintstagedrc.cjs
+      - .editorconfig
+      - README.md (section: Pre-commit & local checks)
+      - CONTRIBUTING.md (section: Commit flow & hooks)
+  - modified:
+      - docs/CURRENT_SPRINT.md
+      - docs/PROJECT_STATUS.md
+      - meta/TASK_STATE.yaml
+notes: |
+  Scope:
+    - Wire up pre-commit with Husky (or lefthook, if preferred) + lint-staged.
+    - Scripts expected in package.json (names can be adjusted if monorepo):
+        - "lint": eslint . --max-warnings=0
+        - "format:check": prettier --check .
+        - "format:write": prettier --write .
+        - "typecheck": tsc --noEmit
+        - "test": <unit test runner> (e.g., vitest/jest) --run
+    - lint-staged example mapping:
+        - { "*.ts,*.tsx": ["eslint --fix", "prettier --write"] }
+        - { "*.js,*.jsx": ["eslint --fix", "prettier --write"] }
+        - { "*.json,*.md,*.yml,*.yaml": ["prettier --write"] }
+    - Pre-commit guard (bash) should:
+        1) Read meta/TASK_STATE.yaml → active_card != null
+        2) If active_card set, ensure docs/CURRENT_SPRINT.md is part of the staged files; otherwise fail with a helpful message.
+    - Ensure hook install step is documented:
+        - pnpm dlx husky-init && pnpm i  (or npm/yarn equivalent)
+        - pnpm husky add .husky/pre-commit "pnpm lint-staged && pnpm typecheck && pnpm test -u"
+    - Keep hooks fast; if typecheck/tests are too slow on large repos, restrict to changed packages or add a quick smoke test.
+    - Definition of Done:
+        - Committing a trivial change triggers hooks and succeeds when all checks pass.
+        - Committing with active card but missing CURRENT_SPRINT.md fails with a clear message.

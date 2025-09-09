@@ -1,0 +1,51 @@
+id: CARD-004
+title: Conventional Commits + commitlint setup
+epic: Epic 1 – Foundations & MVP
+sprint: 2025-09-sprint-01
+status: todo # todo | doing | review | done | blocked
+owner: cursor
+links:
+  - /docs/EPIC1_OVERVIEW.md#phase-1--development-environment--guardrails
+  - /docs/SPRINT_WORKFLOW.md
+  - /docs/TECH_CHOICES.md
+acceptance:
+  - commitlint configured with Conventional Commits spec
+  - .commitlintrc.cjs file present with rules for type(scope): summary format
+  - Supported types include: feat, fix, docs, chore, refactor, test, ci
+  - Commit messages rejected if they fail validation
+  - CONTRIBUTING.md includes section explaining commit format
+  - /tasks/templates/COMMIT_TEMPLATE.md aligns with commitlint rules
+  - README.md mentions Conventional Commits briefly with link to CONTRIBUTING.md
+  - Update /docs/CURRENT_SPRINT.md with a 5–8 line summary
+  - Update /docs/PROJECT_STATUS.md with a single-line entry under this sprint
+  - Update /meta/TASK_STATE.yaml breadcrumb/active status
+  - Single Conventional Commit created including [CARD-004]
+artifacts:
+  - created:
+      - .commitlintrc.cjs
+      - CONTRIBUTING.md (commit guidelines section)
+  - modified:
+      - tasks/templates/COMMIT_TEMPLATE.md
+      - README.md
+      - docs/CURRENT_SPRINT.md
+      - docs/PROJECT_STATUS.md
+      - meta/TASK_STATE.yaml
+notes: |
+  Scope:
+    - Use @commitlint/config-conventional as base.
+    - Example rules:
+        module.exports = {
+          extends: ['@commitlint/config-conventional'],
+          rules: {
+            'type-enum': [2, 'always', [
+              'feat', 'fix', 'docs', 'style', 'refactor', 'perf',
+              'test', 'build', 'ci', 'chore', 'revert'
+            ]]
+          }
+        };
+    - Provide example commits in CONTRIBUTING.md:
+        - feat(api): add /health endpoint [CARD-001]
+        - fix(web): correct dice roller bug [CARD-010]
+        - docs(status): update CURRENT_SPRINT and PROJECT_STATUS [CARD-004]
+    - Ensure that commitlint runs automatically on commit-msg hook (via Husky).
+    - Goal: enforce consistency, make commit history parseable for changelogs and automation.

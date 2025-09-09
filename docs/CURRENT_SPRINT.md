@@ -149,3 +149,11 @@ Established comprehensive baseline security posture with vulnerability reporting
 **Epic:** Epic 1 – Foundations & MVP
 
 Implemented comprehensive environment configuration and secrets hygiene practices for secure development. Created .env.example with all required environment variables for core services (API, database, Redis, TURN server) using safe placeholder values. Enhanced README.md with Configuration section explaining how to copy .env.example and set up local environment. Updated CONTRIBUTING.md with detailed Environment Variables & Secrets section covering never committing secrets, adding new variables safely, and best practices. Enhanced .gitignore with comprehensive .env file patterns and added CI security checks to fail if .env files are accidentally committed. All acceptance criteria satisfied providing secure environment configuration foundation with clear contributor guidance for secrets management.
+
+### CARD-019: Compose profiles & Make targets (dev/infra convenience)
+
+**Status:** ✅ Completed  
+**Owner:** cursor  
+**Epic:** Epic 1 – Foundations & MVP
+
+Enhanced development workflow with Docker Compose profiles and Make targets for flexible service management. Updated docker-compose.yml with three profiles: dev (web + api), infra (db, redis, coturn, minio), and all (full stack). Created comprehensive Makefile with shortcuts for common operations including make up, make dev, make infra, make down, make logs, and make clean. Added MinIO service for file storage with proper health checks. Enhanced README.md with detailed "Using Compose Profiles & Make Targets" section explaining profile usage and make commands. Updated CONTRIBUTING.md with Docker Compose Profiles section providing guidance on when to use each profile for different development scenarios. All acceptance criteria satisfied providing flexible development environments and convenient service management shortcuts.

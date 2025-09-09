@@ -1,0 +1,72 @@
+id: CARD-014
+title: Release & tagging groundwork (v0.0.x pre-releases)
+epic: Epic 1 – Foundations & MVP
+sprint: 2025-09-sprint-01
+status: todo # todo | doing | review | done | blocked
+owner: cursor
+links:
+  - /docs/ROADMAP.md
+  - /docs/SPRINT_WORKFLOW.md
+  - /docs/DECISIONS.md
+  - /docs/TECH_CHOICES.md
+acceptance:
+  - GitHub Actions workflow added for release tagging (.github/workflows/release.yml)
+  - Tagging a commit with `v0.0.x` triggers:
+      - Build + test pipeline
+      - Draft GitHub release with changelog generated from Conventional Commits
+  - CHANGELOG.md created with “Keep a Changelog” structure, seeded with placeholder sections
+  - CONTRIBUTING.md updated with “How to cut a release” section (tagging & pushing tags)
+  - README.md updated with badge or section referencing latest release
+  - 'DECISIONS.md entry created: Release & tagging strategy: semver, Conventional Commits, changelog'
+  - Update /docs/CURRENT_SPRINT.md with a 5–8 line summary
+  - Update /docs/PROJECT_STATUS.md with a single-line entry under this sprint
+  - Update /meta/TASK_STATE.yaml breadcrumb/active status
+  - Single Conventional Commit created including [CARD-014]
+artifacts:
+  created:
+    - .github/workflows/release.yml
+    - CHANGELOG.md
+  modified:
+    - CONTRIBUTING.md
+    - README.md
+    - docs/DECISIONS.md
+    - docs/CURRENT_SPRINT.md
+    - docs/PROJECT_STATUS.md
+    - meta/TASK_STATE.yaml
+notes: |
+  Scope:
+    - Release process follows semver, starting at v0.0.1 for foundational sprint close.
+    - GitHub Actions release.yml:
+        on:
+          push:
+            tags:
+              - "v*.*.*"
+        jobs:
+          release:
+            runs-on: ubuntu-latest
+            steps:
+              - uses: actions/checkout@v4
+              - uses: actions/setup-node@v4
+                with: { node-version: 20 }
+              - run: corepack enable
+              - run: pnpm install --frozen-lockfile
+              - run: pnpm build
+              - uses: conventional-changelog/standard-version@latest
+              - uses: softprops/action-gh-release@v1
+                with:
+                  generate_release_notes: true
+    - CHANGELOG.md seeded with:
+        # Changelog
+        All notable changes to this project will be documented here.
+        ## [Unreleased]
+        - Initial repo structure
+        - Pre-commit hooks
+        - CI pipeline
+        - ADRs + Guardrails
+    - CONTRIBUTING update:
+        - How to tag: git tag v0.0.1 && git push origin v0.0.1
+        - Release automation will generate notes and changelog update
+    - DoD:
+        - Tagging locally and pushing creates a GitHub release draft
+        - CHANGELOG.md visible and discoverable
+        - Contributors can follow CONTRIBUTING to cut future releases

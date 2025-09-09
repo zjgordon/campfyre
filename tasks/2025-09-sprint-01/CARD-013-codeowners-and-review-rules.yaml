@@ -1,0 +1,54 @@
+id: CARD-013
+title: CODEOWNERS & review rules (baseline reviews for main)
+epic: Epic 1 – Foundations & MVP
+sprint: 2025-09-sprint-01
+status: todo # todo | doing | review | done | blocked
+owner: cursor
+links:
+  - /docs/SPRINT_WORKFLOW.md
+  - /docs/EPIC1_OVERVIEW.md#phase-1--development-environment--guardrails
+  - /docs/TECH_CHOICES.md
+  - /docs/DECISIONS.md
+acceptance:
+  - A .github/CODEOWNERS file exists and assigns default ownership to the maintainer (you) for the whole repo
+  - Optional granular ownership stubs added for /web, /api, /docs (pointing to same owner for now)
+  - GitHub branch protection for main requires ≥1 approving review on PRs (you may allow admin bypass if solo)
+  - Dismiss stale approvals on new commits is enabled (recommended)
+  - Require review from Code Owners is enabled
+  - CONTRIBUTING.md updated with "Reviews & CODEOWNERS" section (who reviews what, when to request review, when admin-bypass is ok)
+  - README.md “Contributing” section links to the updated CONTRIBUTING.md
+  - Update /docs/CURRENT_SPRINT.md with a 5–8 line summary
+  - Update /docs/PROJECT_STATUS.md with a single-line entry under this sprint
+  - Update /meta/TASK_STATE.yaml breadcrumb/active status
+  - Single Conventional Commit created including [CARD-013]
+artifacts:
+  created:
+    - .github/CODEOWNERS
+  modified:
+    - CONTRIBUTING.md
+    - README.md
+    - docs/CURRENT_SPRINT.md
+    - docs/PROJECT_STATUS.md
+    - meta/TASK_STATE.yaml
+notes: |
+  Scope:
+    - Create .github/CODEOWNERS with baseline ownership:
+        # Default owner (replace with your GitHub handle)
+        *       @zjgordon
+        # Stubs for future expansion
+        /web/   @zjgordon
+        /api/   @zjgordon
+        /docs/  @zjgordon
+    - Configure repository settings:
+        - Require pull request reviews before merging: 1
+        - Require review from Code Owners: enabled
+        - Dismiss stale approvals when new commits are pushed: enabled
+        - (Optional) Require linear history; keep merge method as squash or rebase
+    - CONTRIBUTING.md guidance:
+        - When opening a PR, ensure a Code Owner is requested
+        - Use [CARD-XXX] in commit and PR title
+        - Admin-bypass is allowed only for urgent hotfixes or solo work with green CI; must still update CURRENT_SPRINT/PROJECT_STATUS
+    - DoD:
+        - New PRs to main require one approval and show Code Owners requested by default
+        - CODEOWNERS visibly assigns ownership on GitHub
+        - Docs updated and commit passes hooks/CI

@@ -1,0 +1,65 @@
+id: CARD-019
+title: Compose profiles & Make targets (dev/infra convenience)
+epic: Epic 1 – Foundations & MVP
+sprint: 2025-09-sprint-01
+status: todo # todo | doing | review | done | blocked
+owner: cursor
+links:
+  - /docs/ROADMAP.md
+  - /docs/TECH_CHOICES.md
+  - /docs/SPRINT_WORKFLOW.md
+acceptance:
+  - docker-compose.yml updated to support profiles:
+      - dev: web + api only
+      - infra: db, redis, coturn, minio
+      - all: full stack
+  - 'Healthchecks integrated so docker compose ps shows healthy status'
+  - Makefile (or scripts/make-targets.sh) created with shortcuts:
+      - 'make up → docker compose up -d --profile all'
+      - 'make dev → docker compose up -d --profile dev && pnpm dev (or equivalent)'
+      - 'make infra → docker compose up -d --profile infra'
+      - 'make down → docker compose down'
+      - 'make logs → docker compose logs -f'
+  - README.md updated with “Using Compose Profiles & Make Targets” section
+  - CONTRIBUTING.md updated with notes on profiles and when to use each
+  - Update /docs/CURRENT_SPRINT.md with a 5–8 line summary
+  - Update /docs/PROJECT_STATUS.md with one-liner entry under this sprint
+  - Update /meta/TASK_STATE.yaml breadcrumb/active status
+  - Single Conventional Commit created including [CARD-019]
+artifacts:
+  created:
+    - Makefile
+  modified:
+    - docker-compose.yml
+    - README.md
+    - CONTRIBUTING.md
+    - docs/CURRENT_SPRINT.md
+    - docs/PROJECT_STATUS.md
+    - meta/TASK_STATE.yaml
+notes: |
+  Scope:
+    - Profiles let contributors run just what they need:
+        - dev: run web/api locally with hot reload, while infra runs externally or via cloud
+        - infra: spin up Postgres/Redis/Coturn/Minio for integration testing
+        - all: full stack with everything
+    - Example docker-compose profile stub:
+        services:
+          api:
+            profiles: ["dev", "all"]
+          web:
+            profiles: ["dev", "all"]
+          postgres:
+            profiles: ["infra", "all"]
+          redis:
+            profiles: ["infra", "all"]
+          coturn:
+            profiles: ["infra", "all"]
+          minio:
+            profiles: ["infra", "all"]
+    - Makefile:
+        - PHONY targets: up, dev, infra, down, logs
+        - Use COMPOSE_PROFILES environment variable where possible
+    - DoD:
+        - Running `make up` brings up all services and healthchecks pass
+        - Running `make dev` spins up dev profile and web/api accessible
+        - Docs updated so contributors know which target to use

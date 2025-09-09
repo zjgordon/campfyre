@@ -21,6 +21,7 @@ services:
       - /app/node_modules
     networks:
       - campfyre-network
+    profiles: ['dev', 'all']
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost:3000/health']
       interval: 30s
@@ -44,6 +45,7 @@ services:
       - /app/node_modules
     networks:
       - campfyre-network
+    profiles: ['dev', 'all']
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost:3000/health.txt']
       interval: 30s
@@ -64,6 +66,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - campfyre-network
+    profiles: ['infra', 'all']
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U campfyre -d campfyre']
       interval: 30s
@@ -80,6 +83,7 @@ services:
       - redis_data:/data
     networks:
       - campfyre-network
+    profiles: ['infra', 'all']
     healthcheck:
       test: ['CMD', 'redis-cli', 'ping']
       interval: 30s
@@ -115,12 +119,35 @@ services:
       --lt-cred-mech
     networks:
       - campfyre-network
+    profiles: ['infra', 'all']
     healthcheck:
       test: ['CMD-SHELL', 'netstat -an | grep 3478']
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 40s
+
+  # MinIO for file storage
+  minio:
+    image: minio/minio:latest
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    environment:
+      - MINIO_ROOT_USER=campfyre
+      - MINIO_ROOT_PASSWORD=campfyre123
+    volumes:
+      - minio_data:/data
+    networks:
+      - campfyre-network
+    profiles: ['infra', 'all']
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:9000/minio/health/live']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    command: server /data --console-address ":9001"
 
   # Reverse proxy
   reverse-proxy:
@@ -137,10 +164,12 @@ services:
       - web
     networks:
       - campfyre-network
+    profiles: ['all']
 
 volumes:
   postgres_data:
   redis_data:
+  minio_data:
   caddy_data:
   caddy_config:
 

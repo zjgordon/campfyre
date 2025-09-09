@@ -24,12 +24,67 @@ Before running the application, you need to set up your environment configuratio
 
 The `.env` file is used by both Docker Compose and the application runtime. See [`.env.example`](.env.example) for all available configuration options.
 
+## Using Compose Profiles & Make Targets
+
+Campfyre uses Docker Compose profiles to provide flexible development environments:
+
+### Available Profiles
+
+- **`dev`** - Web + API only (for frontend/backend development with external infrastructure)
+- **`infra`** - Database, Redis, Coturn, MinIO (for integration testing and infrastructure development)
+- **`all`** - Full stack with all services (complete development environment)
+
+### Make Targets
+
+Use the provided Makefile for convenient service management:
+
+```bash
+# Start all services (full stack)
+make up
+
+# Start dev profile and run development servers
+make dev
+
+# Start infrastructure services only
+make infra
+
+# Stop all services
+make down
+
+# Show logs for all services
+make logs
+
+# Clean slate (stop services and remove volumes)
+make clean
+
+# Show help
+make help
+```
+
+### Manual Profile Usage
+
+You can also use profiles directly with Docker Compose:
+
+```bash
+# Start specific profiles
+docker compose up -d --profile dev
+docker compose up -d --profile infra
+docker compose up -d --profile all
+
+# Check service health
+docker compose ps
+```
+
 ## Quickstart
 
 ### Docker (Recommended)
 
 ```bash
-docker compose up -d
+# Full stack (all services)
+make up
+
+# Or manually:
+docker compose up -d --profile all
 ```
 
 ### Local Development

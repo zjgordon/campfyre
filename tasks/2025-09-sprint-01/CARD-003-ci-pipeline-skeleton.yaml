@@ -1,0 +1,87 @@
+id: CARD-003
+title: 'CI pipeline skeleton (GitHub Actions: lint, typecheck, test, build)'
+epic: Epic 1 – Foundations & MVP
+sprint: 2025-09-sprint-01
+status: todo # todo | doing | review | done | blocked
+owner: cursor
+links:
+  - /docs/EPIC1_OVERVIEW.md#phase-1--development-environment--guardrails
+  - /docs/SPRINT_WORKFLOW.md
+  - /docs/TECH_CHOICES.md
+acceptance:
+  - A GitHub Actions workflow exists at .github/workflows/ci.yml
+  - Workflow runs on push and PR to main (and feature branches)
+  - Jobs: lint, typecheck, test, build (build depends on prior jobs)
+  - Node version pinned; package manager cached (pnpm/yarn/npm) for speed
+  - Monorepo-friendly: root install + workspace scripts invoked
+  - Test artifacts (e.g., junit or coverage) uploaded on failure for debugging
+  - CI status badge added to README.md (top of file)
+  - Minimal secrets usage (no external registries yet)
+  - Update /docs/CURRENT_SPRINT.md with a 5–8 line summary
+  - Update /docs/PROJECT_STATUS.md with a single-line entry under this sprint
+  - Update /meta/TASK_STATE.yaml breadcrumb/active status
+  - Single Conventional Commit created including [CARD-003]
+artifacts:
+  - created:
+      - .github/workflows/ci.yml
+      - README.md (badge)
+  - modified:
+      - docs/CURRENT_SPRINT.md
+      - docs/PROJECT_STATUS.md
+      - meta/TASK_STATE.yaml
+notes: |
+  Scope:
+    - Provide a fast, reliable CI baseline that mirrors local scripts from package.json.
+    - Required steps per job:
+        - setup-node (explicit version, e.g., 20.x)
+        - enable corepack (pnpm) or install package manager
+        - install deps at repo root
+        - run "lint", "typecheck", "test", then "build"
+    - Example job structure (for reference when implementing):
+        name: CI
+        on:
+          push:
+            branches: [ "**" ]
+          pull_request:
+            branches: [ "main" ]
+        jobs:
+          lint:
+            runs-on: ubuntu-latest
+            steps:
+              - uses: actions/checkout@v4
+              - uses: actions/setup-node@v4
+                with: { node-version: 20 }
+              - run: corepack enable
+              - run: pnpm i --frozen-lockfile
+              - run: pnpm lint
+          typecheck:
+            runs-on: ubuntu-latest
+            needs: [lint]
+            steps: (checkout, setup-node, corepack, install)
+              - run: pnpm typecheck
+          test:
+            runs-on: ubuntu-latest
+            needs: [typecheck]
+            steps: (checkout, setup-node, corepack, install)
+              - run: pnpm test -- --ci
+              - if: failure()
+                uses: actions/upload-artifact@v4
+                with:
+                  name: test-logs
+                  path: |
+                    **/junit*.xml
+                    **/coverage/**
+          build:
+            runs-on: ubuntu-latest
+            needs: [test]
+            steps: (checkout, setup-node, corepack, install)
+              - run: pnpm build
+
+    - If using yarn or npm: replace corepack/pnpm steps accordingly.
+    - If matrix builds are desired later (OS/Node versions), keep this file simple now; add matrix in Epic 1 Phase 4.
+    - Badge example for README (adjust workflow file name if different):
+        ![CI](https://github.com/<org>/<repo>/actions/workflows/ci.yml/badge.svg)
+    - Definition of Done:
+        - CI is green on main after pushing a trivial change.
+        - PRs show required checks (lint/typecheck/test/build) and block merge on failure.
+        - README shows a working badge.

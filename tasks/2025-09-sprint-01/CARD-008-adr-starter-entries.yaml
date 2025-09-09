@@ -1,0 +1,59 @@
+id: CARD-008
+title: ADR starter entries (seed DECISIONS.md and workflow)
+epic: Epic 1 – Foundations & MVP
+sprint: 2025-09-sprint-01
+status: todo # todo | doing | review | done | blocked
+owner: cursor
+links:
+  - /docs/DECISIONS.md
+  - /docs/EPIC1_OVERVIEW.md#phase-1--development-environment--guardrails
+  - /docs/TECH_CHOICES.md
+  - /docs/SPRINT_WORKFLOW.md
+acceptance:
+  - docs/DECISIONS.md contains at least 3 ADR entries using the template at the top of the file
+  - ADRs include:
+      1) Trunk-based development over Git Flow (with feature branches)
+      2) WebRTC mesh for MVP with SFU adapter planned
+      3) JSON/YAML game-system templates with Zod validation and versioning
+  - Each ADR lists Context, Decision, Consequences, Links (to ROADMAP/TECH_CHOICES and relevant cards)
+  - Cross-link DECISIONS.md from README.md and CONTRIBUTING.md (discoverability)
+  - Add “When to record an ADR” note in CONTRIBUTING.md (10–20 lines guidance)
+  - Update /docs/CURRENT_SPRINT.md with a 5–8 line summary
+  - Update /docs/PROJECT_STATUS.md with a single-line entry under this sprint
+  - Update /meta/TASK_STATE.yaml breadcrumb/active status
+  - Single Conventional Commit created including [CARD-008]
+artifacts:
+  created: []
+  modified:
+    - docs/DECISIONS.md
+    - README.md
+    - CONTRIBUTING.md
+    - docs/CURRENT_SPRINT.md
+    - docs/PROJECT_STATUS.md
+    - meta/TASK_STATE.yaml
+notes: |
+  Scope & guidance:
+    - Keep ADRs concise (≈10–20 lines each). Use the DECISIONS.md template.
+    - Proposed seeds:
+      A) 2025-09-09 — Trunk-based development over Git Flow
+         Context: solo/agent-assisted, small-bite cards, CI required checks.
+         Decision: main as trunk; short-lived feature branches; protected main.
+         Consequences: simpler ops, fast merges; discipline required to keep main green.
+      B) 2025-09-09 — WebRTC mesh for MVP; SFU adapter later
+         Context: ≤5 peers, self-host simplicity, fast time-to-value.
+         Decision: mesh + WS signaling + TURN; define RTCService adapter seam.
+         Consequences: easy MVP; plan SFU (LiveKit/mediasoup) behind feature flag.
+      C) 2025-09-09 — Template system as JSON/YAML + Zod
+         Context: system-agnostic, must be versionable/diffable, no lock-in.
+         Decision: file-based templates, Zod validation, semver + migrations.
+         Consequences: fast iteration now; safe evolvability later; plugin bus can follow.
+    - CONTRIBUTING.md should add:
+        - “When to write an ADR” checklist:
+          * Non-trivial architectural choice or tradeoff
+          * Policy/process changes (branching, release cadence)
+          * Data model or contract decisions (error shapes, template schema)
+          * Reversals: add a new ADR and cross-link the old one
+    - Definition of Done:
+        - DECISIONS.md shows 3 new ADRs with dates and links.
+        - README and CONTRIBUTING expose ADRs clearly.
+        - Current sprint/status updated, commit passes hooks and CI.

@@ -1,0 +1,59 @@
+id: CARD-015
+title: CHANGELOG bootstrap (pre-v1 optional setup)
+epic: Epic 1 – Foundations & MVP
+sprint: 2025-09-sprint-01
+status: todo # todo | doing | review | done | blocked
+owner: cursor
+links:
+  - /docs/ROADMAP.md
+  - /docs/SPRINT_WORKFLOW.md
+  - /docs/DECISIONS.md
+  - /docs/TECH_CHOICES.md
+acceptance:
+  - CHANGELOG.md created (if not already) with "Keep a Changelog" format
+  - File contains [Unreleased] section and initial 0.0.1 entry capturing Phase 1 foundation cards
+  - Each entry structured: Added / Changed / Fixed / Security (as applicable)
+  - Conventional Commit categories map to changelog sections
+  - CONTRIBUTING.md updated with guidance on updating CHANGELOG.md for manual entries if needed
+  - README.md updated with link to CHANGELOG.md
+  - Update /docs/CURRENT_SPRINT.md with a 5–8 line summary
+  - Update /docs/PROJECT_STATUS.md with a single-line entry under this sprint
+  - Update /meta/TASK_STATE.yaml breadcrumb/active status
+  - Single Conventional Commit created including [CARD-015]
+artifacts:
+  created:
+    - CHANGELOG.md (if not present from CARD-014)
+  modified:
+    - CONTRIBUTING.md
+    - README.md
+    - docs/CURRENT_SPRINT.md
+    - docs/PROJECT_STATUS.md
+    - meta/TASK_STATE.yaml
+notes: |
+  Scope:
+    - Format: "Keep a Changelog" (https://keepachangelog.com/en/1.1.0/).
+    - Example scaffold:
+        # Changelog
+        All notable changes to this project will be documented here.
+
+        ## [Unreleased]
+
+        ## [0.0.1] - 2025-09-10
+        ### Added
+        - Initial repo structure and guardrails (Cards 001–010)
+        - Branch protection, CODEOWNERS, PR/Issue templates
+        - Release/tagging groundwork
+        ### Changed
+        - Docs synced and updated across README/CONTRIBUTING
+    - CONTRIBUTING.md guidance:
+        - For now, CHANGELOG may be updated manually alongside releases.
+        - Conventional Commits → changelog categories:
+            * feat → Added
+            * fix → Fixed
+            * chore/refactor/style → Changed
+            * docs → Documentation (not always included)
+    - README.md: add a "Changelog" link near License/Contributing.
+    - DoD:
+        - CHANGELOG.md visible in repo root, linked in README.
+        - First entry present (v0.0.1).
+        - Docs updated with contributor guidance.

@@ -1,0 +1,58 @@
+id: CARD-020
+title: Sprint wrap & remote sync (foundation milestone)
+epic: Epic 1 – Foundations & MVP
+sprint: 2025-09-sprint-01
+status: todo # todo | doing | review | done | blocked
+owner: cursor
+links:
+  - /docs/ROADMAP.md
+  - /docs/SPRINT_WORKFLOW.md
+  - /docs/PROJECT_STATUS.md
+  - /docs/CURRENT_SPRINT.md
+  - /docs/DECISIONS.md
+acceptance:
+  - Synthesize CURRENT_SPRINT.md into PROJECT_STATUS.md:
+      - One bullet per completed card
+      - Include dates + short status (done/blocked)
+      - Leave placeholders for future sprints
+  - Ensure all /tasks/2025-09-sprint-01/*.yaml cards committed to repo
+  - Ensure docs (ROADMAP, EPIC1_OVERVIEW, TECH_CHOICES, UX_GUIDE, DECISIONS, SPRINT_WORKFLOW) committed and cross-linked from README
+  - Push branch `main` to GitHub remote (if not already connected, set origin)
+  - Create lightweight tag `v0.0.1-foundation` on sprint close commit and push to remote
+  - Add entry in CHANGELOG.md for `0.0.1-foundation` release (cards 001–020)
+  - Update README.md with “Foundation Milestone” section linking to the tag/release
+  - Update /docs/CURRENT_SPRINT.md with closing summary paragraph
+  - Update /docs/PROJECT_STATUS.md with “Sprint Closed” note
+  - Update /meta/TASK_STATE.yaml to clear active_card and reset queue
+  - Single Conventional Commit created including [CARD-020]
+artifacts:
+  created: []
+  modified:
+    - docs/CURRENT_SPRINT.md
+    - docs/PROJECT_STATUS.md
+    - CHANGELOG.md
+    - README.md
+    - meta/TASK_STATE.yaml
+notes: |
+  Scope:
+    - This card closes out Sprint 01 (Foundations).
+    - Run synth step: CURRENT_SPRINT.md → PROJECT_STATUS.md.
+    - Verify all task cards 001–020 exist and are tracked in git.
+    - Push to remote: 
+        git push origin main
+        git push origin v0.0.1-foundation
+    - Update CHANGELOG.md:
+        ## [0.0.1-foundation] - 2025-09-12
+        ### Added
+        - Repo skeleton, guardrails, pre-commit hooks, CI pipeline
+        - Conventional commits, docs sync, ADRs, CODEOWNERS, PR/issue templates
+        - Release/tagging workflow, CHANGELOG, dependency updates bot
+        - Security policy + CodeQL, env samples, compose profiles
+        - Bootstrap script, healthchecks, devcontainer/editorconfig
+        ### Outcome
+        Foundation environment complete; ready for Epic 1 Phase 2.
+    - README.md: add “Foundation Milestone” badge/section linking to GitHub release.
+    - DoD:
+        - Remote repo has main + tag v0.0.1-foundation
+        - CHANGELOG.md + docs updated
+        - Task state reset for Sprint 02
