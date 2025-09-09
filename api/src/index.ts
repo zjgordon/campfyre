@@ -20,6 +20,14 @@ app.get('/health', (req, res) => {
   });
 });
 
+// Ping endpoint
+app.get('/ping', (req, res) => {
+  res.json({
+    ok: true,
+    msg: 'pong',
+  });
+});
+
 // Root endpoint
 app.get('/', (req, res) => {
   res.json({

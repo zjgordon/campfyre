@@ -7,6 +7,7 @@
 - ✅ CARD-003: CI pipeline skeleton (GitHub Actions: lint, typecheck, test, build) completed
 - ✅ CARD-004: Conventional Commits + commitlint setup completed
 - ✅ CARD-005: Repo docs sync (baseline discoverability & cross-links) completed
+- ✅ CARD-006: Cursor update loop smoke test (trivial feature + doc sync) completed
 
 ## <Future Sprint Placeholder>
 
