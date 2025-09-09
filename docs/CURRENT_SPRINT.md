@@ -21,3 +21,11 @@ Successfully established the foundational repository structure with comprehensiv
 **Epic:** Epic 1 – Foundations & MVP
 
 Enhanced the pre-commit hook system to provide comprehensive code quality enforcement. Configured lint-staged to run ESLint and Prettier on staged files only, ensuring fast feedback loops. Added TypeScript type checking (tsc --noEmit) and unit test execution to the pre-commit pipeline. Implemented a guard mechanism that prevents commits when an active card is set in TASK_STATE.yaml but docs/CURRENT_SPRINT.md is not staged, enforcing documentation discipline. The hook system is now idempotent and provides clear error messages for failed checks. All acceptance criteria satisfied with comprehensive linting, formatting, type checking, and testing on every commit.
+
+### CARD-003: CI pipeline skeleton (GitHub Actions: lint, typecheck, test, build)
+
+**Status:** ✅ Completed  
+**Owner:** cursor  
+**Epic:** Epic 1 – Foundations & MVP
+
+Established a comprehensive GitHub Actions CI pipeline that mirrors local development workflows. Created a four-stage pipeline with sequential jobs: lint, typecheck, test, and build, ensuring code quality gates at each stage. Configured Node.js 20 with pnpm package manager caching for optimal performance. Added monorepo support with recursive build commands across all workspace packages. Implemented test artifact upload on failure for debugging purposes. Added CI status badge to README.md for immediate visibility of build health. The pipeline runs on all pushes and pull requests, providing fast feedback for development workflows. All acceptance criteria satisfied with a robust, scalable CI foundation.
