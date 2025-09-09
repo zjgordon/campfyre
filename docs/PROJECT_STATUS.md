@@ -14,6 +14,7 @@
 - ✅ CARD-010: Local bootstrap script (quickstart dev + demo seed) completed
 - ✅ CARD-011: Branch protection & default branch policy (main as trunk) completed
 - ✅ CARD-012: PR template + Issue templates (GitHub workflow) completed
+- ✅ CARD-013: CODEOWNERS & review rules (baseline reviews for main) completed
 
 ## <Future Sprint Placeholder>
 

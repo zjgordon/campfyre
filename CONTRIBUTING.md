@@ -315,6 +315,50 @@ When creating a pull request, the template will automatically include:
 2. **PRs**: The PR template will be pre-filled - complete all sections and check all boxes before submitting
 3. **Card References**: Always include `[CARD-XXX]` in titles and descriptions to maintain traceability
 
+## Reviews & CODEOWNERS
+
+We use GitHub's CODEOWNERS feature to ensure proper code review coverage and maintain code quality standards.
+
+### Code Ownership
+
+The repository uses a `.github/CODEOWNERS` file to define code ownership:
+
+- **Default owner**: `@zjgordon` (maintainer) for the entire repository
+- **Granular ownership**: Specific directories (`/web/`, `/api/`, `/docs/`) have dedicated owners
+- **Automatic review requests**: GitHub automatically requests reviews from code owners when PRs are opened
+
+### Review Requirements
+
+All pull requests to the `main` branch require:
+
+- **Minimum 1 approving review** from a code owner
+- **Code owner approval** is mandatory (enforced by branch protection)
+- **Stale approval dismissal** when new commits are pushed (ensures fresh reviews)
+
+### When to Request Review
+
+- **Always request review** from the relevant code owner when opening a PR
+- **Use `[CARD-XXX]`** in commit and PR titles for traceability
+- **Ensure CI passes** before requesting review to respect reviewers' time
+
+### Admin Bypass Policy
+
+Admin bypass is allowed only for:
+
+- **Urgent hotfixes** requiring immediate deployment
+- **Solo work** with green CI status
+- **Documentation updates** that don't affect functionality
+
+**Important**: Even with admin bypass, you must still update `CURRENT_SPRINT.md` and `PROJECT_STATUS.md` to maintain project tracking.
+
+### Review Process
+
+1. **Open PR** with proper card reference and description
+2. **Request review** from relevant code owner (automatic via CODEOWNERS)
+3. **Address feedback** and make necessary changes
+4. **Wait for approval** before merging
+5. **Merge via GitHub UI** using squash or rebase (avoid merge commits)
+
 ## Getting Help
 
 If you have questions about contributing, please open an issue or reach out to the maintainers.

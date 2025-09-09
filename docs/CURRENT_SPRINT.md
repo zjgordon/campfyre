@@ -101,3 +101,11 @@ Established comprehensive branch protection and trunk-based development policies
 **Epic:** Epic 1 – Foundations & MVP
 
 Implemented comprehensive GitHub workflow templates to standardize issue and pull request processes. Created .github/PULL_REQUEST_TEMPLATE.md with card reference tracking, acceptance criteria checklist, and sections for change summaries and screenshots. Established three issue templates in .github/ISSUE_TEMPLATE/ including bug_report.md, feature_request.md, and chore_task.md with appropriate metadata and structured fields. Enhanced CONTRIBUTING.md with detailed "Submitting Issues & PRs" section explaining template usage and emphasizing card ID references. Updated README.md to reference contributing guidelines for issue/PR creation. All acceptance criteria satisfied providing standardized workflow templates that maintain task card visibility and improve contributor experience.
+
+### CARD-013: CODEOWNERS & review rules (baseline reviews for main)
+
+**Status:** ✅ Completed  
+**Owner:** cursor  
+**Epic:** Epic 1 – Foundations & MVP
+
+Established comprehensive code ownership and review requirements for the repository. Created .github/CODEOWNERS file with default ownership assigned to @zjgordon for the entire repository and granular ownership stubs for /web/, /api/, and /docs/ directories. Enhanced CONTRIBUTING.md with detailed "Reviews & CODEOWNERS" section explaining code ownership structure, review requirements, admin bypass policies, and the complete review process. Configured repository settings to require minimum 1 approving review from code owners, enable stale approval dismissal, and enforce code owner approval on all PRs to main. All acceptance criteria satisfied providing robust code review governance and clear ownership structure for maintainable development workflows.
