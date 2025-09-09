@@ -1,4 +1,25 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# Check if active card is set and ensure CURRENT_SPRINT.md is staged
+if [ -f "meta/TASK_STATE.yaml" ]; then
+  ACTIVE_CARD=$(grep "^active_card:" meta/TASK_STATE.yaml | sed 's/active_card: //' | tr -d ' ')
+  if [ "$ACTIVE_CARD" != "null" ] && [ -n "$ACTIVE_CARD" ]; then
+    if ! git diff --cached --name-only | grep -q "docs/CURRENT_SPRINT.md"; then
+      echo "❌ Error: Active card $ACTIVE_CARD is set but docs/CURRENT_SPRINT.md is not staged for commit."
+      echo "Please stage docs/CURRENT_SPRINT.md with your updates before committing."
+      exit 1
+    fi
+  fi
+fi
+
+# Run lint-staged (ESLint + Prettier on staged files)
 npx lint-staged
+
+# Run typecheck
+echo "🔍 Running typecheck..."
+npm run typecheck
+
+# Run tests
+echo "🧪 Running tests..."
+npm test
