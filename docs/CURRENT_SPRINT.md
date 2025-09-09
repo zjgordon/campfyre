@@ -85,3 +85,11 @@ Implemented comprehensive health check system for all services with proper monit
 **Epic:** Epic 1 – Foundations & MVP
 
 Created comprehensive bootstrap script for streamlined development environment setup. Implemented scripts/bootstrap.sh with automated Docker service startup, health check validation, dependency installation, and package building. Added demo seed data structure with Hello World Campaign, sample session, and D&D 5e template stub for future database integration. Enhanced README.md with Quickstart Dev Environment section providing clear setup instructions and reset procedures. Updated CONTRIBUTING.md with bootstrap script usage guidelines for first-time setup and environment resets. All acceptance criteria satisfied providing one-command development environment initialization with friendly status messages and clear next steps.
+
+### CARD-011: Branch protection & default branch policy (main as trunk)
+
+**Status:** ✅ Completed  
+**Owner:** cursor  
+**Epic:** Epic 1 – Foundations & MVP
+
+Established comprehensive branch protection and trunk-based development policies for the repository. Configured GitHub repository settings with main as the default branch and implemented branch protection rules requiring status checks, preventing force pushes, and mandating pull requests for all changes. Enhanced CONTRIBUTING.md with detailed branching & PR policy section including feature branch workflow, protection rules, and example commands. Updated README.md to reference trunk-based development approach and link to contributing guidelines. All acceptance criteria satisfied providing robust repository governance and clear development workflow documentation for contributors.

@@ -229,6 +229,53 @@ git commit --allow-empty -m "ci: trigger pipeline"
 
 **Note**: Update the CI badge URL in README.md after publishing the repository.
 
+## Branching & PR Policy
+
+We follow a trunk-based development approach with feature branches:
+
+### Branch Strategy
+
+- **Main branch**: `main` is the default and protected branch
+- **Feature branches**: Create from `main` using format `feat/short-description`
+- **Workflow**: Feature branch → Pull Request → Merge to main
+
+### Branch Protection Rules
+
+The `main` branch is protected with the following rules:
+
+- **Status checks required**: All CI pipeline jobs (lint, typecheck, test, build) must pass
+- **No force pushes**: Force pushes and deletions are disabled
+- **Pull request required**: All changes must go through a pull request
+- **Admin bypass**: Repository admins can bypass PR requirement if working solo
+- **Linear history**: Optional - prefer squash or rebase merges over merge commits
+
+### Pull Request Process
+
+1. **Create feature branch**: `git checkout -b feat/your-feature-name`
+2. **Work on single card**: Focus on one task card per branch
+3. **Commit with card ID**: Include `[CARD-XXX]` in commit messages
+4. **Open pull request**: Ensure CI checks pass (green status)
+5. **Merge to main**: Use squash or rebase merge (avoid merge commits)
+
+### Example Workflow
+
+```bash
+# Start new feature
+git checkout main
+git pull origin main
+git checkout -b feat/add-user-authentication
+
+# Work and commit
+git add .
+git commit -m "feat(auth): add user login endpoint [CARD-015]"
+
+# Push and create PR
+git push origin feat/add-user-authentication
+# Create PR via GitHub UI
+
+# After approval, merge via GitHub UI (squash recommended)
+```
+
 ## Development Workflow
 
 1. Create a feature branch from `main`
