@@ -11,6 +11,7 @@
 - ✅ CARD-007: Dev container + editor config (optional polish) completed
 - ✅ CARD-008: ADR starter entries (seed DECISIONS.md and workflow) completed
 - ✅ CARD-009: Healthcheck stubs for services (API, Web, Redis, DB) completed
+- ✅ CARD-010: Local bootstrap script (quickstart dev + demo seed) completed
 
 ## <Future Sprint Placeholder>
 

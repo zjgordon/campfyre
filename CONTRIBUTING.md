@@ -36,6 +36,33 @@ The dev container includes:
 - Automatic dependency installation
 - Proper port forwarding for all services
 
+### Bootstrap Script
+
+For quick development environment setup, use the bootstrap script:
+
+```bash
+./scripts/bootstrap.sh
+```
+
+**When to use:**
+
+- First-time development setup
+- Resetting your local environment
+- After pulling changes that affect services
+
+**What it does:**
+
+- Starts all Docker services (API, Web, Database, Redis, Coturn)
+- Waits for health checks to pass
+- Installs dependencies and builds packages
+- Provides access URLs and next steps
+
+**Resetting environment:**
+
+```bash
+docker compose down -v && ./scripts/bootstrap.sh
+```
+
 ## Repository Layout
 
 - `/web` - Frontend React application

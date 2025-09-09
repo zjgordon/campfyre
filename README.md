@@ -31,6 +31,29 @@ For VS Code / Cursor users, a dev container is available for quick setup:
 4. The container will automatically set up Node.js, PostgreSQL, Redis, and Coturn services
 5. Pre-installed extensions include ESLint, Prettier, Prisma, Docker, and GitLens
 
+### Quickstart Dev Environment
+
+For a complete development environment setup with demo data:
+
+```bash
+./scripts/bootstrap.sh
+```
+
+This script will:
+
+- Start all Docker services (API, Web, Database, Redis, Coturn)
+- Wait for health checks to pass
+- Install dependencies and build packages
+- Display access URLs and next steps
+
+**First-time setup**: Run the bootstrap script to get a fully configured development environment.
+
+**Resetting environment**: To start fresh, run:
+
+```bash
+docker compose down -v && ./scripts/bootstrap.sh
+```
+
 ## Service Healthchecks
 
 All services include health check endpoints for monitoring and debugging:

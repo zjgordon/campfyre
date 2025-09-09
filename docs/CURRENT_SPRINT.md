@@ -77,3 +77,11 @@ Seeded Architecture Decision Records with three foundational ADRs documenting ke
 **Epic:** Epic 1 – Foundations & MVP
 
 Implemented comprehensive health check system for all services with proper monitoring and debugging capabilities. Enhanced API service with JSON health endpoint returning service status, timestamp, and uptime. Created web service health.txt endpoint and static file for lightweight health checks. Added Docker Compose healthcheck blocks for all services including API, Web, PostgreSQL, Redis, and Coturn with appropriate test commands and timing configurations. Updated README.md with detailed Service Healthchecks section including endpoint URLs, response formats, and Docker Compose health status commands. All acceptance criteria satisfied providing robust service monitoring foundation for development and production environments.
+
+### CARD-010: Local bootstrap script (quickstart dev + demo seed)
+
+**Status:** ✅ Completed  
+**Owner:** cursor  
+**Epic:** Epic 1 – Foundations & MVP
+
+Created comprehensive bootstrap script for streamlined development environment setup. Implemented scripts/bootstrap.sh with automated Docker service startup, health check validation, dependency installation, and package building. Added demo seed data structure with Hello World Campaign, sample session, and D&D 5e template stub for future database integration. Enhanced README.md with Quickstart Dev Environment section providing clear setup instructions and reset procedures. Updated CONTRIBUTING.md with bootstrap script usage guidelines for first-time setup and environment resets. All acceptance criteria satisfied providing one-command development environment initialization with friendly status messages and clear next steps.
