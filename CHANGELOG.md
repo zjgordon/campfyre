@@ -31,6 +31,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - N/A
 
+## [0.0.1-foundation] - 2025-09-12
+
+### Added
+
+- Repo skeleton, guardrails, pre-commit hooks, CI pipeline
+- Conventional commits, docs sync, ADRs, CODEOWNERS, PR/issue templates
+- Release/tagging workflow, CHANGELOG, dependency updates bot
+- Security policy + CodeQL, env samples, compose profiles
+- Bootstrap script, healthchecks, devcontainer/editorconfig
+
+### Outcome
+
+Foundation environment complete; ready for Epic 1 Phase 2.
+
 ## [0.0.1] - 2025-09-10
 
 ### Added

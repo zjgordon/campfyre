@@ -21,6 +21,11 @@
 - ✅ CARD-017: Security policy & code scanning (baseline security posture) completed
 - ✅ CARD-018: Env samples & secrets hygiene (baseline configuration) completed
 - ✅ CARD-019: Compose profiles & Make targets (dev/infra convenience) completed
+- ✅ CARD-020: Sprint wrap & remote sync (foundation milestone) completed
+
+## Sprint Closed
+
+**2025-09-sprint-01** completed successfully on 2025-09-12. All 20 foundation cards completed, establishing comprehensive development environment with CI/CD, security, documentation, and workflow automation. Ready for Epic 1 Phase 2.
 
 ## <Future Sprint Placeholder>
 
