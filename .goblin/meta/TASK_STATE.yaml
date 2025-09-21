@@ -7,10 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: configure React Router for SPA navigation [CARD-022]'
-  next_action: CARD-023
+  last_commit: 'feat: install and configure Material-UI v7 with Emotion [CARD-023]'
+  next_action: CARD-024
 queue:
-  - CARD-023
   - CARD-024
   - CARD-025
   - CARD-026
