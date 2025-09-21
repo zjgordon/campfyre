@@ -5,13 +5,12 @@ instructions: |
   - queue is the list of cards that should be worked on
   - remove your card from the queue when you have completed it
 
-active_card: CARD-029
+active_card: null
 breadcrumb:
-  last_commit: 'feat: create shared types package for frontend/backend [CARD-028]'
-  next_action: CARD-029
+  last_commit: 'feat: test frontend scaffold integration and functionality [CARD-030]'
+  next_action: CARD-031
 queue:
-  - CARD-029
-  - CARD-030
+  - CARD-031
   - CARD-031
   - CARD-032
   - CARD-033

@@ -9,7 +9,11 @@ import {
   Divider,
   Box,
 } from '@mui/material';
-import { Home as HomeIcon, Info as AboutIcon } from '@mui/icons-material';
+import {
+  Home as HomeIcon,
+  Info as AboutIcon,
+  Science as DemoIcon,
+} from '@mui/icons-material';
 import { Link, useLocation } from 'react-router-dom';
 import useResponsive from '../../hooks/useResponsive';
 
@@ -27,6 +31,7 @@ const Navigation: React.FC<NavigationProps> = ({ open, onClose }) => {
   const navigationItems = [
     { path: '/', label: 'Home', icon: <HomeIcon /> },
     { path: '/about', label: 'About', icon: <AboutIcon /> },
+    { path: '/demo', label: 'Integration Demo', icon: <DemoIcon /> },
   ];
 
   const drawerContent = (
