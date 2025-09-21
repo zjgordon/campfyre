@@ -2,7 +2,7 @@
 
 ## Current State
 
-**FRAMEWORK_FOUNDATIONS** sprint in progress - Zustand client state management configured.
+**FRAMEWORK_FOUNDATIONS** sprint in progress - React Hook Form with Zod validation configured.
 
 ## Recent Updates
 
@@ -12,7 +12,8 @@
 - ✅ CARD-024: Base layout components with responsive design and MUI v7 components
 - ✅ CARD-025: TanStack Query configured with query hooks and error handling
 - ✅ CARD-026: Zustand configured with user, session, and game state stores
-- 🔄 Next: CARD-027 (Testing framework with Jest and React Testing Library)
+- ✅ CARD-027: React Hook Form with Zod validation and reusable form components
+- 🔄 Next: CARD-028 (Testing framework with Jest and React Testing Library)
 
 ## Infrastructure Status
 

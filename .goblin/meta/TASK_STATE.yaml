@@ -7,10 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: configure Zustand for client state management [CARD-026]'
-  next_action: CARD-027
+  last_commit: 'feat: set up React Hook Form with Zod validation [CARD-027]'
+  next_action: CARD-028
 queue:
-  - CARD-027
   - CARD-028
   - CARD-029
   - CARD-030

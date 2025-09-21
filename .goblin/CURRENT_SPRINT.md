@@ -50,11 +50,19 @@ Initializing the foundational framework for Campfyre with Vite + React + TypeScr
   - ✅ Store hooks created for easy usage with selectors
   - ✅ Combined hooks for common patterns (auth, app state)
   - ✅ Code compiles, lints, tests pass
+- **CARD-027**: Set up React Hook Form with Zod validation
+  - ✅ React Hook Form 7.63.0 and Zod 4.1.11 installed and configured
+  - ✅ Form handling configured with type-safe validation using Zod schemas
+  - ✅ Reusable form components created using MUI v7 (FormField, FormButton)
+  - ✅ Error handling and user feedback implemented with proper validation
+  - ✅ Zod schemas prepared for backend sharing with comprehensive validation rules
+  - ✅ Example login form demonstrating form integration with state management
+  - ✅ Code compiles, lints, tests pass
 
 ## Current Status
 
-Working on FRAMEWORK_FOUNDATIONS sprint with CARD-026 completed.
+Working on FRAMEWORK_FOUNDATIONS sprint with CARD-027 completed.
 
 ## Next Actions
 
-- CARD-027: Set up testing framework with Jest and React Testing Library
+- CARD-028: Set up testing framework with Jest and React Testing Library

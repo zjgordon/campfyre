@@ -11,6 +11,9 @@ dependencies:
   '@emotion/styled':
     specifier: ^11.14.1
     version: 11.14.1(@emotion/react@11.14.0)(@types/react@18.3.24)(react@18.3.1)
+  '@hookform/resolvers':
+    specifier: ^5.2.2
+    version: 5.2.2(react-hook-form@7.63.0)
   '@mui/icons-material':
     specifier: ^7.3.2
     version: 7.3.2(@mui/material@7.3.2)(@types/react@18.3.24)(react@18.3.1)
@@ -29,9 +32,15 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: 18.3.1(react@18.3.1)
+  react-hook-form:
+    specifier: ^7.63.0
+    version: 7.63.0(react@18.3.1)
   react-router-dom:
     specifier: ^7.9.1
     version: 7.9.1(react-dom@18.3.1)(react@18.3.1)
+  zod:
+    specifier: ^4.1.11
+    version: 4.1.11
   zustand:
     specifier: ^5.0.8
     version: 5.0.8(@types/react@18.3.24)(react@18.3.1)
@@ -803,6 +812,18 @@ packages:
     engines: { node: ^18.18.0 || ^20.9.0 || >=21.1.0 }
     dev: true
 
+  /@hookform/resolvers@5.2.2(react-hook-form@7.63.0):
+    resolution:
+      {
+        integrity: sha512-A/IxlMLShx3KjV/HeTcTfaMxdwy690+L/ZADoeaTltLx+CVuzkeVIPuybK3jrRfw7YZnmdKsVVHAlEPIAEUNlA==,
+      }
+    peerDependencies:
+      react-hook-form: ^7.55.0
+    dependencies:
+      '@standard-schema/utils': 0.3.0
+      react-hook-form: 7.63.0(react@18.3.1)
+    dev: false
+
   /@humanwhocodes/config-array@0.13.0:
     resolution:
       {
@@ -1347,6 +1368,13 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@standard-schema/utils@0.3.0:
+    resolution:
+      {
+        integrity: sha512-e7Mew686owMaPJVNNLs55PUvgz371nKgwsc4vxE49zsODpJEnxgxRo2y/OKrqueavXgZNMDVj3DdHFlaSAeU8g==,
+      }
+    dev: false
 
   /@tanstack/query-core@5.89.0:
     resolution:
@@ -2923,6 +2951,18 @@ packages:
       scheduler: 0.23.2
     dev: false
 
+  /react-hook-form@7.63.0(react@18.3.1):
+    resolution:
+      {
+        integrity: sha512-ZwueDMvUeucovM2VjkCf7zIHcs1aAlDimZu2Hvel5C5907gUzMpm4xCrQXtRzCvsBqFjonB4m3x4LzCFI1ZKWA==,
+      }
+    engines: { node: '>=18.0.0' }
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18 || ^19
+    dependencies:
+      react: 18.3.1
+    dev: false
+
   /react-is@16.13.1:
     resolution:
       {
@@ -3375,6 +3415,13 @@ packages:
       }
     engines: { node: '>=10' }
     dev: true
+
+  /zod@4.1.11:
+    resolution:
+      {
+        integrity: sha512-WPsqwxITS2tzx1bzhIKsEs19ABD5vmCVa4xBo2tq/SrV4RNZtfws1EnCWQXM6yh8bD08a1idvkB5MZSBiZsjwg==,
+      }
+    dev: false
 
   /zustand@5.0.8(@types/react@18.3.24)(react@18.3.1):
     resolution:
