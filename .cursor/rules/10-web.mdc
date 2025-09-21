@@ -1,0 +1,26 @@
+---
+description: Web rules—React conventions, file layout, data, and UI.
+globs:
+  - "web/**"
+  - "web/**/**.tsx"
+  - "web/**/**.ts"
+alwaysApply: false
+---
+
+# Web (React) Guidelines
+
+- Use **function components + hooks**. Keep components small; extract logic into hooks or utilities.
+- **State/data**:
+  - Co-locate component state.
+  - For server data, centralize API calls in a small client (e.g., `web/src/lib/api.ts`) and keep components dumb.
+  - Cache where appropriate; avoid duplicate fetch paths.
+- **Styling**: Follow the project’s UX guide in `/docs`; keep styles consistent. Do not introduce a new CSS framework without an ADR.
+- **Routing**: Keep routes shallow and semantic; lazy-load heavy pages.
+- **Accessibility**: Prefer semantic HTML and ARIA where needed. Ensure keyboard navigation works.
+
+# Testing (web)
+- Write tests next to code or under `web/src/__tests__`.
+- For DOM-dependent tests, select the **jsdom** environment. Avoid flaky timers and `setTimeout`; use testing-library patterns.
+
+# TypeScript
+- Ensure frontend `tsconfig` includes DOM lib when using `window`/`document`. If build errors show missing DOM types, add `"lib": ["ES2022","DOM"]` to the **web** tsconfig (not the root).

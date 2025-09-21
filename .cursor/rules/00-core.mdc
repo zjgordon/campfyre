@@ -1,0 +1,32 @@
+---
+description: Campfyre core rules—architecture, style, and “don’ts”.
+globs:
+  - "**/*"
+alwaysApply: true
+---
+
+# Campfyre — Core Principles
+
+- Monorepo layout:
+  - `/web` → React front-end
+  - `/api` → Node/Express API
+  - `/docs` → product/tech docs & specs
+  - `/tasks` → sprint/task cards
+  - `/meta` → meta & state
+- Use **TypeScript** across code. Prefer strict types, explicit return types in exported functions, and narrow the `any`.
+- Respect existing config (tsconfig, eslint, prettier). Do **not** add libs or change configs unless asked; surface diffs and open an issue/PR first.
+- Keep changes **small and focused**. Update or add tests when changing behavior.
+- Prefer **functional composition** over inheritance; keep modules small, single-purpose, and testable.
+- Use **dependency injection** for services; avoid hard-wiring global singletons.
+- Add comments only when intent isn’t obvious from code; prefer clear naming and small functions.
+
+# Error handling & logging
+- Bubble errors to central middleware/server logger; never swallow errors silently.
+- Validate inputs at the boundary; throw/return typed errors. Return helpful messages without leaking secrets.
+
+# Documentation
+- If you add/alter behavior, update the relevant doc in `/docs` or add an ADR entry in `/docs/decisions`.
+
+# Don’ts
+- Don’t introduce new frameworks without an ADR.
+- Don’t commit secrets; use `.env` and sample envs.

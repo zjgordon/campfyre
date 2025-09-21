@@ -1,0 +1,18 @@
+---
+description: Testing rules—Jest + structure for both sides.
+globs:
+  - "**/__tests__/**"
+  - "**/*.test.ts"
+  - "**/*.spec.ts"
+alwaysApply: false
+---
+
+# Test Conventions
+
+- Prefer **Jest** (per repo config). Keep tests deterministic and fast.
+- **Web** tests: use testing-library and `jsdom` env; avoid asserting implementation details.
+- **API** tests: supertest (or equivalent) for HTTP; seed minimal data per test file.
+- CI should run the full test suite. Add `npm test` scripts under package.json where missing.
+
+# Coverage & placement
+- Co-locate tests near code or under top-level `__tests__`. Name files `*.test.ts`.

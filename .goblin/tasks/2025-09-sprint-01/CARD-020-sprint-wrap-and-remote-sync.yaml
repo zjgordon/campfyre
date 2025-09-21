@@ -40,7 +40,7 @@ notes: |
     - Verify all task cards 001–020 exist and are tracked in git.
     - Push to remote: 
         git push origin main
-        git push origin v0.0.1-foundation
+        git push origin v0.0.1-foundation 
     - Update CHANGELOG.md:
         ## [0.0.1-foundation] - 2025-09-12
         ### Added

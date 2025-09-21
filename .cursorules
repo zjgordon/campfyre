@@ -1,0 +1,6 @@
+# Legacy Cursor Rules Bridge
+
+This project uses **Project Rules** in `.cursor/rules/` (recommended by Cursor). If your Cursor version still reads `.cursorrules`, treat this file as meta-instructions:
+
+- Prefer the scoped rules in `.cursor/rules/*` for guidance.
+- If you generate new rules, create them via “New Cursor Rule” so they land in `.cursor/rules/` with proper metadata.

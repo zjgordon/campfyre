@@ -1,0 +1,13 @@
+---
+description: Security rules—secrets, OWASP hygiene, and reviews.
+globs:
+  - "**/*"
+alwaysApply: false
+---
+
+# Security & Secrets
+
+- Never commit secrets. Use `.env` & rotate credentials as needed.
+- Validate inputs against injection/XSS vectors. Encode output correctly on the web.
+- Use secure cookies/tokens; minimize PII surface. Log only what's necessary, with redaction.
+- Before release tagging, run dependency checks and skim `SECURITY.md` for policy conformance.

@@ -1,0 +1,26 @@
+---
+description: API rules—Express patterns, validation, and structure.
+globs:
+  - "api/**"
+  - "api/**/**.ts"
+alwaysApply: false
+---
+
+# API (Express) Guidelines
+
+- Structure
+  - `routes/` (define route files), `controllers/` (thin), `services/` (business logic), `lib/` (clients/utils), `middleware/` (auth, validation, errors).
+  - Keep controllers thin; push logic into services.
+- Validation
+  - Validate **all** request inputs at the boundary (query, params, body). Prefer schema validation (e.g., zod or the repo’s chosen validator).
+- Errors
+  - Central error handler: produce consistent JSON errors with `code`, `message`, and optional `details`.
+- Authn/z
+  - Put auth middleware early in the chain; never trust client input for identity/roles.
+- Data
+  - Use the repo’s existing DB client/ORM if present. If adding new queries, isolate them in `lib/db` (or equivalent). Do **not** introduce new DB libs in a PR without an ADR.
+- Observability
+  - Add request logging (method, path, status, duration). Avoid noisy logs; redact secrets.
+
+# Testing (api)
+- Unit test services. Add integration tests for routes with an in-memory or ephemeral DB where possible.

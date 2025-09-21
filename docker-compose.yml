@@ -1,6 +1,18 @@
 version: '3.8'
 
 services:
+  # Devcontainer service
+  devcontainer:
+    image: node:20-bullseye
+    volumes:
+      - .:/workspaces/campfyre
+      - /var/run/docker.sock:/var/run/docker.sock
+    working_dir: /workspaces/campfyre
+    command: sleep infinity
+    networks:
+      - campfyre-network
+    profiles: ['devcontainer']
+
   # API service
   api:
     build:

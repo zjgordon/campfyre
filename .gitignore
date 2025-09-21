@@ -110,3 +110,19 @@ Thumbs.db
 
 # Redis dump
 dump.rdb
+
+# pnpm
+.pnpm-store/
+.pnpm-debug.log*
+
+# Docker volumes
+postgres_data/
+redis_data/
+minio_data/
+caddy_data/
+caddy_config/
+
+# Development tool artifacts
+.turbo/
+.vercel/
+

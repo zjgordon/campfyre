@@ -1,0 +1,12 @@
+---
+description: Docs rules—how/when to document and ADRs.
+globs:
+  - "docs/**"
+alwaysApply: false
+---
+
+# Documentation
+
+- Keep user-facing docs concise. When changing architecture or dependencies, add/update an ADR under `docs/decisions`.
+- Update the **Roadmap** and **Sprint** docs when scope changes affect delivery.
+- Prefer examples over prose; include snippets and command blocks.

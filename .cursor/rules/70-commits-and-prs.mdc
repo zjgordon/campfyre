@@ -1,0 +1,12 @@
+---
+description: Commits and PR hygiene—conventional commits, small diffs.
+globs:
+  - "**/*"
+alwaysApply: false
+---
+
+# Commits & PRs
+
+- Use **Conventional Commits** (`feat:`, `fix:`, `chore:`, etc.). Keep commits scoped and descriptive.
+- Open PRs early; keep them small. Include a short test plan and screenshots for UI changes.
+- Reference issues/cards; link to docs/ADRs when relevant.

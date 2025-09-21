@@ -1,0 +1,28 @@
+---
+description: Infra rules—Docker Compose profiles, devcontainer, Make.
+globs:
+  - "docker-compose.yml"
+  - ".devcontainer/**"
+  - "scripts/**"
+  - "Makefile"
+alwaysApply: false
+---
+
+# Local Infrastructure
+
+- Use **Compose profiles**:
+  - `dev` → web+api only
+  - `infra` → Postgres, Redis, Coturn, MinIO
+  - `all` → full stack
+- Prefer Make targets:
+  - `make up` (full), `make dev` (dev), `make infra`, `make down`, `make clean`, `make logs`.
+- **Health checks**: 
+  - API: `GET :3001/health` returns `{ ok: true, ... }`
+  - Web: `GET :3000/health.txt` returns `ok`
+
+# Agent Tasks
+
+- When asked to “run locally”, propose:
+  1) `cp .env.example .env`, fill secrets;
+  2) `make up` (or `docker compose up -d --profile all`);
+  3) wait for health to pass; surface URLs.

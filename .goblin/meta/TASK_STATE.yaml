@@ -1,0 +1,10 @@
+instructions: |
+  - Always set active_card to the card that is currently being worked on.
+  - Always set last commit to the last commit that was made.
+  - Always set next action to the next card in the queue that has not been actioned.
+
+active_card: null
+breadcrumb:
+  last_commit: null
+  next_action: null
+queue: []

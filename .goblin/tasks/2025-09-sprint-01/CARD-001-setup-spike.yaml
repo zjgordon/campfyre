@@ -2,7 +2,7 @@ id: CARD-001
 title: Setup spike – baseline repo skeleton & guardrails
 epic: Epic 1 – Foundations & MVP
 sprint: 2025-09-sprint-01
-status: done   # todo | doing | review | done | blocked
+status: done # todo | doing | review | done | blocked
 owner: cursor
 links:
   - /docs/EPIC1_OVERVIEW.md#phase-1--development-environment--guardrails
@@ -59,4 +59,3 @@ notes: |
         - Local "docker compose up" succeeds and /health endpoints respond.
         - CI workflow placeholder added (lint + typecheck + test jobs).
         - Logs to CURRENT_SPRINT and one-liner to PROJECT_STATUS committed.
-
