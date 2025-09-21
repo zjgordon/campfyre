@@ -14,11 +14,18 @@ Initializing the foundational framework for Campfyre with Vite + React + TypeScr
   - ✅ All dependencies installed and working
   - ✅ Code compiles, lints, tests pass
   - ✅ Express server dependencies removed and replaced with React setup
+- **CARD-022**: Configure React Router for SPA navigation
+  - ✅ React Router 7.9.1 installed and configured
+  - ✅ Basic routing structure set up (Home, About)
+  - ✅ Navigation components created with active state
+  - ✅ Route protection structure in place for future auth
+  - ✅ History API configured for SPA via createBrowserRouter
+  - ✅ Code compiles, lints, tests pass
 
 ## Current Status
 
-Working on FRAMEWORK_FOUNDATIONS sprint with CARD-021 completed.
+Working on FRAMEWORK_FOUNDATIONS sprint with CARD-022 completed.
 
 ## Next Actions
 
-- CARD-022: Set up React Router and basic routing structure
+- CARD-023: Set up state management with Zustand

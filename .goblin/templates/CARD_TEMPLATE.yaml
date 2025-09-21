@@ -7,8 +7,6 @@ links: []
 acceptance:
   - Code compiles, lints, tests pass
   - Feature behind a flag if risky
-  - Update CURRENT_SPRINT.md with log entry
-  - Update PROJECT_STATUS.md with one-liner
   - Commit follows Conventional Commits with [CARD-ID]
 artifacts: []
 rollbackPlan: []

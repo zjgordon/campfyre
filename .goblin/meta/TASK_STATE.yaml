@@ -7,10 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: initialize Vite React project with TypeScript [CARD-021]'
-  next_action: CARD-022
+  last_commit: 'feat: configure React Router for SPA navigation [CARD-022]'
+  next_action: CARD-023
 queue:
-  - CARD-022
   - CARD-023
   - CARD-024
   - CARD-025
