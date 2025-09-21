@@ -6,9 +6,22 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:docker": "tsc && vite build --mode production",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --fix",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
+    "preview:docker": "vite preview --host 0.0.0.0 --port 4173",
+    "typecheck": "tsc --noEmit",
+    "docker:build": "docker build -t campfyre-web .",
+    "docker:build:prod": "docker build --target production -t campfyre-web:prod .",
+    "docker:build:dev": "docker build --target development -t campfyre-web:dev .",
+    "docker:run": "docker run -p 8080:8080 campfyre-web:prod",
+    "docker:run:dev": "docker run -p 3000:3000 -v $(pwd):/app campfyre-web:dev",
+    "docker:compose:up": "docker-compose up -d web-prod",
+    "docker:compose:down": "docker-compose down",
+    "docker:compose:dev": "docker-compose up web-dev",
+    "clean": "rm -rf dist node_modules/.vite",
+    "clean:all": "rm -rf dist node_modules/.vite node_modules"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

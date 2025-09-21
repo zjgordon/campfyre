@@ -5,7 +5,7 @@ instructions: |
   - queue is the list of cards that should be worked on
   - remove your card from the queue when you have completed it
 
-active_card: null
+active_card: CARD-029
 breadcrumb:
   last_commit: 'feat: create shared types package for frontend/backend [CARD-028]'
   next_action: CARD-029

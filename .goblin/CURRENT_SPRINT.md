@@ -66,11 +66,19 @@ Initializing the foundational framework for Campfyre with Vite + React + TypeScr
   - ✅ Type safety ensured across frontend with proper type inference
   - ✅ Validation schemas updated to use shared types for consistency
   - ✅ Code compiles, lints, tests pass
+- **CARD-029**: Configure Vite build for containerization
+  - ✅ Vite build configured for production with optimized chunk splitting
+  - ✅ Asset handling optimized for containerization with proper caching
+  - ✅ Environment variables properly configured with comprehensive .env.example
+  - ✅ Build output optimized for Docker with multi-stage builds
+  - ✅ Static assets properly served with Nginx configuration
+  - ✅ Docker containerization working with health checks and security
+  - ✅ Code compiles, lints, tests pass
 
 ## Current Status
 
-Working on FRAMEWORK_FOUNDATIONS sprint with CARD-028 completed.
+Working on FRAMEWORK_FOUNDATIONS sprint with CARD-029 completed.
 
 ## Next Actions
 
-- CARD-029: Set up testing framework with Jest and React Testing Library
+- CARD-030: Set up testing framework with Jest and React Testing Library
