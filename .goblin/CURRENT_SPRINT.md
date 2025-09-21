@@ -28,11 +28,18 @@ Initializing the foundational framework for Campfyre with Vite + React + TypeScr
   - ✅ ThemeProvider configured in app with CssBaseline
   - ✅ Basic MUI components working (Button, Card, Typography, etc.)
   - ✅ Code compiles, lints, tests pass
+- **CARD-024**: Create base layout components with MUI v7
+  - ✅ AppBar component created with MUI v7 and menu toggle
+  - ✅ Navigation drawer/sidebar component with responsive behavior
+  - ✅ Main content area layout with proper spacing and transitions
+  - ✅ Responsive design breakpoints implemented with useResponsive hook
+  - ✅ Layout components properly typed with TypeScript
+  - ✅ Code compiles, lints, tests pass
 
 ## Current Status
 
-Working on FRAMEWORK_FOUNDATIONS sprint with CARD-023 completed.
+Working on FRAMEWORK_FOUNDATIONS sprint with CARD-024 completed.
 
 ## Next Actions
 
-- CARD-024: Set up state management with Zustand
+- CARD-025: Set up state management with Zustand

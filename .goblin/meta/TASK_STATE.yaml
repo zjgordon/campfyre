@@ -7,10 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: install and configure Material-UI v7 with Emotion [CARD-023]'
-  next_action: CARD-024
+  last_commit: 'feat: create base layout components with MUI v7 [CARD-024]'
+  next_action: CARD-025
 queue:
-  - CARD-024
   - CARD-025
   - CARD-026
   - CARD-027
