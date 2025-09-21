@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { queryKeys } from '../utils/queryKeys';
 import { ApiResponse, User, Project } from '../types/api';
@@ -115,11 +116,10 @@ export const useCreateUserMutation = () => {
 
 // Custom error class
 class ApiError extends Error {
-  // eslint-disable-next-line no-unused-vars
   constructor(
     message: string,
-    public _status: number,
-    public _code?: string
+    public status: number,
+    public code?: string
   ) {
     super(message);
     this.name = 'ApiError';

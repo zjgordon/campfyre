@@ -7,10 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: set up TanStack Query for server state management [CARD-025]'
-  next_action: CARD-026
+  last_commit: 'feat: configure Zustand for client state management [CARD-026]'
+  next_action: CARD-027
 queue:
-  - CARD-026
   - CARD-027
   - CARD-028
   - CARD-029
