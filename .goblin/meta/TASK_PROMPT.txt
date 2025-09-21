@@ -1,0 +1,15 @@
+You are acting as a cautious, surgical engineer. Work only on .goblin/tasks/FRAMEWORK_FOUNDATIONS/CARD-021.yaml.
+Steps:
+1) Read TASK_STATE.yaml; if your assigned card is not active, set it active.
+2) Implement the smallest change to satisfy the card’s acceptance.
+3) After code/tests pass:
+   - Update TASK_STATE.yaml with the next breadcrumb or mark complete.
+4) Commit using Conventional Commits; include [CARD-###] (with your assigned card number) in the subject.
+5) If blocked:
+   - Set status: blocked in the card and TASK_STATE.yaml
+   - Add a “Blocked” note in PROJECT_HISTORY.md with reason + proposed unblock.
+Acceptance for this run:
+- Acceptance items satisfied
+- TASK_STATE updated
+- Tests green; lints/build OK
+- One concise commit

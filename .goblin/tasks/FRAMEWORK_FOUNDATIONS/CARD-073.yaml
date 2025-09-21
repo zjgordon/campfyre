@@ -1,0 +1,32 @@
+id: CARD-073
+title: Implement unit testing for core components
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Unit tests for core React components
+  - Unit tests for API endpoints and business logic
+  - Unit tests for utility functions and helpers
+  - Test coverage targets set and met
+  - Mocking strategies implemented
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-073]
+artifacts:
+  - /web/src/components/__tests__/Button.test.tsx
+  - /web/src/hooks/__tests__/useAuth.test.ts
+  - /api/src/routes/__tests__/auth.test.ts
+  - /api/src/lib/__tests__/validation.test.ts
+  - /web/src/utils/__tests__/formatters.test.ts
+rollbackPlan:
+  - Remove unit tests if implementation fails
+  - Check for test coverage issues
+  - Verify unit testing works correctly
+notes: |
+  Implement comprehensive unit testing for core components.
+  Create unit tests for React components, API endpoints, and utilities.
+  Set up test coverage targets and mocking strategies.
+  Ensure all critical functionality is tested.

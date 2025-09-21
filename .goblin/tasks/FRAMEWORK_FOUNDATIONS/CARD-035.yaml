@@ -1,0 +1,32 @@
+id: CARD-035
+title: Implement comprehensive error handling middleware
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Error handling middleware compatible with tRPC
+  - Consistent error response format defined
+  - Error classification system implemented
+  - Error logging and monitoring set up
+  - tRPC error handling properly configured
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-035]
+artifacts:
+  - /api/src/middleware/errorHandler.ts
+  - /api/src/types/errors.ts
+  - /api/src/lib/errorUtils.ts
+  - /api/src/middleware/logger.ts
+  - /api/src/trpc.ts updated with error handling
+rollbackPlan:
+  - Simplify error handling if complexity issues arise
+  - Check for tRPC error handling compatibility
+  - Verify error response format consistency
+notes: |
+  Implement comprehensive error handling for tRPC + Fastify.
+  Ensure consistent error responses across all endpoints.
+  Set up proper error logging and monitoring.
+  Design error handling for future API expansion.

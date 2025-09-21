@@ -1,0 +1,32 @@
+id: CARD-096
+title: Test API integration with tRPC procedures
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - API integration testing implemented
+  - tRPC procedures tested with proper typing
+  - Error handling across all layers validated
+  - Authentication flow with Zod validation tested
+  - Data persistence with Prisma verified
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-096]
+artifacts:
+  - /tests/integration/api/trpc.test.ts
+  - /tests/integration/api/authentication.test.ts
+  - /tests/integration/api/errorHandling.test.ts
+  - /tests/integration/api/validation.test.ts
+  - /tests/integration/api/helpers/apiHelper.ts
+rollbackPlan:
+  - Remove API testing if implementation fails
+  - Check for tRPC configuration issues
+  - Verify API integration works correctly
+notes: |
+  Test API integration with tRPC procedures and type safety.
+  Validate error handling across all API layers.
+  Test authentication flow with Zod validation.
+  Verify data persistence and retrieval with Prisma.

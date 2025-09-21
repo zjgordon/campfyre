@@ -1,0 +1,32 @@
+id: CARD-038
+title: Implement health endpoints and monitoring
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Enhanced health endpoints implemented
+  - Database connectivity checks added
+  - Redis health checks implemented
+  - Comprehensive health status endpoint
+  - Health monitoring middleware configured
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-038]
+artifacts:
+  - /api/src/routers/health.ts
+  - /api/src/lib/healthChecks.ts
+  - /api/src/middleware/healthMonitor.ts
+  - /api/src/types/health.ts
+  - /api/src/server.ts updated with health routes
+rollbackPlan:
+  - Simplify health checks if complexity issues arise
+  - Check for database connection issues
+  - Verify health endpoint responses
+notes: |
+  Implement comprehensive health monitoring for all services.
+  Add database and Redis connectivity checks.
+  Create detailed health status reporting.
+  Ensure health endpoints work in containerized environment.

@@ -1,0 +1,32 @@
+id: CARD-085
+title: Implement rate limiting and DDoS protection
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Rate limiting middleware implemented
+  - IP-based rate limiting
+  - User-based rate limiting
+  - DDoS protection mechanisms
+  - Rate limit configuration and monitoring
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-085]
+artifacts:
+  - /api/src/middleware/rateLimit.ts
+  - /api/src/lib/rateLimiter.ts
+  - /api/src/config/rateLimit.ts
+  - /api/src/middleware/ddosProtection.ts
+  - /api/src/types/rateLimit.ts
+rollbackPlan:
+  - Remove rate limiting if implementation fails
+  - Check for rate limiting configuration issues
+  - Verify DDoS protection works correctly
+notes: |
+  Implement rate limiting and DDoS protection for API security.
+  Set up IP-based and user-based rate limiting.
+  Create DDoS protection mechanisms for malicious traffic.
+  Configure rate limit monitoring and alerting.

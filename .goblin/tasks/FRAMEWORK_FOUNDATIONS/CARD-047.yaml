@@ -1,0 +1,32 @@
+id: CARD-047
+title: Integrate Prisma with tRPC procedures
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Prisma integrated with tRPC procedures
+  - Type-safe database operations in tRPC
+  - Error handling for database operations
+  - Input validation with Zod schemas
+  - Database operations properly typed
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-047]
+artifacts:
+  - /api/src/routers/users.ts with Prisma integration
+  - /api/src/routers/campaigns.ts with Prisma integration
+  - /api/src/routers/sessions.ts with Prisma integration
+  - /api/src/lib/trpcHelpers.ts
+  - /api/src/types/trpc.ts
+rollbackPlan:
+  - Remove Prisma integration if issues arise
+  - Check for tRPC procedure typing issues
+  - Verify database operation error handling
+notes: |
+  Integrate Prisma with tRPC procedures for type-safe database operations.
+  Ensure proper error handling and input validation.
+  Create type-safe database operations throughout tRPC layer.
+  Maintain consistency with existing tRPC architecture.

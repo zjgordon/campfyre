@@ -1,0 +1,32 @@
+id: CARD-029
+title: Configure Vite build for containerization
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Vite build configured for production
+  - Asset handling optimized for containerization
+  - Environment variables properly configured
+  - Build output optimized for Docker
+  - Static assets properly served
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-029]
+artifacts:
+  - /web/vite.config.ts with production config
+  - /web/.env.example with environment variables
+  - /web/Dockerfile updated for new build
+  - /web/public/ directory with static assets
+  - /web/dist/ build output structure
+rollbackPlan:
+  - Revert Vite config if build issues occur
+  - Check for asset loading problems
+  - Verify Docker build process
+notes: |
+  Configure Vite build process for containerized deployment.
+  Optimize asset handling for production environment.
+  Ensure proper environment variable configuration.
+  Test build output in Docker container.

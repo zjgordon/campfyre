@@ -1,0 +1,34 @@
+id: CARD-080
+title: Test complete testing framework integration
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - All testing components working together
+  - Unit, integration, E2E, and visual tests integrated
+  - Performance and accessibility testing functioning
+  - CI/CD pipeline executing all test types
+  - Test reporting and coverage working correctly
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-080]
+artifacts:
+  - /tests/index.ts with complete test suite
+  - /package.json with all testing scripts
+  - /README.md with testing setup instructions
+  - /.github/workflows/complete-test.yml
+  - /docs/TESTING.md with testing guidelines
+rollbackPlan:
+  - Identify and fix integration issues
+  - Check for testing framework conflicts
+  - Verify all testing types work correctly
+  - Test individual testing components if needed
+notes: |
+  Final integration test for Task 6: Testing & Quality Assurance.
+  Verify all testing components work together seamlessly.
+  Test unit, integration, E2E, and visual testing integration.
+  Ensure performance and accessibility testing function correctly.
+  Validate CI/CD pipeline execution and reporting.

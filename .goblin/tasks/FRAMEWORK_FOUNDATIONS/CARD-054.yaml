@@ -1,0 +1,32 @@
+id: CARD-054
+title: Implement presence tracking system
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Presence tracking system implemented
+  - User online/offline status tracking
+  - Room presence management
+  - Presence data stored in Redis
+  - Presence updates broadcast to room members
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-054]
+artifacts:
+  - /api/src/websocket/presence.ts
+  - /api/src/lib/presenceManager.ts
+  - /api/src/types/presence.ts
+  - /api/src/websocket/events.ts updated
+  - /api/src/websocket/roomManager.ts updated
+rollbackPlan:
+  - Remove presence tracking if implementation fails
+  - Check for Redis integration issues
+  - Verify presence updates work correctly
+notes: |
+  Implement presence tracking for real-time user status.
+  Track user online/offline status and room presence.
+  Store presence data in Redis for scalability.
+  Broadcast presence updates to room members.

@@ -1,0 +1,32 @@
+id: CARD-064
+title: Implement centralized error logging
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Centralized error logging implemented
+  - Pino logger configured for structured logging
+  - Error correlation IDs for request tracking
+  - Log levels and filtering configured
+  - Error aggregation and reporting
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-064]
+artifacts:
+  - /api/src/lib/logger.ts
+  - /api/src/middleware/logging.ts
+  - /api/src/lib/errorAggregator.ts
+  - /api/src/types/logging.ts
+  - /api/src/utils/correlationId.ts
+rollbackPlan:
+  - Remove centralized logging if implementation fails
+  - Check for logging configuration issues
+  - Verify error correlation works correctly
+notes: |
+  Implement centralized error logging with Pino for structured logging.
+  Set up error correlation IDs for request tracking.
+  Configure log levels and filtering for different environments.
+  Implement error aggregation and reporting capabilities.

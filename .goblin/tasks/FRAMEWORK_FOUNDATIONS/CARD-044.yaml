@@ -1,0 +1,32 @@
+id: CARD-044
+title: Create repository pattern for data access
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Repository pattern implemented with TypeScript
+  - CRUD operations for core entities created
+  - Database transactions with proper error handling
+  - Proper indexing for performance implemented
+  - Type-safe database operations throughout
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-044]
+artifacts:
+  - /api/src/repositories/BaseRepository.ts
+  - /api/src/repositories/UserRepository.ts
+  - /api/src/repositories/CampaignRepository.ts
+  - /api/src/repositories/SessionRepository.ts
+  - /api/src/repositories/index.ts
+rollbackPlan:
+  - Simplify repository pattern if complexity issues arise
+  - Check for Prisma client integration issues
+  - Verify transaction handling works correctly
+notes: |
+  Implement repository pattern for clean data access layer.
+  Create type-safe CRUD operations for all entities.
+  Implement proper database transactions and error handling.
+  Add performance optimizations with proper indexing.

@@ -1,0 +1,32 @@
+id: CARD-058
+title: Add WebSocket connection health monitoring
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - WebSocket connection health monitoring implemented
+  - Connection heartbeat/ping-pong mechanism
+  - Connection timeout handling
+  - Health metrics collection
+  - Connection recovery mechanisms
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-058]
+artifacts:
+  - /api/src/websocket/healthMonitor.ts
+  - /api/src/lib/connectionHealth.ts
+  - /api/src/types/health.ts updated
+  - /api/src/websocket/connectionManager.ts updated
+  - /api/src/middleware/websocketHealth.ts
+rollbackPlan:
+  - Remove health monitoring if implementation fails
+  - Check for WebSocket connection issues
+  - Verify heartbeat mechanism works
+notes: |
+  Add WebSocket connection health monitoring for reliability.
+  Implement heartbeat/ping-pong mechanism for connection health.
+  Set up connection timeout handling and recovery.
+  Collect health metrics for monitoring and debugging.

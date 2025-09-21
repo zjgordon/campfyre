@@ -1,0 +1,35 @@
+id: CARD-050
+title: Test database integration and functionality
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - All database components working together
+  - Prisma + PostgreSQL 15+ integration tested
+  - Repository pattern functioning correctly
+  - tRPC + Prisma integration verified
+  - Health checks and monitoring working
+  - Backup and recovery procedures tested
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-050]
+artifacts:
+  - /api/src/database.ts with complete integration
+  - /api/prisma/schema.prisma final schema
+  - /api/package.json with all database dependencies
+  - /api/README.md with database setup instructions
+  - /api/.env.example with complete configuration
+rollbackPlan:
+  - Identify and fix integration issues
+  - Check for Prisma + PostgreSQL compatibility problems
+  - Verify all database operations work correctly
+  - Test individual components if needed
+notes: |
+  Final integration test for Task 3: Database Integration.
+  Verify all database components work together seamlessly.
+  Test Prisma + PostgreSQL integration specifically.
+  Ensure all health checks and monitoring work correctly.
+  Validate backup and recovery procedures.

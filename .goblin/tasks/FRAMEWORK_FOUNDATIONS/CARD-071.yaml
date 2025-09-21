@@ -1,0 +1,32 @@
+id: CARD-071
+title: Set up Vitest testing framework
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Vitest 1.0+ testing framework configured
+  - Test configuration for both frontend and backend
+  - Test utilities and helpers set up
+  - Coverage reporting configured
+  - Test scripts in package.json
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-071]
+artifacts:
+  - /vitest.config.ts
+  - /web/vitest.config.ts
+  - /api/vitest.config.ts
+  - /web/src/__tests__/setup.ts
+  - /api/src/__tests__/setup.ts
+rollbackPlan:
+  - Remove Vitest if configuration fails
+  - Check for test framework conflicts
+  - Verify test configuration works correctly
+notes: |
+  Set up Vitest 1.0+ testing framework for fast, Vite-integrated testing.
+  Configure test environment for both frontend and backend.
+  Set up test utilities and coverage reporting.
+  Ensure compatibility with existing build tools.

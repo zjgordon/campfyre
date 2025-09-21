@@ -1,0 +1,32 @@
+id: CARD-036
+title: Set up request/response logging with Pino
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - '@fastify/pino installed and configured'
+  - Request/response logging implemented
+  - Structured logging format configured
+  - Log levels properly set up
+  - Development and production logging configured
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-036]
+artifacts:
+  - /api/src/middleware/logger.ts
+  - /api/src/lib/logger.ts
+  - /api/src/server.ts updated with Pino
+  - /api/package.json with @fastify/pino
+  - /api/.env.example with logging configuration
+rollbackPlan:
+  - Remove Pino if configuration fails
+  - Revert to basic console logging
+  - Check for Fastify + Pino compatibility
+notes: |
+  Set up structured logging with Pino for better observability.
+  Configure request/response logging for debugging.
+  Ensure proper log levels for development and production.
+  Integrate with Fastify for optimal performance.

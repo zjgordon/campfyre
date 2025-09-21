@@ -1,0 +1,32 @@
+id: CARD-092
+title: Test complete stack startup and communication
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Complete stack startup testing implemented
+  - All services communicate properly
+  - Service health checks working correctly
+  - Inter-service communication validated
+  - Stack startup time and performance tested
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-092]
+artifacts:
+  - /tests/integration/stackStartup.test.ts
+  - /tests/integration/serviceCommunication.test.ts
+  - /tests/integration/healthChecks.test.ts
+  - /tests/integration/performance.test.ts
+  - /tests/integration/helpers/stackHelper.ts
+rollbackPlan:
+  - Remove stack testing if implementation fails
+  - Check for service communication issues
+  - Verify health checks work correctly
+notes: |
+  Test complete stack startup and inter-service communication.
+  Validate all services (API, web, database, Redis, Coturn) start correctly.
+  Test service health checks and communication protocols.
+  Measure stack startup time and performance metrics.

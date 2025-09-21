@@ -1,0 +1,32 @@
+id: CARD-072
+title: Configure Playwright for E2E testing
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Playwright 1.40+ configured for E2E testing
+  - Cross-browser testing setup (Chrome, Firefox, Safari)
+  - Test configuration for TTRPG workflows
+  - E2E test utilities and page objects
+  - CI/CD integration for E2E tests
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-072]
+artifacts:
+  - /playwright.config.ts
+  - /tests/e2e/setup.ts
+  - /tests/e2e/pages/BasePage.ts
+  - /tests/e2e/utils/testHelpers.ts
+  - /tests/e2e/fixtures/testData.ts
+rollbackPlan:
+  - Remove Playwright if configuration fails
+  - Check for E2E testing conflicts
+  - Verify cross-browser testing works
+notes: |
+  Configure Playwright 1.40+ for comprehensive E2E testing.
+  Set up cross-browser testing for TTRPG workflows.
+  Create test utilities and page objects for maintainable tests.
+  Integrate E2E testing with CI/CD pipeline.

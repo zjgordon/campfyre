@@ -1,0 +1,32 @@
+id: CARD-057
+title: Implement real-time message broadcasting
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Real-time message broadcasting implemented
+  - Message fan-out to room members
+  - Message persistence in Redis
+  - Message ordering and delivery guarantees
+  - Error handling for failed deliveries
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-057]
+artifacts:
+  - /api/src/websocket/broadcaster.ts
+  - /api/src/lib/messageQueue.ts
+  - /api/src/types/messaging.ts
+  - /api/src/websocket/roomManager.ts updated
+  - /api/src/lib/redis.ts updated
+rollbackPlan:
+  - Simplify broadcasting if complexity issues arise
+  - Check for Redis pub/sub issues
+  - Verify message delivery works correctly
+notes: |
+  Implement real-time message broadcasting for game communication.
+  Set up message fan-out to room members with proper ordering.
+  Use Redis for message persistence and delivery guarantees.
+  Handle failed message deliveries gracefully.

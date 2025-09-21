@@ -1,0 +1,32 @@
+id: CARD-028
+title: Create shared types package for frontend/backend
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Shared types package created
+  - Common types defined for API, user, game entities
+  - Type exports configured for frontend usage
+  - Zod schemas integrated with TypeScript types
+  - Type safety ensured across frontend
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-028]
+artifacts:
+  - /web/src/types/shared.ts
+  - /web/src/types/api.ts
+  - /web/src/types/user.ts
+  - /web/src/types/game.ts
+  - /web/src/lib/validation.ts updated
+rollbackPlan:
+  - Remove shared types if configuration fails
+  - Revert to individual type definitions
+  - Check for TypeScript compilation issues
+notes: |
+  Create shared types package for consistent typing across frontend.
+  Define common types for API responses, user data, and game entities.
+  Integrate Zod schemas with TypeScript types for runtime validation.
+  Prepare for future backend integration with tRPC.

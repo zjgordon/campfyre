@@ -1,0 +1,32 @@
+id: CARD-059
+title: Implement real-time event system
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Real-time event system implemented
+  - Event types defined for game actions
+  - Event broadcasting to room members
+  - Event persistence and replay capability
+  - Event filtering and permissions
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-059]
+artifacts:
+  - /api/src/websocket/events.ts
+  - /api/src/lib/eventSystem.ts
+  - /api/src/types/events.ts
+  - /api/src/websocket/eventHandler.ts
+  - /api/src/lib/eventStore.ts
+rollbackPlan:
+  - Simplify event system if complexity issues arise
+  - Check for event handling issues
+  - Verify event broadcasting works correctly
+notes: |
+  Implement real-time event system for game actions.
+  Define event types for dice rolls, character updates, etc.
+  Set up event broadcasting and persistence for replay.
+  Implement event filtering and permissions for different user roles.

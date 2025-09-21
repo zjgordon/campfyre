@@ -1,0 +1,32 @@
+id: CARD-074
+title: Set up integration testing for API
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Integration tests for API endpoints
+  - Database integration testing
+  - Authentication flow testing
+  - Error handling integration tests
+  - Test database setup and teardown
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-074]
+artifacts:
+  - /api/src/__tests__/integration/auth.test.ts
+  - /api/src/__tests__/integration/games.test.ts
+  - /api/src/__tests__/integration/database.test.ts
+  - /api/src/__tests__/helpers/testDatabase.ts
+  - /api/src/__tests__/helpers/testServer.ts
+rollbackPlan:
+  - Remove integration tests if implementation fails
+  - Check for database testing issues
+  - Verify API integration testing works
+notes: |
+  Set up integration testing for API endpoints and database.
+  Create integration tests for authentication and business logic.
+  Implement test database setup and teardown procedures.
+  Test error handling and edge cases.

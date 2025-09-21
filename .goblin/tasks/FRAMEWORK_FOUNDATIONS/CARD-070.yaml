@@ -1,0 +1,34 @@
+id: CARD-070
+title: Test error handling and contracts integration
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - All error handling components working together
+  - Error taxonomy and logging integration tested
+  - API contracts and validation working correctly
+  - Error recovery and monitoring functioning
+  - End-to-end error handling flow validated
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-070]
+artifacts:
+  - /api/src/errorHandling/index.ts with complete integration
+  - /web/src/errorHandling/index.ts
+  - /api/package.json with all error handling dependencies
+  - /api/README.md with error handling setup instructions
+  - /api/.env.example with error handling configuration
+rollbackPlan:
+  - Identify and fix integration issues
+  - Check for error handling component conflicts
+  - Verify all error handling features work correctly
+  - Test individual components if needed
+notes: |
+  Final integration test for Task 5: Error Handling & Contracts.
+  Verify all error handling components work together seamlessly.
+  Test error taxonomy and logging integration specifically.
+  Ensure API contracts and validation work correctly.
+  Validate error recovery and monitoring functionality.

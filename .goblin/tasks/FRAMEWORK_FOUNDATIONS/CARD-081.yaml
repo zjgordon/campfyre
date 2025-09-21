@@ -1,0 +1,32 @@
+id: CARD-081
+title: Implement JWT-based authentication system
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - JWT-based authentication system implemented
+  - Access token and refresh token handling
+  - Token expiration and renewal logic
+  - Secure token storage and transmission
+  - Authentication middleware for protected routes
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-081]
+artifacts:
+  - /api/src/auth/jwt.ts
+  - /api/src/auth/tokenManager.ts
+  - /api/src/middleware/auth.ts
+  - /api/src/types/auth.ts
+  - /web/src/hooks/useAuth.ts
+rollbackPlan:
+  - Remove JWT authentication if implementation fails
+  - Check for token handling security issues
+  - Verify authentication middleware works correctly
+notes: |
+  Implement JWT-based authentication system for secure user sessions.
+  Set up access token and refresh token handling with proper expiration.
+  Create authentication middleware for protecting API routes.
+  Ensure secure token storage and transmission.

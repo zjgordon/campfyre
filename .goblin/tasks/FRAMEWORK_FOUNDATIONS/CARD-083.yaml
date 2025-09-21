@@ -1,0 +1,32 @@
+id: CARD-083
+title: Implement role-based access control (RBAC)
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Role-based access control system implemented
+  - User roles and permissions defined
+  - Permission checking middleware
+  - Role assignment and management
+  - Resource-based authorization
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-083]
+artifacts:
+  - /api/src/auth/rbac.ts
+  - /api/src/auth/permissions.ts
+  - /api/src/middleware/rbac.ts
+  - /api/src/types/rbac.ts
+  - /api/src/auth/roleManager.ts
+rollbackPlan:
+  - Remove RBAC if implementation fails
+  - Check for permission checking issues
+  - Verify role assignment works correctly
+notes: |
+  Implement role-based access control for TTRPG platform.
+  Define user roles (GM, Player, Observer) and permissions.
+  Create permission checking middleware for API endpoints.
+  Set up role assignment and management functionality.

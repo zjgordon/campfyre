@@ -1,0 +1,33 @@
+id: CARD-034
+title: Configure tRPC client for frontend integration
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - tRPC client configuration created
+  - Type-safe API calls implemented
+  - Client configuration exported for frontend
+  - End-to-end type safety from backend to frontend
+  - Runtime validation with Zod 3.22+ (shared with frontend)
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-034]
+artifacts:
+  - /api/src/client/trpcClient.ts
+  - /api/src/client/types.ts
+  - /api/src/client/index.ts
+  - /api/src/lib/validation.ts updated
+  - /api/package.json with client dependencies
+rollbackPlan:
+  - Remove tRPC client if configuration fails
+  - Revert to basic API endpoints
+  - Check for type safety issues
+notes: |
+  Configure tRPC client for seamless frontend integration.
+  Ensure end-to-end type safety from database to frontend.
+  Set up shared Zod validation schemas.
+  Prepare for future frontend tRPC integration.
+  Use pnpm for package management (project uses pnpm@8.10.0, not npm).

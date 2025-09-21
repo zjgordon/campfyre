@@ -1,0 +1,32 @@
+id: CARD-069
+title: Set up error testing framework
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Error testing framework implemented
+  - Unit tests for error handling logic
+  - Integration tests for error scenarios
+  - Error boundary testing utilities
+  - Error recovery testing scenarios
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-069]
+artifacts:
+  - /api/src/__tests__/errorHandling.test.ts
+  - /web/src/__tests__/errorBoundary.test.tsx
+  - /api/src/__tests__/errorRecovery.test.ts
+  - /api/src/utils/testErrorHelpers.ts
+  - /web/src/utils/testErrorHelpers.ts
+rollbackPlan:
+  - Remove error testing if implementation fails
+  - Check for test configuration issues
+  - Verify error testing works correctly
+notes: |
+  Set up error testing framework for reliable error handling.
+  Create unit tests for error handling logic.
+  Implement integration tests for error scenarios.
+  Build error boundary testing utilities.

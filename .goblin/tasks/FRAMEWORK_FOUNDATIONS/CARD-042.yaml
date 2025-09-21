@@ -1,0 +1,32 @@
+id: CARD-042
+title: Design and implement core database schema
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - User entity designed with proper constraints
+  - Campaign and Session entities with relationships
+  - Character Sheet template system (JSON-based)
+  - Game System templates with versioning
+  - Schema supports future WebRTC and real-time features
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-042]
+artifacts:
+  - /api/prisma/schema.prisma with core entities
+  - /api/src/types/database.ts with Prisma types
+  - /api/src/lib/validation.ts with schema validation
+  - /api/docs/database-schema.md
+  - /api/src/types/entities.ts
+rollbackPlan:
+  - Simplify schema if complexity issues arise
+  - Check for Prisma schema validation errors
+  - Verify entity relationships are correct
+notes: |
+  Design database schema for TTRPG platform with future scalability.
+  Create JSON-based character sheet template system.
+  Ensure schema supports real-time features and WebRTC.
+  Design for system-agnostic game mechanics.

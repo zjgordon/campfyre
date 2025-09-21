@@ -1,0 +1,32 @@
+id: CARD-046
+title: Create database seeding and development data
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Database seeding system implemented
+  - Realistic development data created
+  - Seed scripts for different environments
+  - Data cleanup and reset procedures
+  - Seeding integrated with development workflow
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-046]
+artifacts:
+  - /api/prisma/seed.ts
+  - /api/src/lib/seedData.ts
+  - /api/scripts/seed-dev.ts
+  - /api/scripts/reset-db.ts
+  - /api/package.json with seed scripts
+rollbackPlan:
+  - Remove seeding if implementation fails
+  - Check for data validation issues
+  - Verify seed data relationships
+notes: |
+  Create comprehensive database seeding for development.
+  Generate realistic test data for all entities.
+  Implement data cleanup and reset procedures.
+  Integrate seeding with development workflow.

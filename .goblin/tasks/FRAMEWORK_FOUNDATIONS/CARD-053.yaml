@@ -1,0 +1,33 @@
+id: CARD-053
+title: Configure Redis for caching and pub/sub
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Redis 7.2+ configured for caching and pub/sub
+  - Redis client integrated with Fastify
+  - Caching layer implemented
+  - Pub/sub messaging configured
+  - Redis health checks implemented
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-053]
+artifacts:
+  - /api/package.json with Redis client dependencies
+  - /api/src/lib/redis.ts
+  - /api/src/lib/cache.ts
+  - /api/src/lib/pubsub.ts
+  - /api/src/middleware/redisHealth.ts
+rollbackPlan:
+  - Remove Redis if configuration fails
+  - Check for Redis connection issues
+  - Verify pub/sub functionality works
+notes: |
+  Configure Redis 7.2+ for caching and pub/sub messaging.
+  Integrate Redis client with Fastify server.
+  Implement caching layer for improved performance.
+  Set up pub/sub for real-time message distribution.
+  Use pnpm for package management (project uses pnpm@8.10.0, not npm).

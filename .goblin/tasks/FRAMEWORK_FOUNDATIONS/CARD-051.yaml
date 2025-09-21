@@ -1,0 +1,33 @@
+id: CARD-051
+title: Set up WebSocket server with Fastify
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - WebSocket server set up with Fastify using @fastify/websocket
+  - ws 8.14+ installed and configured
+  - Connection management implemented
+  - WebSocket integration with existing Fastify server
+  - Connection health monitoring
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-051]
+artifacts:
+  - /api/package.json with @fastify/websocket and ws 8.14+
+  - /api/src/websocket/server.ts
+  - /api/src/websocket/connectionManager.ts
+  - /api/src/websocket/types.ts
+  - /api/src/server.ts updated with WebSocket
+rollbackPlan:
+  - Remove WebSocket if integration fails
+  - Check for Fastify + WebSocket compatibility issues
+  - Verify connection management works correctly
+notes: |
+  Set up WebSocket server using @fastify/websocket for better integration.
+  Implement connection management for real-time communication.
+  Ensure compatibility with existing Fastify server architecture.
+  Prepare for future WebRTC signaling integration.
+  Use pnpm for package management (project uses pnpm@8.10.0, not npm).

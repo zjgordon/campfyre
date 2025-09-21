@@ -1,0 +1,35 @@
+id: CARD-030
+title: Test frontend scaffold integration and functionality
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - All frontend components working together
+  - MUI v7 + Emotion 11.11+ integration tested
+  - TanStack Query + Zustand compatibility verified
+  - React Hook Form + Zod validation working
+  - Responsive design tested on different screen sizes
+  - Build process working in Docker
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-030]
+artifacts:
+  - /web/src/App.tsx with complete integration
+  - /web/src/pages/Demo.tsx showing all features
+  - /web/package.json with all dependencies
+  - /web/vite.config.ts final configuration
+  - /web/README.md with setup instructions
+rollbackPlan:
+  - Identify and fix integration issues
+  - Check for version compatibility problems
+  - Verify all dependencies are correctly installed
+  - Test individual components if needed
+notes: |
+  Final integration test for Task 1: Frontend Scaffold Setup.
+  Verify all components work together seamlessly.
+  Test MUI v7 + Emotion integration specifically.
+  Ensure responsive design works across devices.
+  Validate build process for containerization.

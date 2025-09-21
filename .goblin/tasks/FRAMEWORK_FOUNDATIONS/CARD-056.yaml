@@ -1,0 +1,32 @@
+id: CARD-056
+title: Configure TURN server for WebRTC NAT traversal
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Coturn 4.6+ configuration verified in docker-compose
+  - WebRTC connectivity tested
+  - STUN/TURN discovery implemented
+  - TURN server health monitoring
+  - NAT traversal configuration working
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-056]
+artifacts:
+  - /api/src/lib/turnServer.ts
+  - /api/src/websocket/webrtc.ts updated
+  - /api/src/types/webrtc.ts updated
+  - /api/docker-compose.yml verified
+  - /api/src/lib/healthChecks.ts updated
+rollbackPlan:
+  - Revert TURN configuration if issues arise
+  - Check for Coturn configuration problems
+  - Verify WebRTC connectivity works
+notes: |
+  Configure Coturn TURN server for WebRTC NAT traversal.
+  Test WebRTC connectivity and STUN/TURN discovery.
+  Implement TURN server health monitoring.
+  Ensure NAT traversal works in containerized environment.

@@ -1,0 +1,32 @@
+id: CARD-097
+title: Test compatibility between all components
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Component compatibility testing implemented
+  - MUI v7 + Emotion 11.11+ integration tested
+  - TanStack Query + tRPC client compatibility verified
+  - Zustand + React 18.2+ compatibility tested
+  - Prisma + PostgreSQL 15+ performance validated
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-097]
+artifacts:
+  - /tests/integration/compatibility/muiEmotion.test.tsx
+  - /tests/integration/compatibility/queryTrpc.test.ts
+  - /tests/integration/compatibility/zustandReact.test.tsx
+  - /tests/integration/compatibility/prismaPostgres.test.ts
+  - /tests/integration/compatibility/helpers/compatHelper.ts
+rollbackPlan:
+  - Remove compatibility testing if implementation fails
+  - Check for component integration issues
+  - Verify compatibility between components works correctly
+notes: |
+  Test compatibility between all framework components.
+  Validate MUI v7 + Emotion 11.11+ integration specifically.
+  Test TanStack Query + tRPC client compatibility.
+  Verify Zustand + React 18.2+ and Prisma + PostgreSQL 15+ performance.

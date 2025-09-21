@@ -1,0 +1,32 @@
+id: CARD-026
+title: Configure Zustand for client state management
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Zustand 4.4+ installed and configured
+  - Store structure created for user, session, and game state
+  - Persistence implemented for user preferences
+  - Proper TypeScript types for all stores
+  - Store hooks created for easy usage
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-026]
+artifacts:
+  - /web/src/stores/userStore.ts
+  - /web/src/stores/sessionStore.ts
+  - /web/src/stores/gameStore.ts
+  - /web/src/stores/index.ts
+  - /web/src/hooks/useStores.ts
+rollbackPlan:
+  - Remove Zustand if configuration fails
+  - Revert to React Context for state management
+  - Check for React 18.2+ compatibility issues
+notes: |
+  Set up Zustand for client-side state management.
+  Create store structure that can be extended for future features.
+  Implement persistence for user preferences and settings.
+  Ensure proper TypeScript integration with store types.

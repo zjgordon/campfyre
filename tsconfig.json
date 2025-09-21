@@ -27,16 +27,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "**/*.jsx"
-  ],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
   "exclude": [
     "node_modules",
     "dist",
     "build",
+    "web",
+    ".goblin",
     "**/*.test.ts",
     "**/*.test.tsx",
     "**/*.spec.ts",

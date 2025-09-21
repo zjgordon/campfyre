@@ -1,0 +1,32 @@
+id: CARD-027
+title: Set up React Hook Form with Zod validation
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - React Hook Form 7.45+ installed with Zod 3.22+ integration
+  - Form handling configured with type-safe validation
+  - Reusable form components created using MUI v7
+  - Error handling and user feedback implemented
+  - Zod schemas prepared for backend sharing
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-027]
+artifacts:
+  - /web/src/lib/validation.ts with Zod schemas
+  - /web/src/components/forms/FormField.tsx
+  - /web/src/components/forms/FormButton.tsx
+  - /web/src/hooks/useFormValidation.ts
+  - /web/src/pages/LoginForm.tsx (example)
+rollbackPlan:
+  - Remove React Hook Form if configuration fails
+  - Revert to basic HTML forms with manual validation
+  - Check for MUI v7 component compatibility
+notes: |
+  Set up form handling with type-safe validation using Zod.
+  Create reusable form components that work with MUI v7.
+  Ensure Zod schemas can be shared with backend validation.
+  Implement proper error handling and user feedback.

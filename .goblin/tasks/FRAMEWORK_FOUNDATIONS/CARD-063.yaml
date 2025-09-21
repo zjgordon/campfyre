@@ -1,0 +1,32 @@
+id: CARD-063
+title: Create API contract definitions
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - API contract definitions created
+  - tRPC procedure contracts defined
+  - Request/response schemas with Zod
+  - API versioning strategy implemented
+  - Contract validation and testing
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-063]
+artifacts:
+  - /api/src/contracts/procedures.ts
+  - /api/src/contracts/schemas.ts
+  - /api/src/contracts/validation.ts
+  - /api/src/contracts/versioning.ts
+  - /api/src/contracts/index.ts
+rollbackPlan:
+  - Simplify API contracts if complexity issues arise
+  - Check for schema validation conflicts
+  - Verify contract definitions work correctly
+notes: |
+  Create API contract definitions for type-safe communication.
+  Define tRPC procedure contracts with proper schemas.
+  Implement API versioning strategy for future compatibility.
+  Use Zod for runtime validation of contracts.

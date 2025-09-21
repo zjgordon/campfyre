@@ -1,0 +1,32 @@
+id: CARD-024
+title: Create base layout components with MUI v7
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - AppBar component created with MUI v7
+  - Navigation drawer/sidebar component
+  - Main content area layout
+  - Responsive design breakpoints implemented
+  - Layout components properly typed
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-024]
+artifacts:
+  - /web/src/components/layout/AppBar.tsx
+  - /web/src/components/layout/Navigation.tsx
+  - /web/src/components/layout/MainContent.tsx
+  - /web/src/components/layout/Layout.tsx
+  - /web/src/hooks/useResponsive.ts
+rollbackPlan:
+  - Remove layout components if styling issues occur
+  - Revert to basic div-based layout
+  - Check MUI v7 component compatibility
+notes: |
+  Create responsive layout components using MUI v7 components.
+  Implement proper breakpoint system for mobile/tablet/desktop.
+  Ensure all components are properly typed with TypeScript.
+  Design for future expansion with additional navigation items.

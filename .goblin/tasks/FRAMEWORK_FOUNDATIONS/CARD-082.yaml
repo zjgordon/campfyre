@@ -1,0 +1,32 @@
+id: CARD-082
+title: Set up password hashing and validation
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Password hashing with bcrypt implemented
+  - Password strength validation
+  - Password reset functionality
+  - Secure password storage in database
+  - Password policy enforcement
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-082]
+artifacts:
+  - /api/src/auth/password.ts
+  - /api/src/auth/validation.ts
+  - /api/src/auth/reset.ts
+  - /api/src/types/password.ts
+  - /web/src/validation/passwordSchemas.ts
+rollbackPlan:
+  - Remove password hashing if implementation fails
+  - Check for password security vulnerabilities
+  - Verify password validation works correctly
+notes: |
+  Set up secure password hashing and validation system.
+  Implement bcrypt for password hashing with proper salt rounds.
+  Create password strength validation and policy enforcement.
+  Set up password reset functionality with secure tokens.

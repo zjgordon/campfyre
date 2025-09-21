@@ -1,0 +1,33 @@
+id: CARD-032
+title: Create modular tRPC router structure
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Modular router structure created (auth, games, users, etc.)
+  - tRPC procedures properly typed
+  - Router composition working
+  - Error handling middleware compatible with tRPC
+  - Request/response logging with @fastify/pino
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-032]
+artifacts:
+  - /api/src/routers/auth.ts
+  - /api/src/routers/games.ts
+  - /api/src/routers/users.ts
+  - /api/src/routers/index.ts
+  - /api/src/middleware/errorHandler.ts
+  - /api/src/middleware/logger.ts
+rollbackPlan:
+  - Simplify router structure if complexity issues arise
+  - Check for tRPC procedure typing issues
+  - Verify middleware compatibility
+notes: |
+  Create modular tRPC router structure for scalable API development.
+  Ensure proper TypeScript integration throughout.
+  Set up error handling and logging compatible with tRPC.
+  Design for future expansion with additional routers.

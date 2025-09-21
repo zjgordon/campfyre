@@ -1,0 +1,34 @@
+id: CARD-090
+title: Test security and authentication integration
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - All security components working together
+  - Authentication and authorization integration tested
+  - Security headers and CORS working correctly
+  - Rate limiting and DDoS protection functioning
+  - Security logging and monitoring validated
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-090]
+artifacts:
+  - /api/src/security/index.ts with complete integration
+  - /web/src/security/index.ts
+  - /api/package.json with all security dependencies
+  - /api/README.md with security setup instructions
+  - /api/.env.example with security configuration
+rollbackPlan:
+  - Identify and fix security integration issues
+  - Check for security component conflicts
+  - Verify all security features work correctly
+  - Test individual security components if needed
+notes: |
+  Final integration test for Task 7: Security & Authentication.
+  Verify all security components work together seamlessly.
+  Test authentication and authorization integration specifically.
+  Ensure security headers, CORS, and rate limiting work correctly.
+  Validate security logging and monitoring functionality.

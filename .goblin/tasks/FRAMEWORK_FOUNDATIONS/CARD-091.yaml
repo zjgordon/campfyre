@@ -1,0 +1,32 @@
+id: CARD-091
+title: Set up end-to-end testing infrastructure
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - End-to-end testing infrastructure implemented
+  - Test environment setup with all services
+  - E2E test configuration for complete workflows
+  - Test data setup and teardown procedures
+  - E2E test reporting and monitoring
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-091]
+artifacts:
+  - /tests/e2e/setup.ts
+  - /tests/e2e/config/testEnvironment.ts
+  - /tests/e2e/helpers/testDataSetup.ts
+  - /tests/e2e/utils/testReporting.ts
+  - /tests/e2e/fixtures/completeWorkflows.ts
+rollbackPlan:
+  - Remove E2E infrastructure if setup fails
+  - Check for test environment configuration issues
+  - Verify E2E test execution works correctly
+notes: |
+  Set up comprehensive end-to-end testing infrastructure.
+  Configure test environment with all services (API, web, database, Redis).
+  Create E2E test configuration for complete TTRPG workflows.
+  Implement test data setup and teardown procedures.

@@ -1,0 +1,32 @@
+id: CARD-086
+title: Set up input sanitization and validation
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Input sanitization middleware implemented
+  - XSS prevention for user inputs
+  - SQL injection prevention
+  - Input validation with Zod schemas
+  - Sanitization for different input types
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-086]
+artifacts:
+  - /api/src/middleware/sanitization.ts
+  - /api/src/lib/inputSanitizer.ts
+  - /api/src/validation/securitySchemas.ts
+  - /api/src/middleware/validation.ts
+  - /api/src/types/sanitization.ts
+rollbackPlan:
+  - Remove input sanitization if implementation fails
+  - Check for sanitization configuration issues
+  - Verify input validation works correctly
+notes: |
+  Set up input sanitization and validation for security.
+  Implement XSS prevention for user inputs.
+  Create SQL injection prevention mechanisms.
+  Use Zod schemas for input validation and sanitization.

@@ -1,0 +1,34 @@
+id: CARD-031
+title: Migrate from Express to Fastify with tRPC
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Fastify 4.24+ installed and configured
+  - tRPC 10.45+ integrated with Fastify
+  - Express server completely replaced
+  - CORS and security middleware configured with @fastify/cors
+  - Compatibility between Fastify and tRPC verified
+  - All existing endpoints working with new framework
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-031]
+artifacts:
+  - /api/package.json with Fastify 4.24+ and tRPC 10.45+
+  - /api/src/server.ts with Fastify configuration
+  - /api/src/trpc.ts with tRPC setup
+  - /api/src/index.ts updated for Fastify
+  - /api/src/middleware/cors.ts
+rollbackPlan:
+  - Revert to Express if Fastify integration fails
+  - Check for tRPC + Fastify compatibility issues
+  - Verify all middleware configurations
+notes: |
+  CRITICAL: Ensure Fastify 4.24+ and tRPC 10.45+ compatibility.
+  Replace Express completely with Fastify for better performance.
+  Configure CORS and security middleware properly.
+  Maintain all existing health endpoints during migration.
+  Use pnpm for package management (project uses pnpm@8.10.0, not npm).

@@ -1,0 +1,33 @@
+id: CARD-041
+title: Install and configure Prisma ORM with PostgreSQL
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Prisma 5.7+ installed and configured
+  - PostgreSQL 15+ connection established
+  - Database connection and environment variables set up
+  - Prisma client with connection pooling configured
+  - Compatibility with PostgreSQL 15+ verified
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-041]
+artifacts:
+  - /api/package.json with Prisma 5.7+ dependencies
+  - /api/prisma/schema.prisma with PostgreSQL configuration
+  - /api/src/lib/database.ts with Prisma client
+  - /api/.env.example with database configuration
+  - /api/src/config/database.ts
+rollbackPlan:
+  - Remove Prisma if configuration fails
+  - Check for PostgreSQL connection issues
+  - Verify Prisma version compatibility
+notes: |
+  CRITICAL: Use Prisma 5.7+ with PostgreSQL 15+ for best performance.
+  Configure connection pooling for optimal database performance.
+  Set up proper environment variable configuration.
+  Ensure compatibility with existing Docker Compose setup.
+  Use pnpm for package management (project uses pnpm@8.10.0, not npm).

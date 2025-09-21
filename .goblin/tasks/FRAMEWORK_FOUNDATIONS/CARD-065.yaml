@@ -1,0 +1,32 @@
+id: CARD-065
+title: Set up input validation contracts
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Input validation contracts implemented
+  - Zod schemas for all API inputs
+  - Frontend form validation with shared schemas
+  - Validation error messages standardized
+  - Custom validation rules for business logic
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-065]
+artifacts:
+  - /api/src/validation/inputSchemas.ts
+  - /web/src/validation/formSchemas.ts
+  - /api/src/validation/businessRules.ts
+  - /api/src/middleware/validation.ts
+  - /web/src/hooks/useValidation.ts
+rollbackPlan:
+  - Simplify validation if complexity issues arise
+  - Check for schema validation conflicts
+  - Verify validation rules work correctly
+notes: |
+  Set up input validation contracts with Zod schemas.
+  Implement shared validation between frontend and backend.
+  Create custom validation rules for business logic.
+  Standardize validation error messages and handling.

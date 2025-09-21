@@ -1,0 +1,32 @@
+id: CARD-077
+title: Implement accessibility testing
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Accessibility testing implemented
+  - WCAG compliance testing
+  - Screen reader compatibility testing
+  - Keyboard navigation testing
+  - Accessibility test automation
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-077]
+artifacts:
+  - /tests/accessibility/setup.ts
+  - /tests/accessibility/components/Button.test.ts
+  - /tests/accessibility/pages/Login.test.ts
+  - /tests/accessibility/utils/axeHelpers.ts
+  - /tests/accessibility/reports/ directory
+rollbackPlan:
+  - Remove accessibility testing if implementation fails
+  - Check for accessibility testing configuration issues
+  - Verify WCAG compliance testing works
+notes: |
+  Implement accessibility testing for inclusive design.
+  Set up WCAG compliance testing with axe-core.
+  Create screen reader and keyboard navigation testing.
+  Automate accessibility testing in CI/CD pipeline.

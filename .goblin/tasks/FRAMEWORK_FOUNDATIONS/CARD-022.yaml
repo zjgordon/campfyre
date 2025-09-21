@@ -1,0 +1,31 @@
+id: CARD-022
+title: Configure React Router for SPA navigation
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - React Router 6.20+ installed and configured
+  - Basic routing structure set up (Home, About, etc.)
+  - Navigation components created
+  - Route protection structure in place
+  - History API configured for SPA
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-022]
+artifacts:
+  - /web/src/router/index.tsx with route configuration
+  - /web/src/components/Navigation.tsx
+  - /web/src/pages/Home.tsx
+  - /web/src/pages/About.tsx
+  - /web/src/App.tsx updated with router
+rollbackPlan:
+  - Remove React Router dependencies if configuration fails
+  - Revert to basic React app structure
+notes: |
+  Set up React Router for single-page application navigation.
+  Create basic route structure that can be extended later.
+  Ensure proper TypeScript integration with router types.
+  Configure for future authentication and protected routes.

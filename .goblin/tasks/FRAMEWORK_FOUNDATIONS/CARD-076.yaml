@@ -1,0 +1,32 @@
+id: CARD-076
+title: Set up performance testing framework
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Performance testing framework implemented
+  - Load testing for API endpoints
+  - Frontend performance testing
+  - Performance benchmarks established
+  - Performance regression detection
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-076]
+artifacts:
+  - /tests/performance/api/load.test.ts
+  - /tests/performance/frontend/lighthouse.test.ts
+  - /tests/performance/utils/benchmarks.ts
+  - /tests/performance/config/loadConfig.ts
+  - /tests/performance/reports/ directory
+rollbackPlan:
+  - Remove performance testing if implementation fails
+  - Check for performance testing configuration issues
+  - Verify performance benchmarks work correctly
+notes: |
+  Set up performance testing framework for application performance.
+  Implement load testing for API endpoints and database.
+  Create frontend performance testing with Lighthouse.
+  Establish performance benchmarks and regression detection.

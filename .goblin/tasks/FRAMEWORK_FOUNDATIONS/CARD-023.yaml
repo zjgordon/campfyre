@@ -1,0 +1,33 @@
+id: CARD-023
+title: Install and configure Material-UI v7 with Emotion
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - MUI v7.0+ installed with Emotion 11.11+ (not MUI v5)
+  - Material Design 3 theme system configured
+  - MUI v7 component library set up
+  - Theme provider configured in app
+  - Basic MUI components working
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-023]
+artifacts:
+  - /web/package.json with MUI v7 and Emotion 11.11+
+  - /web/src/theme/index.ts with Material Design 3 theme
+  - /web/src/App.tsx with ThemeProvider
+  - /web/src/components/MUIComponents.tsx with basic components
+  - /web/src/vite-env.d.ts with MUI types
+rollbackPlan:
+  - Remove MUI dependencies if installation fails
+  - Revert to basic HTML/CSS styling
+  - Check for MUI v5 vs v7 compatibility issues
+notes: |
+  CRITICAL: Use MUI v7.0+ with Emotion 11.11+, NOT MUI v5.
+  This prevents the common MUI v5/v7 compatibility issues.
+  Configure Material Design 3 theme system with proper tokens.
+  Ensure all MUI components are properly typed with TypeScript.
+  Use pnpm for package management (project uses pnpm@8.10.0, not npm).

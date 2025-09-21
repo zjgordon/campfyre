@@ -1,0 +1,32 @@
+id: CARD-052
+title: Implement room-based messaging system
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Room-based messaging system implemented
+  - User join/leave room functionality
+  - Message broadcasting within rooms
+  - Room state management
+  - Message history and persistence
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-052]
+artifacts:
+  - /api/src/websocket/rooms.ts
+  - /api/src/websocket/messageHandler.ts
+  - /api/src/websocket/roomManager.ts
+  - /api/src/types/websocket.ts
+  - /api/src/websocket/events.ts
+rollbackPlan:
+  - Simplify room system if complexity issues arise
+  - Check for WebSocket message handling issues
+  - Verify room state management works correctly
+notes: |
+  Implement room-based messaging for TTRPG sessions.
+  Create user join/leave functionality for game rooms.
+  Set up message broadcasting and room state management.
+  Design for future real-time game features.

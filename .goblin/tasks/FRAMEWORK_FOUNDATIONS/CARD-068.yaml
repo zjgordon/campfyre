@@ -1,0 +1,32 @@
+id: CARD-068
+title: Implement API response standardization
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - API response standardization implemented
+  - Consistent response format across all endpoints
+  - Error response structure standardized
+  - Success response structure standardized
+  - Response metadata and pagination support
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-068]
+artifacts:
+  - /api/src/lib/responseFormatter.ts
+  - /api/src/types/responses.ts
+  - /api/src/middleware/responseMiddleware.ts
+  - /api/src/utils/pagination.ts
+  - /api/src/contracts/responseSchemas.ts
+rollbackPlan:
+  - Simplify response format if complexity issues arise
+  - Check for response structure conflicts
+  - Verify response standardization works correctly
+notes: |
+  Implement API response standardization for consistent client experience.
+  Create consistent response format across all endpoints.
+  Standardize error and success response structures.
+  Add response metadata and pagination support.

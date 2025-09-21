@@ -1,0 +1,35 @@
+id: CARD-060
+title: Test real-time infrastructure integration
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - All real-time components working together
+  - WebSocket + Redis integration tested
+  - WebRTC signaling functionality verified
+  - Presence tracking and broadcasting working
+  - Health monitoring and recovery tested
+  - Event system functioning correctly
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-060]
+artifacts:
+  - /api/src/websocket/index.ts with complete integration
+  - /api/src/lib/realTime.ts
+  - /api/package.json with all real-time dependencies
+  - /api/README.md with real-time setup instructions
+  - /api/.env.example with real-time configuration
+rollbackPlan:
+  - Identify and fix integration issues
+  - Check for WebSocket + Redis compatibility problems
+  - Verify all real-time features work correctly
+  - Test individual components if needed
+notes: |
+  Final integration test for Task 4: Real-Time Infrastructure.
+  Verify all real-time components work together seamlessly.
+  Test WebSocket + Redis integration specifically.
+  Ensure WebRTC signaling and presence tracking work correctly.
+  Validate event system and health monitoring functionality.

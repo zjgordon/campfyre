@@ -1,0 +1,32 @@
+id: CARD-078
+title: Set up test data management
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Test data management system implemented
+  - Test fixtures and factories created
+  - Database seeding for tests
+  - Test data cleanup procedures
+  - Test data versioning and maintenance
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-078]
+artifacts:
+  - /tests/fixtures/userFactory.ts
+  - /tests/fixtures/gameFactory.ts
+  - /tests/helpers/databaseSeeder.ts
+  - /tests/helpers/testDataCleanup.ts
+  - /tests/data/testData.json
+rollbackPlan:
+  - Remove test data management if implementation fails
+  - Check for test data conflicts
+  - Verify test data cleanup works correctly
+notes: |
+  Set up comprehensive test data management system.
+  Create test fixtures and factories for consistent test data.
+  Implement database seeding and cleanup procedures.
+  Establish test data versioning and maintenance processes.

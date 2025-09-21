@@ -1,0 +1,32 @@
+id: CARD-088
+title: Configure HTTPS and SSL/TLS security
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - HTTPS configuration for secure communication
+  - SSL/TLS certificate management
+  - Secure cookie configuration
+  - HSTS headers implementation
+  - SSL/TLS security monitoring
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-088]
+artifacts:
+  - /api/src/config/ssl.ts
+  - /api/src/middleware/ssl.ts
+  - /api/src/config/cookies.ts
+  - /api/src/middleware/hsts.ts
+  - /api/src/types/ssl.ts
+rollbackPlan:
+  - Remove HTTPS configuration if setup fails
+  - Check for SSL/TLS configuration issues
+  - Verify secure communication works correctly
+notes: |
+  Configure HTTPS and SSL/TLS security for encrypted communication.
+  Set up SSL/TLS certificate management and validation.
+  Configure secure cookies and HSTS headers.
+  Implement SSL/TLS security monitoring and validation.

@@ -1,0 +1,32 @@
+id: CARD-061
+title: Design comprehensive error taxonomy
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Comprehensive error taxonomy designed
+  - Error categories defined (validation, business, system, network)
+  - Error codes and messages standardized
+  - Error severity levels established
+  - Error context and metadata structure defined
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-061]
+artifacts:
+  - /api/src/types/errors.ts
+  - /api/src/lib/errorTypes.ts
+  - /api/src/constants/errorCodes.ts
+  - /api/src/lib/errorContext.ts
+  - /docs/ERROR_SHAPES.md updated
+rollbackPlan:
+  - Simplify error taxonomy if complexity issues arise
+  - Check for error type conflicts
+  - Verify error categorization works correctly
+notes: |
+  Design comprehensive error taxonomy for consistent error handling.
+  Define error categories, codes, and severity levels.
+  Establish error context and metadata structure.
+  Ensure error taxonomy supports both frontend and backend.

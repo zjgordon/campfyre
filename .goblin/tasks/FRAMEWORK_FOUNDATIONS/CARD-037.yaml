@@ -1,0 +1,32 @@
+id: CARD-037
+title: Create API versioning strategy with tRPC
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - API versioning strategy implemented using tRPC procedures
+  - Version routing configured
+  - Backward compatibility considerations
+  - Version-specific error handling
+  - Documentation for versioning approach
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-037]
+artifacts:
+  - /api/src/routers/v1/index.ts
+  - /api/src/routers/v2/index.ts
+  - /api/src/lib/versioning.ts
+  - /api/src/middleware/versionHandler.ts
+  - /api/docs/versioning.md
+rollbackPlan:
+  - Simplify versioning if complexity issues arise
+  - Check for tRPC versioning compatibility
+  - Verify version routing works correctly
+notes: |
+  Create API versioning strategy using tRPC procedures.
+  Design for future API evolution and backward compatibility.
+  Ensure proper version routing and error handling.
+  Document versioning approach for future development.

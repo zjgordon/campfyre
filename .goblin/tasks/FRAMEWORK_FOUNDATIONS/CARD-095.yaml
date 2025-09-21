@@ -1,0 +1,32 @@
+id: CARD-095
+title: Validate MUI v7 components render correctly
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - MUI v7 component rendering testing implemented
+  - Component rendering across different browsers tested
+  - Theme system and styling validated
+  - Responsive design breakpoints tested
+  - Component interaction and behavior validated
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-095]
+artifacts:
+  - /tests/integration/ui/components.test.tsx
+  - /tests/integration/ui/theme.test.tsx
+  - /tests/integration/ui/responsive.test.tsx
+  - /tests/integration/ui/interactions.test.tsx
+  - /tests/integration/ui/helpers/uiHelper.tsx
+rollbackPlan:
+  - Remove UI testing if implementation fails
+  - Check for MUI v7 configuration issues
+  - Verify component rendering works correctly
+notes: |
+  Validate MUI v7 components render correctly across browsers.
+  Test component rendering with Material Design 3 theme system.
+  Validate responsive design breakpoints and styling.
+  Test component interactions and user behavior.

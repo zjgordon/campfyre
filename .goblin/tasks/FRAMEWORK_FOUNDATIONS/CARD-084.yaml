@@ -1,0 +1,32 @@
+id: CARD-084
+title: Configure CORS and security headers
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - CORS configuration for cross-origin requests
+  - Security headers middleware implemented
+  - Content Security Policy (CSP) configured
+  - XSS protection headers set
+  - CSRF protection implemented
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-084]
+artifacts:
+  - /api/src/middleware/cors.ts
+  - /api/src/middleware/security.ts
+  - /api/src/middleware/csrf.ts
+  - /api/src/config/security.ts
+  - /api/src/types/security.ts
+rollbackPlan:
+  - Remove security headers if configuration fails
+  - Check for CORS configuration issues
+  - Verify security headers work correctly
+notes: |
+  Configure CORS and security headers for web security.
+  Set up proper CORS configuration for cross-origin requests.
+  Implement security headers middleware for XSS and CSRF protection.
+  Configure Content Security Policy for additional security.

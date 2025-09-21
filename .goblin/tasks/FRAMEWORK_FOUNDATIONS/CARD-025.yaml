@@ -1,0 +1,32 @@
+id: CARD-025
+title: Set up TanStack Query for server state management
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - TanStack Query 5.0+ installed and configured
+  - Query client provider set up in app
+  - Basic query hooks created
+  - Error handling configured
+  - DevTools integration for development
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-025]
+artifacts:
+  - /web/src/lib/queryClient.ts
+  - /web/src/hooks/useQueries.ts
+  - /web/src/components/QueryProvider.tsx
+  - /web/src/types/api.ts
+  - /web/src/utils/queryKeys.ts
+rollbackPlan:
+  - Remove TanStack Query if configuration fails
+  - Revert to basic fetch-based data fetching
+  - Check for React 18.2+ compatibility issues
+notes: |
+  Set up TanStack Query for server state management.
+  Configure proper error handling and loading states.
+  Set up query keys structure for future API integration.
+  Ensure TypeScript integration with proper typing.

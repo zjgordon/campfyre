@@ -1,0 +1,33 @@
+id: CARD-021
+title: Initialize Vite React project with TypeScript
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Vite 5.0+ project initialized in /web directory
+  - React 18.2+ installed and configured
+  - TypeScript 5.2+ configured with strict settings matching root config
+  - Build output configured for containerization with proper asset handling
+  - All dependencies installed and working
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-021]
+artifacts:
+  - /web/package.json with correct dependencies
+  - /web/vite.config.ts with proper configuration
+  - /web/tsconfig.json with strict TypeScript settings
+  - /web/src/main.tsx with basic React app
+  - /web/index.html with proper meta tags
+rollbackPlan:
+  - Remove /web directory if initialization fails
+  - Revert package.json changes if dependency issues occur
+notes: |
+  CRITICAL: Current /web directory contains Express server dependencies, not React/Vite.
+  This card must completely replace the existing /web setup with proper React/Vite foundation.
+  Remove existing Express dependencies and initialize fresh Vite + React + TypeScript project.
+  Ensure TypeScript configuration matches the root project settings for consistency.
+  Configure Vite for proper asset handling in containerized environment.
+  Use pnpm for package management (project uses pnpm@8.10.0, not npm).

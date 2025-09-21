@@ -1,0 +1,32 @@
+id: CARD-043
+title: Set up Prisma migration system
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Prisma migration system set up with proper naming
+  - Initial migration for core schema created
+  - Migration rollback procedures implemented
+  - Migration validation and testing configured
+  - Database seeding for development implemented
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-043]
+artifacts:
+  - /api/prisma/migrations/ directory structure
+  - /api/prisma/migrations/20240101000000_init/migration.sql
+  - /api/scripts/migrate.ts
+  - /api/scripts/seed.ts
+  - /api/package.json with migration scripts
+rollbackPlan:
+  - Remove migrations if setup fails
+  - Check for database connection issues
+  - Verify migration SQL syntax
+notes: |
+  Set up robust migration system for database schema evolution.
+  Create initial migration with core schema.
+  Implement proper rollback procedures for safety.
+  Set up development seeding for realistic test data.

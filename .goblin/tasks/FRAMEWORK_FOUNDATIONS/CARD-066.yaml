@@ -1,0 +1,32 @@
+id: CARD-066
+title: Implement error recovery strategies
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Error recovery strategies implemented
+  - Retry mechanisms for transient failures
+  - Circuit breaker pattern for external services
+  - Graceful degradation for non-critical features
+  - User-friendly error messages and recovery actions
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-066]
+artifacts:
+  - /api/src/lib/retry.ts
+  - /api/src/lib/circuitBreaker.ts
+  - /web/src/hooks/useRetry.ts
+  - /web/src/components/ErrorRecovery.tsx
+  - /api/src/middleware/recovery.ts
+rollbackPlan:
+  - Remove recovery strategies if implementation fails
+  - Check for recovery mechanism conflicts
+  - Verify error recovery works correctly
+notes: |
+  Implement error recovery strategies for resilient applications.
+  Set up retry mechanisms for transient failures.
+  Implement circuit breaker pattern for external services.
+  Create graceful degradation for non-critical features.

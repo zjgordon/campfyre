@@ -15,5 +15,12 @@ module.exports = {
     'prettier/prettier': 'error',
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
   },
-  ignorePatterns: ['node_modules/', 'dist/', 'build/', '*.min.js'],
+  ignorePatterns: [
+    'node_modules/',
+    'dist/',
+    'build/',
+    '*.min.js',
+    'web/',
+    '.goblin/',
+  ],
 };

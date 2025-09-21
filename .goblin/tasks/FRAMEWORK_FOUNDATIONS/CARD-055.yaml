@@ -1,0 +1,32 @@
+id: CARD-055
+title: Set up WebRTC signaling infrastructure
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - WebRTC signaling infrastructure implemented
+  - Offer/answer exchange handling
+  - ICE candidate exchange
+  - Signaling message types defined
+  - WebRTC connection establishment flow
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-055]
+artifacts:
+  - /api/src/websocket/webrtc.ts
+  - /api/src/types/webrtc.ts
+  - /api/src/websocket/signaling.ts
+  - /api/src/websocket/events.ts updated
+  - /api/src/lib/webrtcHelpers.ts
+rollbackPlan:
+  - Remove WebRTC signaling if implementation fails
+  - Check for WebSocket message handling issues
+  - Verify signaling flow works correctly
+notes: |
+  Set up WebRTC signaling infrastructure for video/voice communication.
+  Implement offer/answer and ICE candidate exchange.
+  Create signaling message types for WebRTC connection establishment.
+  Prepare for future video/voice features.

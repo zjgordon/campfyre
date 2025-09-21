@@ -1,0 +1,36 @@
+id: CARD-040
+title: Test backend scaffold integration and functionality
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - All backend components working together
+  - Fastify + tRPC integration tested
+  - Error handling and logging working
+  - Health endpoints responding correctly
+  - API versioning functioning properly
+  - Production configuration tested
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-040]
+artifacts:
+  - /api/src/index.ts with complete integration
+  - /api/src/server.ts final configuration
+  - /api/package.json with all dependencies
+  - /api/README.md with setup instructions
+  - /api/.env.example with all configuration
+rollbackPlan:
+  - Identify and fix integration issues
+  - Check for Fastify + tRPC compatibility problems
+  - Verify all middleware configurations
+  - Test individual components if needed
+notes: |
+  Final integration test for Task 2: Backend Scaffold Setup.
+  Verify all components work together seamlessly.
+  Test Fastify + tRPC integration specifically.
+  Ensure production configuration works correctly.
+  Validate all health endpoints and monitoring.
+  Use pnpm for package management (project uses pnpm@8.10.0, not npm).

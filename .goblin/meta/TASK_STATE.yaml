@@ -1,10 +1,91 @@
 instructions: |
-  - Always set active_card to the card that is currently being worked on.
-  - Always set last commit to the last commit that was made.
-  - Always set next action to the next card in the queue that has not been actioned.
+  - active_card is the card that is currently being worked on
+  - last_commit is the oneline commit message that was made for the active card
+  - next_action is the next card that should be worked on
+  - queue is the list of cards that should be worked on
+  - remove your card from the queue when you have completed it
 
 active_card: null
 breadcrumb:
-  last_commit: null
-  next_action: null
-queue: []
+  last_commit: 'feat: initialize Vite React project with TypeScript [CARD-021]'
+  next_action: CARD-022
+queue:
+  - CARD-022
+  - CARD-023
+  - CARD-024
+  - CARD-025
+  - CARD-026
+  - CARD-027
+  - CARD-028
+  - CARD-029
+  - CARD-030
+  - CARD-031
+  - CARD-032
+  - CARD-033
+  - CARD-034
+  - CARD-035
+  - CARD-036
+  - CARD-037
+  - CARD-038
+  - CARD-039
+  - CARD-040
+  - CARD-041
+  - CARD-042
+  - CARD-043
+  - CARD-044
+  - CARD-045
+  - CARD-046
+  - CARD-047
+  - CARD-048
+  - CARD-049
+  - CARD-050
+  - CARD-051
+  - CARD-052
+  - CARD-053
+  - CARD-054
+  - CARD-055
+  - CARD-056
+  - CARD-057
+  - CARD-058
+  - CARD-059
+  - CARD-060
+  - CARD-061
+  - CARD-062
+  - CARD-063
+  - CARD-064
+  - CARD-065
+  - CARD-066
+  - CARD-067
+  - CARD-068
+  - CARD-069
+  - CARD-070
+  - CARD-071
+  - CARD-072
+  - CARD-073
+  - CARD-074
+  - CARD-075
+  - CARD-076
+  - CARD-077
+  - CARD-078
+  - CARD-079
+  - CARD-080
+  - CARD-081
+  - CARD-082
+  - CARD-083
+  - CARD-084
+  - CARD-085
+  - CARD-086
+  - CARD-087
+  - CARD-088
+  - CARD-089
+  - CARD-090
+  - CARD-091
+  - CARD-092
+  - CARD-093
+  - CARD-094
+  - CARD-095
+  - CARD-096
+  - CARD-097
+  - CARD-098
+  - CARD-099
+  - CARD-100

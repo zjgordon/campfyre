@@ -1,0 +1,32 @@
+id: CARD-039
+title: Configure Fastify for production deployment
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Fastify configured for production environment
+  - Performance optimizations implemented
+  - Security headers configured
+  - Rate limiting implemented
+  - CORS properly configured for production
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-039]
+artifacts:
+  - /api/src/config/production.ts
+  - /api/src/middleware/security.ts
+  - /api/src/middleware/rateLimiter.ts
+  - /api/src/server.ts updated for production
+  - /api/Dockerfile updated for Fastify
+rollbackPlan:
+  - Revert to development configuration if issues arise
+  - Check for security configuration problems
+  - Verify performance optimizations work
+notes: |
+  Configure Fastify for production deployment with security and performance.
+  Implement proper security headers and rate limiting.
+  Optimize for containerized deployment.
+  Ensure CORS configuration works with frontend.

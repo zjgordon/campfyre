@@ -1,0 +1,32 @@
+id: CARD-089
+title: Implement security logging and monitoring
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Security logging system implemented
+  - Security event monitoring
+  - Intrusion detection and alerting
+  - Security audit trail
+  - Security metrics and reporting
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-089]
+artifacts:
+  - /api/src/lib/securityLogger.ts
+  - /api/src/middleware/securityMonitoring.ts
+  - /api/src/lib/intrusionDetection.ts
+  - /api/src/types/securityEvents.ts
+  - /api/src/lib/securityMetrics.ts
+rollbackPlan:
+  - Remove security logging if implementation fails
+  - Check for security monitoring configuration issues
+  - Verify security event detection works correctly
+notes: |
+  Implement security logging and monitoring for threat detection.
+  Set up security event monitoring and intrusion detection.
+  Create security audit trail and metrics collection.
+  Implement security alerting and reporting capabilities.

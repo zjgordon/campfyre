@@ -1,0 +1,32 @@
+id: CARD-094
+title: Test real-time functionality with WebSocket
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Real-time functionality testing implemented
+  - WebSocket connection and messaging tested
+  - Room-based communication validated
+  - Presence tracking and broadcasting tested
+  - WebRTC signaling functionality verified
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-094]
+artifacts:
+  - /tests/integration/realtime/websocket.test.ts
+  - /tests/integration/realtime/rooms.test.ts
+  - /tests/integration/realtime/presence.test.ts
+  - /tests/integration/realtime/webrtc.test.ts
+  - /tests/integration/realtime/helpers/realtimeHelper.ts
+rollbackPlan:
+  - Remove real-time testing if implementation fails
+  - Check for WebSocket configuration issues
+  - Verify real-time functionality works correctly
+notes: |
+  Test real-time functionality with WebSocket and WebRTC integration.
+  Validate WebSocket connection and messaging capabilities.
+  Test room-based communication and presence tracking.
+  Verify WebRTC signaling for video/voice communication.

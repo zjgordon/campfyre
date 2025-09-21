@@ -1,0 +1,32 @@
+id: CARD-075
+title: Implement visual regression testing
+sprint: FRAMEWORK_FOUNDATIONS
+status: todo
+owner: cursor
+links:
+  - docs/plans/FRAMEWORK_FOUNDATIONS.md
+acceptance:
+  - Visual regression testing implemented
+  - Screenshot comparison for UI components
+  - Cross-browser visual testing
+  - Visual test baseline establishment
+  - Visual test reporting and review
+  - Code compiles, lints, tests pass
+  - Update CURRENT_SPRINT.md with log entry
+  - Update PROJECT_STATUS.md with one-liner
+  - Commit follows Conventional Commits with [CARD-075]
+artifacts:
+  - /tests/visual/setup.ts
+  - /tests/visual/components/Button.test.ts
+  - /tests/visual/pages/Login.test.ts
+  - /tests/visual/utils/screenshot.ts
+  - /tests/visual/baselines/ directory
+rollbackPlan:
+  - Remove visual testing if implementation fails
+  - Check for screenshot comparison issues
+  - Verify visual regression testing works
+notes: |
+  Implement visual regression testing for UI consistency.
+  Set up screenshot comparison for MUI components.
+  Create cross-browser visual testing for design system.
+  Establish visual test baselines and reporting.
