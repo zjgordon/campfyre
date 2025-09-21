@@ -35,11 +35,18 @@ Initializing the foundational framework for Campfyre with Vite + React + TypeScr
   - ✅ Responsive design breakpoints implemented with useResponsive hook
   - ✅ Layout components properly typed with TypeScript
   - ✅ Code compiles, lints, tests pass
+- **CARD-025**: Set up TanStack Query for server state management
+  - ✅ TanStack Query 5.89.0 installed and configured
+  - ✅ Query client provider set up in app with proper configuration
+  - ✅ Basic query hooks created for health, users, and projects
+  - ✅ Error handling configured with retry logic and custom ApiError
+  - ✅ DevTools integration for development environment
+  - ✅ Code compiles, lints, tests pass
 
 ## Current Status
 
-Working on FRAMEWORK_FOUNDATIONS sprint with CARD-024 completed.
+Working on FRAMEWORK_FOUNDATIONS sprint with CARD-025 completed.
 
 ## Next Actions
 
-- CARD-025: Set up state management with Zustand
+- CARD-026: Set up state management with Zustand

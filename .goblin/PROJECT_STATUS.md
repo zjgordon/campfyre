@@ -2,7 +2,7 @@
 
 ## Current State
 
-**FRAMEWORK_FOUNDATIONS** sprint in progress - Base layout components with MUI v7 created.
+**FRAMEWORK_FOUNDATIONS** sprint in progress - TanStack Query server state management configured.
 
 ## Recent Updates
 
@@ -10,7 +10,8 @@
 - ✅ CARD-022: React Router configured with basic routing structure and navigation
 - ✅ CARD-023: Material-UI v7 with Emotion installed and Material Design 3 theme configured
 - ✅ CARD-024: Base layout components with responsive design and MUI v7 components
-- 🔄 Next: CARD-025 (State management with Zustand)
+- ✅ CARD-025: TanStack Query configured with query hooks and error handling
+- 🔄 Next: CARD-026 (State management with Zustand)
 
 ## Infrastructure Status
 

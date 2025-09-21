@@ -7,10 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: create base layout components with MUI v7 [CARD-024]'
-  next_action: CARD-025
+  last_commit: 'feat: set up TanStack Query for server state management [CARD-025]'
+  next_action: CARD-026
 queue:
-  - CARD-025
   - CARD-026
   - CARD-027
   - CARD-028
