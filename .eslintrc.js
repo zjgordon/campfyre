@@ -32,7 +32,7 @@ module.exports = {
         sourceType: 'module',
       },
       plugins: ['@typescript-eslint'],
-      extends: ['eslint:recommended', '@typescript-eslint/recommended'],
+      extends: ['@typescript-eslint/recommended'],
       rules: {
         'no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
