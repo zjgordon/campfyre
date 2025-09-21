@@ -7,10 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: set up React Hook Form with Zod validation [CARD-027]'
-  next_action: CARD-028
+  last_commit: 'feat: create shared types package for frontend/backend [CARD-028]'
+  next_action: CARD-029
 queue:
-  - CARD-028
   - CARD-029
   - CARD-030
   - CARD-031

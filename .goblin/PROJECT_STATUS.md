@@ -2,7 +2,7 @@
 
 ## Current State
 
-**FRAMEWORK_FOUNDATIONS** sprint in progress - React Hook Form with Zod validation configured.
+**FRAMEWORK_FOUNDATIONS** sprint in progress - Shared types package configured.
 
 ## Recent Updates
 
@@ -13,7 +13,8 @@
 - ✅ CARD-025: TanStack Query configured with query hooks and error handling
 - ✅ CARD-026: Zustand configured with user, session, and game state stores
 - ✅ CARD-027: React Hook Form with Zod validation and reusable form components
-- 🔄 Next: CARD-028 (Testing framework with Jest and React Testing Library)
+- ✅ CARD-028: Shared types package with comprehensive type definitions
+- 🔄 Next: CARD-029 (Testing framework with Jest and React Testing Library)
 
 ## Infrastructure Status
 

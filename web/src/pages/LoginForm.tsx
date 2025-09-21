@@ -4,7 +4,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
 
-import { loginSchema, type LoginFormData } from '../lib/validation';
+import { loginSchema } from '../lib/validation';
+// import type { LoginCredentials } from '../types';
 import { useAuthActions } from '../hooks/useStores';
 import {
   FormTextField,
@@ -24,7 +25,7 @@ const LoginForm: React.FC = () => {
     handleSubmit,
     formState: { errors, isSubmitting },
     setError,
-  } = useForm<LoginFormData>({
+  } = useForm({
     resolver: zodResolver(loginSchema),
     defaultValues: {
       email: '',
@@ -32,7 +33,7 @@ const LoginForm: React.FC = () => {
     },
   });
 
-  const onSubmit = async (data: LoginFormData) => {
+  const onSubmit = async (data: any) => {
     try {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));

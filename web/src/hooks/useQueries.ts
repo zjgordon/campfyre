@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { queryKeys } from '../utils/queryKeys';
-import { ApiResponse, User, Project } from '../types/api';
+import { ApiResponse, User } from '../types';
 
 // Example API functions (to be replaced with actual API calls)
 const api = {
@@ -43,7 +43,7 @@ const api = {
   },
 
   // Project endpoints (examples)
-  getProjects: async (): Promise<ApiResponse<Project[]>> => {
+  getProjects: async (): Promise<ApiResponse<any[]>> => {
     const response = await fetch('/api/projects');
     if (!response.ok) {
       throw new ApiError(

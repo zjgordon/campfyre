@@ -58,11 +58,19 @@ Initializing the foundational framework for Campfyre with Vite + React + TypeScr
   - ✅ Zod schemas prepared for backend sharing with comprehensive validation rules
   - ✅ Example login form demonstrating form integration with state management
   - ✅ Code compiles, lints, tests pass
+- **CARD-028**: Create shared types package for frontend/backend
+  - ✅ Shared types package created with comprehensive type definitions
+  - ✅ Common types defined for API, user, game entities with full TypeScript support
+  - ✅ Type exports configured for frontend usage with clean import structure
+  - ✅ Zod schemas integrated with TypeScript types for runtime validation
+  - ✅ Type safety ensured across frontend with proper type inference
+  - ✅ Validation schemas updated to use shared types for consistency
+  - ✅ Code compiles, lints, tests pass
 
 ## Current Status
 
-Working on FRAMEWORK_FOUNDATIONS sprint with CARD-027 completed.
+Working on FRAMEWORK_FOUNDATIONS sprint with CARD-028 completed.
 
 ## Next Actions
 
-- CARD-028: Set up testing framework with Jest and React Testing Library
+- CARD-029: Set up testing framework with Jest and React Testing Library
