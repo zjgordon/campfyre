@@ -1,45 +1,55 @@
-import express from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
+import { createServer } from './server';
+import { appRouter, Context } from './trpc';
+import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify';
+import { FastifyRequest } from 'fastify';
 
-const app = express();
 const port = parseInt(process.env.PORT || '3000', 10);
+const host = process.env.HOST || '0.0.0.0';
 
-// Middleware
-app.use(helmet());
-app.use(cors());
-app.use(express.json());
+async function start() {
+  const fastify = await createServer();
 
-// Health endpoint
-app.get('/health', (req, res) => {
-  res.json({
-    ok: true,
-    service: 'api',
-    timestamp: new Date().toISOString(),
-    uptime: process.uptime(),
+  // Register tRPC
+  await fastify.register(fastifyTRPCPlugin, {
+    prefix: '/trpc',
+    trpcOptions: {
+      router: appRouter,
+      createContext: ({ req }: { req: FastifyRequest }): Context => ({ req }),
+    },
   });
-});
 
-// Ping endpoint
-app.get('/ping', (req, res) => {
-  res.json({
-    ok: true,
-    msg: 'pong',
+  // Legacy REST endpoints for compatibility
+  fastify.get('/health', async () => {
+    return {
+      ok: true,
+      service: 'api',
+      timestamp: new Date().toISOString(),
+      uptime: process.uptime(),
+    };
   });
-});
 
-// Root endpoint
-app.get('/', (req, res) => {
-  res.json({
-    message: 'Campfyre API',
-    version: '0.1.0',
-    status: 'running',
+  fastify.get('/ping', async () => {
+    return {
+      ok: true,
+      msg: 'pong',
+    };
   });
-});
 
-// Start server
-app.listen(port, '0.0.0.0', () => {
-  console.log(`API server running on port ${port}`);
-});
+  fastify.get('/', async () => {
+    return {
+      message: 'Campfyre API',
+      version: '0.1.0',
+      status: 'running',
+    };
+  });
 
-export default app;
+  try {
+    await fastify.listen({ port, host });
+    console.log(`API server running on http://${host}:${port}`);
+  } catch (err) {
+    fastify.log.error(err);
+    process.exit(1);
+  }
+}
+
+start();

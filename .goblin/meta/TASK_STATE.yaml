@@ -7,11 +7,10 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: test frontend scaffold integration and functionality [CARD-030]'
-  next_action: CARD-031
+  last_commit: "feat: migrate from Express to Fastify with tRPC [CARD-031]"
+  next_action: CARD-032
 queue:
-  - CARD-031
-  - CARD-031
+  - CARD-032
   - CARD-032
   - CARD-033
   - CARD-034

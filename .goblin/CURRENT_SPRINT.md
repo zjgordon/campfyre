@@ -83,11 +83,19 @@ Initializing the foundational framework for Campfyre with Vite + React + TypeScr
   - ✅ Build process working in Docker with full integration test
   - ✅ All frontend components working together harmoniously
   - ✅ Code compiles, lints, tests pass
+- **CARD-031**: Migrate from Express to Fastify with tRPC
+  - ✅ Fastify 4.24+ installed and configured with proper TypeScript support
+  - ✅ tRPC 10.45+ integrated with Fastify adapter
+  - ✅ Express server completely replaced with Fastify
+  - ✅ CORS and security middleware configured with @fastify/cors and @fastify/helmet
+  - ✅ Compatibility between Fastify and tRPC verified and working
+  - ✅ All existing endpoints working with new framework (REST and tRPC)
+  - ✅ Code compiles, lints, tests pass
 
 ## Current Status
 
-Working on FRAMEWORK_FOUNDATIONS sprint with CARD-030 completed.
+Working on FRAMEWORK_FOUNDATIONS sprint with CARD-031 completed.
 
 ## Next Actions
 
-- CARD-031: Set up testing framework with Jest and React Testing Library
+- CARD-032: Set up testing framework with Jest and React Testing Library
