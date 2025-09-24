@@ -4,9 +4,10 @@ import { gamesRouter } from './games';
 import { usersRouter } from './users';
 import { v1Router } from './v1';
 import { v2Router } from './v2';
+import { healthRouter } from './health';
 
-// Health router (keeping existing functionality for backward compatibility)
-export const healthRouter = router({
+// Legacy health router (keeping existing functionality for backward compatibility)
+export const legacyHealthRouter = router({
   check: publicProcedure.query(() => {
     return {
       ok: true,
@@ -45,11 +46,13 @@ export const appRouter = router({
   // Versioned routes
   v1: v1Router,
   v2: v2Router,
+  // Enhanced health routes
+  health: healthRouter,
   // Legacy routes for backward compatibility
   auth: authRouter,
   games: gamesRouter,
   users: usersRouter,
-  health: healthRouter,
+  legacyHealth: legacyHealthRouter,
   root: rootRouter,
 });
 

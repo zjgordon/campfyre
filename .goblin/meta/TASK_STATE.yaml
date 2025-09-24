@@ -7,10 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: implement API versioning strategy with tRPC [CARD-037]'
-  next_action: CARD-038
+  last_commit: 'feat: implement enhanced health endpoints and monitoring [CARD-038]'
+  next_action: CARD-039
 queue:
-  - CARD-038
   - CARD-039
   - CARD-040
   - CARD-041
