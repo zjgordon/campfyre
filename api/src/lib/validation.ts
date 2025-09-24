@@ -131,3 +131,46 @@ export const formatValidationError = (error: z.ZodError): string => {
     })
     .join('; ');
 };
+
+// Client-side validation utilities
+export const createClientValidator = <T>(schema: z.ZodSchema<T>) => {
+  return {
+    parse: (input: unknown): T => {
+      try {
+        return schema.parse(input);
+      } catch (error) {
+        if (error instanceof z.ZodError) {
+          throw new Error(formatValidationError(error));
+        }
+        throw error;
+      }
+    },
+    safeParse: (input: unknown): z.SafeParseReturnType<unknown, T> => {
+      return schema.safeParse(input);
+    },
+    validate: (input: unknown): boolean => {
+      return schema.safeParse(input).success;
+    },
+  };
+};
+
+// Client-side input validation for tRPC procedures
+export const validateClientInput = <T>(
+  schema: z.ZodSchema<T>,
+  input: unknown
+): T => {
+  const validator = createClientValidator(schema);
+  return validator.parse(input);
+};
+
+// Client-side safe input validation
+export const safeValidateClientInput = <T>(
+  schema: z.ZodSchema<T>,
+  input: unknown
+): { success: true; data: T } | { success: false; error: string } => {
+  const result = schema.safeParse(input);
+  if (result.success) {
+    return { success: true, data: result.data };
+  }
+  return { success: false, error: formatValidationError(result.error) };
+};

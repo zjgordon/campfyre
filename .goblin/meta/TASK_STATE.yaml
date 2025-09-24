@@ -7,10 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: set up shared types package for backend [CARD-033]'
-  next_action: CARD-034
+  last_commit: 'feat: configure tRPC client for frontend integration [CARD-034]'
+  next_action: CARD-035
 queue:
-  - CARD-034
   - CARD-035
   - CARD-036
   - CARD-037
