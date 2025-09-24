@@ -7,10 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: configure Fastify for production deployment [CARD-039]'
-  next_action: CARD-040
+  last_commit: 'feat: test backend scaffold integration and functionality [CARD-040]'
+  next_action: CARD-041
 queue:
-  - CARD-040
   - CARD-041
   - CARD-042
   - CARD-043
