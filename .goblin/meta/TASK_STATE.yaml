@@ -7,10 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: create modular tRPC router structure [CARD-032]'
-  next_action: CARD-033
+  last_commit: 'feat: set up shared types package for backend [CARD-033]'
+  next_action: CARD-034
 queue:
-  - CARD-033
   - CARD-034
   - CARD-035
   - CARD-036
