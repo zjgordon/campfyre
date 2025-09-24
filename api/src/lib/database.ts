@@ -7,7 +7,24 @@ import {
 
 // Re-export Prisma client and types
 export { PrismaClient } from '@prisma/client';
-export type { User, Game, Session, GameStatus } from '@prisma/client';
+export type {
+  User,
+  Campaign,
+  CampaignMember,
+  Character,
+  GameSystem,
+  GameSession,
+  GameSessionCharacter,
+  Message,
+  Notification,
+  UserSession,
+  CampaignStatus,
+  CampaignVisibility,
+  CampaignRole,
+  GameSessionStatus,
+  MessageType,
+  NotificationType,
+} from '@prisma/client';
 
 // Export database utilities
 export { getPrismaClient, testDatabaseConnection, getDatabaseHealth };
@@ -51,6 +68,8 @@ export class DatabaseService {
     username: string;
     name?: string;
     avatar?: string;
+    bio?: string;
+    preferences?: any;
   }) {
     return this.client.user.create({
       data,
@@ -73,7 +92,13 @@ export class DatabaseService {
     return this.client.user.findUnique({
       where: { id },
       include: {
-        games: true,
+        ownedCampaigns: true,
+        campaignMemberships: {
+          include: {
+            campaign: true,
+          },
+        },
+        characters: true,
         sessions: true,
       },
     });
@@ -84,6 +109,9 @@ export class DatabaseService {
     data: {
       name?: string;
       avatar?: string;
+      bio?: string;
+      preferences?: any;
+      lastLoginAt?: Date;
     }
   ) {
     return this.client.user.update({
@@ -99,85 +127,402 @@ export class DatabaseService {
   }
 
   /**
-   * Game operations
+   * Campaign operations
    */
-  async createGame(data: {
+  async createCampaign(data: {
     name: string;
     description?: string;
+    image?: string;
+    visibility?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED';
     maxPlayers?: number;
+    gameSystemId: string;
     ownerId: string;
+    settings?: any;
+    metadata?: any;
   }) {
-    return this.client.game.create({
+    return this.client.campaign.create({
       data,
       include: {
         owner: true,
+        gameSystem: true,
       },
     });
   }
 
-  async findGameById(id: string) {
-    return this.client.game.findUnique({
+  async findCampaignById(id: string) {
+    return this.client.campaign.findUnique({
       where: { id },
       include: {
         owner: true,
+        members: {
+          include: {
+            user: true,
+          },
+        },
+        characters: true,
+        gameSessions: true,
+        gameSystem: true,
       },
     });
   }
 
-  async findGamesByOwner(ownerId: string) {
-    return this.client.game.findMany({
+  async findCampaignsByOwner(ownerId: string) {
+    return this.client.campaign.findMany({
       where: { ownerId },
       include: {
         owner: true,
+        gameSystem: true,
       },
       orderBy: { createdAt: 'desc' },
     });
   }
 
-  async findActiveGames() {
-    return this.client.game.findMany({
+  async findActiveCampaigns() {
+    return this.client.campaign.findMany({
       where: { status: 'ACTIVE' },
       include: {
         owner: true,
+        gameSystem: true,
       },
       orderBy: { createdAt: 'desc' },
     });
   }
 
-  async updateGame(
+  async updateCampaign(
     id: string,
     data: {
       name?: string;
       description?: string;
-      status?: 'ACTIVE' | 'INACTIVE' | 'COMPLETED' | 'CANCELLED';
+      image?: string;
+      status?: 'ACTIVE' | 'PAUSED' | 'COMPLETED' | 'CANCELLED';
+      visibility?: 'PRIVATE' | 'PUBLIC' | 'UNLISTED';
       maxPlayers?: number;
-      currentPlayers?: number;
+      settings?: any;
+      metadata?: any;
     }
   ) {
-    return this.client.game.update({
+    return this.client.campaign.update({
       where: { id },
       data,
       include: {
         owner: true,
+        gameSystem: true,
       },
     });
   }
 
-  async deleteGame(id: string) {
-    return this.client.game.delete({
+  async deleteCampaign(id: string) {
+    return this.client.campaign.delete({
       where: { id },
     });
   }
 
   /**
-   * Session operations
+   * Character operations
    */
-  async createSession(data: {
+  async createCharacter(data: {
+    name: string;
+    description?: string;
+    image?: string;
+    level?: number;
+    experience?: number;
+    characterSheet: any;
+    campaignId: string;
+    ownerId: string;
+  }) {
+    return this.client.character.create({
+      data,
+      include: {
+        owner: true,
+        campaign: true,
+      },
+    });
+  }
+
+  async findCharacterById(id: string) {
+    return this.client.character.findUnique({
+      where: { id },
+      include: {
+        owner: true,
+        campaign: true,
+        gameSessions: true,
+      },
+    });
+  }
+
+  async findCharactersByOwner(ownerId: string) {
+    return this.client.character.findMany({
+      where: { ownerId },
+      include: {
+        owner: true,
+        campaign: true,
+      },
+      orderBy: { createdAt: 'desc' },
+    });
+  }
+
+  async findCharactersByCampaign(campaignId: string) {
+    return this.client.character.findMany({
+      where: { campaignId },
+      include: {
+        owner: true,
+        campaign: true,
+      },
+      orderBy: { createdAt: 'desc' },
+    });
+  }
+
+  async updateCharacter(
+    id: string,
+    data: {
+      name?: string;
+      description?: string;
+      image?: string;
+      level?: number;
+      experience?: number;
+      characterSheet?: any;
+    }
+  ) {
+    return this.client.character.update({
+      where: { id },
+      data,
+      include: {
+        owner: true,
+        campaign: true,
+      },
+    });
+  }
+
+  async deleteCharacter(id: string) {
+    return this.client.character.delete({
+      where: { id },
+    });
+  }
+
+  /**
+   * Game System operations
+   */
+  async createGameSystem(data: {
+    name: string;
+    version?: string;
+    description?: string;
+    publisher?: string;
+    characterSheetTemplate: any;
+    rules?: any;
+    metadata?: any;
+  }) {
+    return this.client.gameSystem.create({
+      data,
+    });
+  }
+
+  async findGameSystemById(id: string) {
+    return this.client.gameSystem.findUnique({
+      where: { id },
+      include: {
+        campaigns: true,
+      },
+    });
+  }
+
+  async findGameSystemByName(name: string) {
+    return this.client.gameSystem.findUnique({
+      where: { name },
+      include: {
+        campaigns: true,
+      },
+    });
+  }
+
+  async findActiveGameSystems() {
+    return this.client.gameSystem.findMany({
+      where: { isActive: true },
+      orderBy: { name: 'asc' },
+    });
+  }
+
+  async updateGameSystem(
+    id: string,
+    data: {
+      name?: string;
+      version?: string;
+      description?: string;
+      publisher?: string;
+      characterSheetTemplate?: any;
+      rules?: any;
+      metadata?: any;
+      isActive?: boolean;
+    }
+  ) {
+    return this.client.gameSystem.update({
+      where: { id },
+      data,
+    });
+  }
+
+  async deleteGameSystem(id: string) {
+    return this.client.gameSystem.delete({
+      where: { id },
+    });
+  }
+
+  /**
+   * Game Session operations
+   */
+  async createGameSession(data: {
+    name: string;
+    description?: string;
+    scheduledAt?: Date;
+    campaignId: string;
+    gmId: string;
+    settings?: any;
+    notes?: string;
+  }) {
+    return this.client.gameSession.create({
+      data,
+      include: {
+        campaign: true,
+        gm: true,
+      },
+    });
+  }
+
+  async findGameSessionById(id: string) {
+    return this.client.gameSession.findUnique({
+      where: { id },
+      include: {
+        campaign: true,
+        gm: true,
+        characters: {
+          include: {
+            character: true,
+          },
+        },
+        messages: true,
+      },
+    });
+  }
+
+  async findGameSessionsByCampaign(campaignId: string) {
+    return this.client.gameSession.findMany({
+      where: { campaignId },
+      include: {
+        campaign: true,
+        gm: true,
+      },
+      orderBy: { scheduledAt: 'desc' },
+    });
+  }
+
+  async updateGameSession(
+    id: string,
+    data: {
+      name?: string;
+      description?: string;
+      scheduledAt?: Date;
+      startedAt?: Date;
+      endedAt?: Date;
+      status?: 'PLANNED' | 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED';
+      settings?: any;
+      notes?: string;
+    }
+  ) {
+    return this.client.gameSession.update({
+      where: { id },
+      data,
+      include: {
+        campaign: true,
+        gm: true,
+      },
+    });
+  }
+
+  async deleteGameSession(id: string) {
+    return this.client.gameSession.delete({
+      where: { id },
+    });
+  }
+
+  /**
+   * Message operations
+   */
+  async createMessage(data: {
+    content: string;
+    type?:
+      | 'TEXT'
+      | 'SYSTEM'
+      | 'DICE_ROLL'
+      | 'CHARACTER_ACTION'
+      | 'GM_ANNOUNCEMENT';
+    metadata?: any;
+    authorId: string;
+    gameSessionId?: string;
+  }) {
+    return this.client.message.create({
+      data,
+      include: {
+        author: true,
+        gameSession: true,
+      },
+    });
+  }
+
+  async findMessageById(id: string) {
+    return this.client.message.findUnique({
+      where: { id },
+      include: {
+        author: true,
+        gameSession: true,
+      },
+    });
+  }
+
+  async findMessagesByGameSession(gameSessionId: string) {
+    return this.client.message.findMany({
+      where: { gameSessionId },
+      include: {
+        author: true,
+        gameSession: true,
+      },
+      orderBy: { createdAt: 'asc' },
+    });
+  }
+
+  async updateMessage(
+    id: string,
+    data: {
+      content?: string;
+      metadata?: any;
+      isEdited?: boolean;
+    }
+  ) {
+    return this.client.message.update({
+      where: { id },
+      data,
+      include: {
+        author: true,
+        gameSession: true,
+      },
+    });
+  }
+
+  async deleteMessage(id: string) {
+    return this.client.message.delete({
+      where: { id },
+    });
+  }
+
+  /**
+   * User Session operations
+   */
+  async createUserSession(data: {
     token: string;
     expiresAt: Date;
     userId: string;
+    deviceInfo?: any;
+    ipAddress?: string;
   }) {
-    return this.client.session.create({
+    return this.client.userSession.create({
       data,
       include: {
         user: true,
@@ -185,8 +530,8 @@ export class DatabaseService {
     });
   }
 
-  async findSessionByToken(token: string) {
-    return this.client.session.findUnique({
+  async findUserSessionByToken(token: string) {
+    return this.client.userSession.findUnique({
       where: { token },
       include: {
         user: true,
@@ -194,14 +539,14 @@ export class DatabaseService {
     });
   }
 
-  async deleteSession(token: string) {
-    return this.client.session.delete({
+  async deleteUserSession(token: string) {
+    return this.client.userSession.delete({
       where: { token },
     });
   }
 
-  async deleteExpiredSessions() {
-    return this.client.session.deleteMany({
+  async deleteExpiredUserSessions() {
+    return this.client.userSession.deleteMany({
       where: {
         expiresAt: {
           lt: new Date(),
@@ -211,11 +556,77 @@ export class DatabaseService {
   }
 
   /**
+   * Campaign Member operations
+   */
+  async createCampaignMember(data: {
+    userId: string;
+    campaignId: string;
+    role?: 'OWNER' | 'GM' | 'PLAYER' | 'OBSERVER';
+  }) {
+    return this.client.campaignMember.create({
+      data,
+      include: {
+        user: true,
+        campaign: true,
+      },
+    });
+  }
+
+  async findCampaignMember(userId: string, campaignId: string) {
+    return this.client.campaignMember.findUnique({
+      where: {
+        userId_campaignId: {
+          userId,
+          campaignId,
+        },
+      },
+      include: {
+        user: true,
+        campaign: true,
+      },
+    });
+  }
+
+  async updateCampaignMember(
+    userId: string,
+    campaignId: string,
+    data: {
+      role?: 'OWNER' | 'GM' | 'PLAYER' | 'OBSERVER';
+      isActive?: boolean;
+    }
+  ) {
+    return this.client.campaignMember.update({
+      where: {
+        userId_campaignId: {
+          userId,
+          campaignId,
+        },
+      },
+      data,
+      include: {
+        user: true,
+        campaign: true,
+      },
+    });
+  }
+
+  async deleteCampaignMember(userId: string, campaignId: string) {
+    return this.client.campaignMember.delete({
+      where: {
+        userId_campaignId: {
+          userId,
+          campaignId,
+        },
+      },
+    });
+  }
+
+  /**
    * Cleanup operations
    */
   async cleanup() {
-    // Delete expired sessions
-    await this.deleteExpiredSessions();
+    // Delete expired user sessions
+    await this.deleteExpiredUserSessions();
 
     // You can add more cleanup operations here
   }

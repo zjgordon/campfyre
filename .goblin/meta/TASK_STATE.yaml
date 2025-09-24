@@ -7,10 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: install and configure Prisma ORM with PostgreSQL [CARD-041]'
-  next_action: CARD-042
+  last_commit: 'feat: design and implement core database schema [CARD-042]'
+  next_action: CARD-043
 queue:
-  - CARD-042
   - CARD-043
   - CARD-044
   - CARD-045

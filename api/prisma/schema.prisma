@@ -22,39 +22,200 @@ model User {
   username  String   @unique
   name      String?
   avatar    String?
+  bio       String?
+  preferences Json?  // User preferences and settings
+  isActive  Boolean  @default(true)
+  lastLoginAt DateTime?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   // Relations
-  games     Game[]
-  sessions  Session[]
+  ownedCampaigns     Campaign[]     @relation("CampaignOwner")
+  campaignMemberships CampaignMember[]
+  characters         Character[]
+  sessions           UserSession[]
+  gameSessions       GameSession[]  @relation("GameSessionGM")
+  messages           Message[]
+  notifications      Notification[]
 
   @@map("users")
 }
 
-// Game model for game management
-model Game {
+// Campaign model for TTRPG campaigns
+model Campaign {
   id          String   @id @default(cuid())
   name        String
   description String?
-  status      GameStatus @default(ACTIVE)
-  maxPlayers  Int      @default(4)
+  image       String?
+  status      CampaignStatus @default(ACTIVE)
+  visibility  CampaignVisibility @default(PRIVATE)
+  maxPlayers  Int      @default(6)
   currentPlayers Int   @default(0)
+  settings    Json?    // Campaign-specific settings
+  metadata    Json?    // Additional campaign metadata
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
   // Relations
-  owner   User   @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-  ownerId String
+  owner     User   @relation("CampaignOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId   String
+  members   CampaignMember[]
+  characters Character[]
+  gameSessions GameSession[]
+  gameSystem GameSystem @relation(fields: [gameSystemId], references: [id])
+  gameSystemId String
 
-  @@map("games")
+  @@map("campaigns")
 }
 
-// Session model for user sessions
-model Session {
+// Campaign membership model
+model CampaignMember {
+  id        String   @id @default(cuid())
+  role      CampaignRole @default(PLAYER)
+  joinedAt  DateTime @default(now())
+  leftAt    DateTime?
+  isActive  Boolean  @default(true)
+
+  // Relations
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId   String
+  campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  campaignId String
+
+  @@unique([userId, campaignId])
+  @@map("campaign_members")
+}
+
+// Character model for player characters
+model Character {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  image       String?
+  level       Int      @default(1)
+  experience  Int      @default(0)
+  characterSheet Json  // JSON-based character sheet data
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  owner     User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId   String
+  campaign  Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  campaignId String
+  gameSessions GameSessionCharacter[]
+
+  @@map("characters")
+}
+
+// Game System model for different TTRPG systems
+model GameSystem {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  version     String   @default("1.0.0")
+  description String?
+  publisher   String?
+  isActive    Boolean  @default(true)
+  characterSheetTemplate Json // JSON template for character sheets
+  rules       Json?    // System-specific rules and mechanics
+  metadata    Json?    // Additional system metadata
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  campaigns Campaign[]
+
+  @@map("game_systems")
+}
+
+// Game Session model for individual play sessions
+model GameSession {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  scheduledAt DateTime?
+  startedAt   DateTime?
+  endedAt     DateTime?
+  status      GameSessionStatus @default(PLANNED)
+  settings    Json?    // Session-specific settings
+  notes       String?  // GM notes
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  campaign   Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  campaignId String
+  gm         User     @relation("GameSessionGM", fields: [gmId], references: [id])
+  gmId       String
+  characters GameSessionCharacter[]
+  messages   Message[]
+
+  @@map("game_sessions")
+}
+
+// Game Session Character participation
+model GameSessionCharacter {
+  id        String   @id @default(cuid())
+  isPresent Boolean  @default(true)
+  notes     String?
+
+  // Relations
+  gameSession GameSession @relation(fields: [gameSessionId], references: [id], onDelete: Cascade)
+  gameSessionId String
+  character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  characterId String
+
+  @@unique([gameSessionId, characterId])
+  @@map("game_session_characters")
+}
+
+// Message model for real-time communication
+model Message {
+  id        String   @id @default(cuid())
+  content   String
+  type      MessageType @default(TEXT)
+  metadata  Json?    // Additional message metadata (mentions, reactions, etc.)
+  isEdited  Boolean  @default(false)
+  editedAt  DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId  String
+  gameSession GameSession? @relation(fields: [gameSessionId], references: [id], onDelete: Cascade)
+  gameSessionId String?
+
+  @@map("messages")
+}
+
+// Notification model for user notifications
+model Notification {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  type      NotificationType
+  isRead    Boolean  @default(false)
+  metadata  Json?    // Additional notification data
+  createdAt DateTime @default(now())
+  readAt    DateTime?
+
+  // Relations
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+
+  @@map("notifications")
+}
+
+// User Session model for authentication sessions
+model UserSession {
   id        String   @id @default(cuid())
   token     String   @unique
   expiresAt DateTime
+  deviceInfo Json?   // Device and browser information
+  ipAddress String?
+  isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -62,13 +223,49 @@ model Session {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
 
-  @@map("sessions")
+  @@map("user_sessions")
 }
 
 // Enums
-enum GameStatus {
+enum CampaignStatus {
   ACTIVE
-  INACTIVE
+  PAUSED
   COMPLETED
   CANCELLED
+}
+
+enum CampaignVisibility {
+  PRIVATE
+  PUBLIC
+  UNLISTED
+}
+
+enum CampaignRole {
+  OWNER
+  GM
+  PLAYER
+  OBSERVER
+}
+
+enum GameSessionStatus {
+  PLANNED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum MessageType {
+  TEXT
+  SYSTEM
+  DICE_ROLL
+  CHARACTER_ACTION
+  GM_ANNOUNCEMENT
+}
+
+enum NotificationType {
+  CAMPAIGN_INVITE
+  SESSION_REMINDER
+  MESSAGE_MENTION
+  SYSTEM_UPDATE
+  CAMPAIGN_UPDATE
 }
