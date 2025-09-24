@@ -7,11 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: "feat: migrate from Express to Fastify with tRPC [CARD-031]"
-  next_action: CARD-032
+  last_commit: 'feat: create modular tRPC router structure [CARD-032]'
+  next_action: CARD-033
 queue:
-  - CARD-032
-  - CARD-032
   - CARD-033
   - CARD-034
   - CARD-035

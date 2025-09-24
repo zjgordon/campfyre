@@ -1,5 +1,6 @@
 import { createServer } from './server';
-import { appRouter, Context } from './trpc';
+import { appRouter } from './routers';
+import { Context } from './trpc';
 import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify';
 import { FastifyRequest } from 'fastify';
 
@@ -14,7 +15,10 @@ async function start() {
     prefix: '/trpc',
     trpcOptions: {
       router: appRouter,
-      createContext: ({ req }: { req: FastifyRequest }): Context => ({ req }),
+      createContext: ({ req }: { req: FastifyRequest }): Context => ({
+        req,
+        requestId: (req as any).requestId,
+      }),
     },
   });
 

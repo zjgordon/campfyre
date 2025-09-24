@@ -1,48 +1,34 @@
 import { initTRPC } from '@trpc/server';
 import { FastifyRequest } from 'fastify';
+import { createTRPCLogger } from './middleware/logger';
 
 export interface Context {
   req: FastifyRequest;
+  requestId?: string;
 }
 
-const t = initTRPC.context<Context>().create();
+const logger = createTRPCLogger();
+
+const t = initTRPC.context<Context>().create({
+  errorFormatter({ shape, error }) {
+    logger.error('tRPC Error', { error: error.message, code: error.code });
+
+    return {
+      ...shape,
+      data: {
+        ...shape.data,
+        code: error.code,
+      },
+    };
+  },
+});
 
 export const router = t.router;
 export const publicProcedure = t.procedure;
-
-// Health router
-export const healthRouter = router({
-  check: publicProcedure.query(() => {
-    return {
-      ok: true,
-      service: 'api',
-      timestamp: new Date().toISOString(),
-      uptime: process.uptime(),
-    };
-  }),
-  ping: publicProcedure.query(() => {
-    return {
-      ok: true,
-      msg: 'pong',
-    };
-  }),
+export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
+  // TODO: Add authentication middleware here
+  return next({ ctx });
 });
 
-// Root router
-export const rootRouter = router({
-  info: publicProcedure.query(() => {
-    return {
-      message: 'Campfyre API',
-      version: '0.1.0',
-      status: 'running',
-    };
-  }),
-});
-
-// Main app router
-export const appRouter = router({
-  health: healthRouter,
-  root: rootRouter,
-});
-
-export type AppRouter = typeof appRouter;
+// Export types for use in routers
+export type { Context as TRPCContext };
