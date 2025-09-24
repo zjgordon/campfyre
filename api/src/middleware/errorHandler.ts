@@ -1,16 +1,12 @@
 import { FastifyError, FastifyRequest, FastifyReply } from 'fastify';
 import { TRPCError } from '@trpc/server';
-
-export interface ErrorResponse {
-  success: false;
-  error: {
-    code: string;
-    message: string;
-    statusCode: number;
-    timestamp: string;
-    path?: string;
-  };
-}
+import { ZodError } from 'zod';
+import {
+  createApiErrorResponse,
+  buildErrorContext,
+  sanitizeErrorForLogging,
+} from '../lib/errorUtils';
+import type { ApiErrorResponse } from '../types/errors';
 
 export const createErrorHandler = () => {
   return (
@@ -18,58 +14,60 @@ export const createErrorHandler = () => {
     request: FastifyRequest,
     reply: FastifyReply
   ): void => {
-    const timestamp = new Date().toISOString();
-    const path = request.url;
+    const context = buildErrorContext(request);
 
     // Handle tRPC errors
     if (error instanceof TRPCError) {
-      const errorResponse: ErrorResponse = {
-        success: false,
-        error: {
-          code: error.code,
-          message: error.message,
-          statusCode: getStatusCodeFromTRPCError(error),
-          timestamp,
-          path,
-        },
-      };
-
+      const errorResponse = handleTRPCError(error, context);
       reply.status(getStatusCodeFromTRPCError(error)).send(errorResponse);
       return;
     }
 
-    // Handle validation errors
-    if (error.validation) {
-      const errorResponse: ErrorResponse = {
-        success: false,
-        error: {
-          code: 'VALIDATION_ERROR',
-          message: 'Validation failed',
-          statusCode: 400,
-          timestamp,
-          path,
-        },
-      };
+    // Handle Zod validation errors
+    if (error instanceof ZodError) {
+      const errorResponse = createApiErrorResponse(
+        'VALIDATION_ERROR',
+        'Validation failed',
+        context,
+        { validationErrors: error.errors }
+      );
+      reply.status(400).send(errorResponse);
+      return;
+    }
 
+    // Handle Fastify validation errors
+    if (error.validation) {
+      const errorResponse = createApiErrorResponse(
+        'VALIDATION_ERROR',
+        'Validation failed',
+        context,
+        { validationErrors: error.validation }
+      );
       reply.status(400).send(errorResponse);
       return;
     }
 
     // Handle other Fastify errors
     const statusCode = error.statusCode || 500;
-    const errorResponse: ErrorResponse = {
-      success: false,
-      error: {
-        code: error.code || 'INTERNAL_SERVER_ERROR',
-        message: error.message || 'Internal server error',
-        statusCode,
-        timestamp,
-        path,
-      },
-    };
+    const errorCode = getErrorCodeFromStatus(statusCode) as any;
+    const errorResponse = createApiErrorResponse(
+      errorCode,
+      error.message || 'Internal server error',
+      context,
+      { originalError: sanitizeErrorForLogging(error) }
+    );
 
     reply.status(statusCode).send(errorResponse);
   };
+};
+
+const handleTRPCError = (error: TRPCError, context: any): ApiErrorResponse => {
+  const errorCode = getErrorCodeFromTRPCError(error) as any;
+
+  return createApiErrorResponse(errorCode, error.message, context, {
+    trpcCode: error.code,
+    cause: error.cause ? sanitizeErrorForLogging(error.cause) : undefined,
+  });
 };
 
 const getStatusCodeFromTRPCError = (error: TRPCError): number => {
@@ -101,5 +99,55 @@ const getStatusCodeFromTRPCError = (error: TRPCError): number => {
     case 'INTERNAL_SERVER_ERROR':
     default:
       return 500;
+  }
+};
+
+const getErrorCodeFromTRPCError = (error: TRPCError): string => {
+  // Check if error has custom cause data with our error code
+  if (error.cause && typeof error.cause === 'object' && 'code' in error.cause) {
+    return error.cause.code as string;
+  }
+
+  // Map tRPC error codes to our error codes
+  switch (error.code) {
+    case 'BAD_REQUEST':
+      return 'VALIDATION_ERROR';
+    case 'UNAUTHORIZED':
+      return 'UNAUTHORIZED';
+    case 'FORBIDDEN':
+      return 'FORBIDDEN';
+    case 'NOT_FOUND':
+      return 'NOT_FOUND';
+    case 'CONFLICT':
+      return 'CONFLICT';
+    case 'UNPROCESSABLE_CONTENT':
+      return 'BUSINESS_LOGIC_ERROR';
+    case 'TOO_MANY_REQUESTS':
+      return 'RATE_LIMIT_EXCEEDED';
+    case 'INTERNAL_SERVER_ERROR':
+    default:
+      return 'INTERNAL_SERVER_ERROR';
+  }
+};
+
+const getErrorCodeFromStatus = (status: number): string => {
+  switch (status) {
+    case 400:
+      return 'VALIDATION_ERROR';
+    case 401:
+      return 'UNAUTHORIZED';
+    case 403:
+      return 'FORBIDDEN';
+    case 404:
+      return 'NOT_FOUND';
+    case 409:
+      return 'CONFLICT';
+    case 422:
+      return 'BUSINESS_LOGIC_ERROR';
+    case 429:
+      return 'RATE_LIMIT_EXCEEDED';
+    case 500:
+    default:
+      return 'INTERNAL_SERVER_ERROR';
   }
 };

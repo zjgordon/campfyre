@@ -7,10 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: configure tRPC client for frontend integration [CARD-034]'
-  next_action: CARD-035
+  last_commit: 'feat: implement comprehensive error handling middleware [CARD-035]'
+  next_action: CARD-036
 queue:
-  - CARD-035
   - CARD-036
   - CARD-037
   - CARD-038
