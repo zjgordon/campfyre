@@ -3,6 +3,7 @@ import { appRouter } from './routers';
 import { Context } from './trpc';
 import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify';
 import { FastifyRequest } from 'fastify';
+import { createVersionHandler } from './middleware/versionHandler';
 
 const port = parseInt(process.env.PORT || '3000', 10);
 const host = process.env.HOST || '0.0.0.0';
@@ -10,7 +11,10 @@ const host = process.env.HOST || '0.0.0.0';
 async function start() {
   const fastify = await createServer();
 
-  // Register tRPC
+  // Register version handler middleware
+  fastify.addHook('preHandler', createVersionHandler());
+
+  // Register tRPC with versioning support
   await fastify.register(fastifyTRPCPlugin, {
     prefix: '/trpc',
     trpcOptions: {

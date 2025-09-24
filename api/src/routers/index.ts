@@ -2,8 +2,10 @@ import { router, publicProcedure } from '../trpc';
 import { authRouter } from './auth';
 import { gamesRouter } from './games';
 import { usersRouter } from './users';
+import { v1Router } from './v1';
+import { v2Router } from './v2';
 
-// Health router (keeping existing functionality)
+// Health router (keeping existing functionality for backward compatibility)
 export const healthRouter = router({
   check: publicProcedure.query(() => {
     return {
@@ -21,7 +23,7 @@ export const healthRouter = router({
   }),
 });
 
-// Root router (keeping existing functionality)
+// Root router (keeping existing functionality for backward compatibility)
 export const rootRouter = router({
   info: publicProcedure.query(() => {
     return {
@@ -32,8 +34,18 @@ export const rootRouter = router({
   }),
 });
 
-// Main app router composition
+// Versioned API router
+export const versionedRouter = router({
+  v1: v1Router,
+  v2: v2Router,
+});
+
+// Main app router composition with versioning support
 export const appRouter = router({
+  // Versioned routes
+  v1: v1Router,
+  v2: v2Router,
+  // Legacy routes for backward compatibility
   auth: authRouter,
   games: gamesRouter,
   users: usersRouter,
