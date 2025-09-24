@@ -3,6 +3,7 @@ import {
   ServiceCheck,
   HealthCheckOptions,
 } from '../types/health';
+import { getDatabaseHealth } from '../config/database';
 
 /**
  * Check API service health
@@ -31,26 +32,35 @@ export async function checkApiHealth(): Promise<ServiceCheck> {
 }
 
 /**
- * Check database connectivity (placeholder for future database implementation)
+ * Check database connectivity with Prisma
  */
 export async function checkDatabaseHealth(): Promise<ServiceCheck> {
   const startTime = Date.now();
 
   try {
-    // TODO: Implement actual database connection check when database is added
-    // For now, simulate a healthy database check
+    const health = await getDatabaseHealth();
     const responseTime = Date.now() - startTime;
 
-    return {
-      status: 'healthy',
-      responseTime,
-      message: 'Database connection healthy (simulated)',
-      details: {
-        connected: true,
-        version: 'simulated',
-      },
-      lastChecked: new Date().toISOString(),
-    };
+    if (health.connected) {
+      return {
+        status: 'healthy',
+        responseTime,
+        message: 'Database connection healthy',
+        details: {
+          connected: true,
+          version: health.version,
+          uptime: health.uptime,
+        },
+        lastChecked: new Date().toISOString(),
+      };
+    } else {
+      return {
+        status: 'unhealthy',
+        responseTime,
+        message: `Database connection failed: ${health.error || 'Unknown error'}`,
+        lastChecked: new Date().toISOString(),
+      };
+    }
   } catch (error) {
     return {
       status: 'unhealthy',
