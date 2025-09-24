@@ -7,10 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: implement comprehensive error handling middleware [CARD-035]'
-  next_action: CARD-036
+  last_commit: 'feat: set up request/response logging with Pino [CARD-036]'
+  next_action: CARD-037
 queue:
-  - CARD-036
   - CARD-037
   - CARD-038
   - CARD-039

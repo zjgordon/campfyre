@@ -1,6 +1,7 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { TRPCError } from '@trpc/server';
-import { getErrorMapping, sanitizeErrorForLogging } from '../lib/errorUtils';
+import { getErrorMapping } from '../lib/errorUtils';
+import { logRequest, logResponse, logError, logger } from '../lib/logger';
 import type { ErrorContext, ErrorSeverity } from '../types/errors';
 
 export interface RequestLogData {
@@ -44,33 +45,30 @@ export const createRequestLogger = () => {
     // Add request ID to request object for use in other middleware
     (request as any).requestId = requestId;
 
-    const logData: RequestLogData = {
+    // Log request using Pino
+    logRequest(logger, {
       method: request.method,
       url: request.url,
+      headers: request.headers as Record<string, string>,
+      query: request.query as Record<string, any>,
+      params: request.params as Record<string, any>,
+      body: request.body,
       userAgent: request.headers['user-agent'],
       ip: request.ip,
       requestId,
-      timestamp: new Date().toISOString(),
-    };
-
-    request.log.info(logData, 'Incoming request');
+    });
 
     // Log response when request completes
     reply.raw.on('finish', () => {
       const responseTime = Date.now() - startTime;
-      const responseLogData: ResponseLogData = {
+
+      // Log response using Pino
+      logResponse(logger, {
         statusCode: reply.statusCode,
         responseTime,
+        headers: reply.getHeaders() as Record<string, string>,
         requestId,
-        timestamp: new Date().toISOString(),
-      };
-
-      // Log error responses with more detail
-      if (reply.statusCode >= 400) {
-        request.log.warn(responseLogData, 'Request completed with error');
-      } else {
-        request.log.info(responseLogData, 'Request completed');
-      }
+      });
     });
 
     done();
@@ -80,77 +78,59 @@ export const createRequestLogger = () => {
 export const createErrorLogger = () => {
   return {
     logError: (error: Error | TRPCError, context: ErrorContext) => {
-      const timestamp = new Date().toISOString();
-
       if (error instanceof TRPCError) {
         const errorCode = getErrorCodeFromTRPCError(error);
         const mapping = getErrorMapping(errorCode as any);
 
-        const errorLogData: ErrorLogData = {
+        // Log error using Pino
+        logError(logger, {
           error: {
+            name: error.name,
+            message: error.message,
+            stack: error.stack || undefined,
             code: errorCode,
-            message: error.message,
-            category: mapping.category,
-            severity: mapping.severity,
             statusCode: mapping.httpStatus,
-            requestId: context.requestId || undefined,
-            path: context.path || undefined,
-            details: error.cause
-              ? sanitizeErrorForLogging(error.cause)
-              : undefined,
           },
-          context,
-          timestamp,
-        };
-
-        // Log based on severity
-        switch (mapping.severity) {
-          case 'critical':
-            console.error(
-              '[ERROR] Critical error occurred:',
-              JSON.stringify(errorLogData, null, 2)
-            );
-            break;
-          case 'high':
-            console.error(
-              '[ERROR] High severity error:',
-              JSON.stringify(errorLogData, null, 2)
-            );
-            break;
-          case 'medium':
-            console.warn(
-              '[WARN] Medium severity error:',
-              JSON.stringify(errorLogData, null, 2)
-            );
-            break;
-          case 'low':
-            console.info(
-              '[INFO] Low severity error:',
-              JSON.stringify(errorLogData, null, 2)
-            );
-            break;
-        }
+          request: {
+            method: context.method || 'unknown',
+            url: context.path || 'unknown',
+            headers: { 'user-agent': context.userAgent || 'unknown' },
+            query: {},
+            params: {},
+            ip: context.ip || 'unknown',
+            requestId: context.requestId,
+          },
+          context: {
+            ...context,
+            errorCategory: mapping.category,
+            errorSeverity: mapping.severity,
+          },
+        });
       } else {
-        // Generic error logging
-        const errorLogData: ErrorLogData = {
+        // Generic error logging using Pino
+        logError(logger, {
           error: {
-            code: 'INTERNAL_SERVER_ERROR',
+            name: error.name,
             message: error.message,
-            category: 'internal',
-            severity: 'critical',
+            stack: error.stack || undefined,
+            code: 'INTERNAL_SERVER_ERROR',
             statusCode: 500,
-            requestId: context.requestId || undefined,
-            path: context.path || undefined,
-            details: sanitizeErrorForLogging(error),
           },
-          context,
-          timestamp,
-        };
-
-        console.error(
-          '[ERROR] Unhandled error:',
-          JSON.stringify(errorLogData, null, 2)
-        );
+          request: {
+            method: context.method || 'unknown',
+            url: context.path || 'unknown',
+            headers: { 'user-agent': context.userAgent || 'unknown' },
+            query: {},
+            params: {},
+            ip: context.ip || 'unknown',
+            requestId: context.requestId,
+          },
+          context: {
+            ...context,
+            errorCategory: 'internal',
+            errorSeverity: 'critical',
+          },
+        });
       }
     },
   };
