@@ -48,10 +48,11 @@ export const appRouter = router({
   v2: v2Router,
   // Enhanced health routes
   health: healthRouter,
-  // Legacy routes for backward compatibility
+  // Core API routes with Prisma integration
   auth: authRouter,
   games: gamesRouter,
   users: usersRouter,
+  // Legacy routes for backward compatibility
   legacyHealth: legacyHealthRouter,
   root: rootRouter,
 });

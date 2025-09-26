@@ -7,10 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: create comprehensive database seeding system with development data and reset procedures [CARD-046]'
-  next_action: CARD-047
+  last_commit: 'feat: integrate Prisma with tRPC procedures for type-safe database operations [CARD-047]'
+  next_action: CARD-048
 queue:
-  - CARD-047
   - CARD-048
   - CARD-049
   - CARD-050
