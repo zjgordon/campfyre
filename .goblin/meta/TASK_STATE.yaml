@@ -7,10 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: implement database health checks and monitoring with performance tracking [CARD-045]'
-  next_action: CARD-046
+  last_commit: 'feat: create comprehensive database seeding system with development data and reset procedures [CARD-046]'
+  next_action: CARD-047
 queue:
-  - CARD-046
   - CARD-047
   - CARD-048
   - CARD-049
