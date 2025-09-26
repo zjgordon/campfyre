@@ -7,10 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: set up Prisma migration system with rollback and seeding [CARD-043]'
-  next_action: CARD-044
+  last_commit: 'feat: implement repository pattern with CRUD operations and performance indexing [CARD-044]'
+  next_action: CARD-045
 queue:
-  - CARD-044
   - CARD-045
   - CARD-046
   - CARD-047
