@@ -1,7 +1,13 @@
 import { z } from 'zod';
 import { router, publicProcedure } from '../trpc';
-import { performHealthCheck } from '../lib/healthChecks';
+import {
+  performHealthCheck,
+  checkDatabasePerformance,
+  checkDatabaseConnections,
+} from '../lib/healthChecks';
 import { HealthCheckOptions } from '../types/health';
+import { getDatabaseMonitor } from '../lib/monitoring';
+import { getDatabaseHealthMetrics } from '../middleware/databaseHealth';
 
 // Input validation schemas
 const healthCheckInputSchema = z.object({
@@ -158,6 +164,60 @@ export const healthRouter = router({
       status: healthStatus.status,
       timestamp: healthStatus.timestamp,
       uptime: healthStatus.uptime,
+    };
+  }),
+
+  // Database performance monitoring
+  databasePerformance: publicProcedure.query(async () => {
+    return await checkDatabasePerformance();
+  }),
+
+  // Database connection monitoring
+  databaseConnections: publicProcedure.query(async () => {
+    return await checkDatabaseConnections();
+  }),
+
+  // Database monitoring metrics
+  databaseMetrics: publicProcedure.query(async () => {
+    const monitor = getDatabaseMonitor();
+    const dbMetrics = await getDatabaseHealthMetrics();
+
+    return {
+      performanceMetrics: monitor.getMetrics(),
+      performanceSummary: monitor.getPerformanceSummary(),
+      healthMetrics: dbMetrics,
+      recentAlerts: monitor.getAlerts(20),
+      queryHistory: monitor.getQueryHistory(50),
+    };
+  }),
+
+  // Database alerts
+  databaseAlerts: publicProcedure
+    .input(
+      z.object({
+        severity: z.enum(['low', 'medium', 'high', 'critical']).optional(),
+        limit: z.number().min(1).max(100).optional(),
+      })
+    )
+    .query(async ({ input }) => {
+      const monitor = getDatabaseMonitor();
+
+      if (input.severity) {
+        return monitor.getAlertsBySeverity(input.severity);
+      }
+
+      return monitor.getAlerts(input.limit || 50);
+    }),
+
+  // Reset database monitoring metrics
+  resetDatabaseMetrics: publicProcedure.mutation(async () => {
+    const monitor = getDatabaseMonitor();
+    monitor.resetMetrics();
+
+    return {
+      success: true,
+      message: 'Database monitoring metrics reset',
+      timestamp: new Date().toISOString(),
     };
   }),
 });

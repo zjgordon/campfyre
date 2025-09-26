@@ -7,10 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: implement repository pattern with CRUD operations and performance indexing [CARD-044]'
-  next_action: CARD-045
+  last_commit: 'feat: implement database health checks and monitoring with performance tracking [CARD-045]'
+  next_action: CARD-046
 queue:
-  - CARD-045
   - CARD-046
   - CARD-047
   - CARD-048

@@ -3,7 +3,9 @@ import {
   ServiceCheck,
   HealthCheckOptions,
 } from '../types/health';
-import { getDatabaseHealth } from '../config/database';
+import { getDatabaseHealth, getConnectionStats } from '../config/database';
+import { getDatabaseMonitor } from './monitoring';
+import { getDatabaseHealthMetrics } from '../middleware/databaseHealth';
 
 /**
  * Check API service health
@@ -42,14 +44,34 @@ export async function checkDatabaseHealth(): Promise<ServiceCheck> {
     const responseTime = Date.now() - startTime;
 
     if (health.connected) {
+      // Get additional database metrics
+      const connectionStats = await getConnectionStats();
+      const dbMetrics = await getDatabaseHealthMetrics();
+      const monitor = getDatabaseMonitor();
+      const performanceSummary = monitor.getPerformanceSummary();
+
       return {
-        status: 'healthy',
+        status: dbMetrics.healthStatus,
         responseTime,
         message: 'Database connection healthy',
         details: {
           connected: true,
           version: health.version,
           uptime: health.uptime,
+          connectionStats,
+          performanceMetrics: {
+            averageResponseTime: dbMetrics.averageResponseTime,
+            connectionCount: dbMetrics.connectionCount,
+            activeConnections: dbMetrics.activeConnections,
+            idleConnections: dbMetrics.idleConnections,
+          },
+          queryMetrics: {
+            totalQueries: performanceSummary.totalQueries,
+            averageQueryTime: performanceSummary.averageResponseTime,
+            slowQueryPercentage: performanceSummary.slowQueryPercentage,
+            errorRate: performanceSummary.errorRate,
+            connectionUtilization: performanceSummary.connectionUtilization,
+          },
         },
         lastChecked: new Date().toISOString(),
       };
@@ -176,6 +198,105 @@ export async function checkDiskHealth(): Promise<ServiceCheck> {
       status: 'unhealthy',
       responseTime: Date.now() - startTime,
       message: `Disk check failed: ${error instanceof Error ? error.message : 'Unknown error'}`,
+      lastChecked: new Date().toISOString(),
+    };
+  }
+}
+
+/**
+ * Check database performance metrics
+ */
+export async function checkDatabasePerformance(): Promise<ServiceCheck> {
+  const startTime = Date.now();
+
+  try {
+    const monitor = getDatabaseMonitor();
+    const performanceSummary = monitor.getPerformanceSummary();
+    const metrics = monitor.getMetrics();
+    const recentAlerts = monitor.getAlerts(10);
+
+    // Determine status based on performance metrics
+    let status: 'healthy' | 'degraded' | 'unhealthy' = 'healthy';
+
+    if (
+      performanceSummary.errorRate > 10 ||
+      performanceSummary.slowQueryPercentage > 20
+    ) {
+      status = 'unhealthy';
+    } else if (
+      performanceSummary.errorRate > 5 ||
+      performanceSummary.slowQueryPercentage > 10 ||
+      performanceSummary.averageResponseTime > 500
+    ) {
+      status = 'degraded';
+    }
+
+    return {
+      status,
+      responseTime: Date.now() - startTime,
+      message: `Database performance: ${status}`,
+      details: {
+        performanceSummary,
+        metrics,
+        recentAlerts: recentAlerts.map((alert) => ({
+          type: alert.type,
+          severity: alert.severity,
+          message: alert.message,
+          timestamp: alert.timestamp,
+        })),
+      },
+      lastChecked: new Date().toISOString(),
+    };
+  } catch (error) {
+    return {
+      status: 'unhealthy',
+      responseTime: Date.now() - startTime,
+      message: `Database performance check failed: ${error instanceof Error ? error.message : 'Unknown error'}`,
+      lastChecked: new Date().toISOString(),
+    };
+  }
+}
+
+/**
+ * Check database connection pool health
+ */
+export async function checkDatabaseConnections(): Promise<ServiceCheck> {
+  const startTime = Date.now();
+
+  try {
+    const connectionStats = await getConnectionStats();
+    const dbMetrics = await getDatabaseHealthMetrics();
+
+    // Determine status based on connection metrics
+    let status: 'healthy' | 'degraded' | 'unhealthy' = 'healthy';
+
+    if (connectionStats.totalConnections > 80) {
+      status = 'unhealthy';
+    } else if (connectionStats.totalConnections > 60) {
+      status = 'degraded';
+    }
+
+    return {
+      status,
+      responseTime: Date.now() - startTime,
+      message: `Database connections: ${status}`,
+      details: {
+        connectionStats,
+        healthMetrics: dbMetrics,
+        utilization:
+          connectionStats.totalConnections > 0
+            ? (connectionStats.activeConnections /
+                connectionStats.totalConnections) *
+              100
+            : 0,
+      },
+      lastChecked: new Date().toISOString(),
+    };
+  } catch (error) {
+    return {
+      status: 'unhealthy',
+      responseTime: Date.now() - startTime,
+      message: `Database connection check failed: ${error instanceof Error ? error.message : 'Unknown error'}`,
       lastChecked: new Date().toISOString(),
     };
   }
