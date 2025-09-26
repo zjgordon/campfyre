@@ -4,9 +4,16 @@ export interface DatabaseConfig {
   url: string;
   directUrl: string | undefined;
   maxConnections: number;
+  minConnections: number;
   connectionTimeout: number;
   queryTimeout: number;
+  idleTimeout: number;
+  acquireTimeout: number;
   logLevel: 'query' | 'info' | 'warn' | 'error';
+  poolSize: number;
+  poolTimeout: number;
+  retryAttempts: number;
+  retryDelay: number;
 }
 
 export const getDatabaseConfig = (): DatabaseConfig => {
@@ -19,9 +26,16 @@ export const getDatabaseConfig = (): DatabaseConfig => {
       'postgresql://postgres:password@localhost:5432/campfyre',
     directUrl: process.env.DIRECT_URL,
     maxConnections: isProduction ? 20 : 5,
-    connectionTimeout: 10000, // 10 seconds
-    queryTimeout: 30000, // 30 seconds
+    minConnections: isProduction ? 2 : 1,
+    connectionTimeout: parseInt(process.env.DB_CONNECTION_TIMEOUT || '10000'),
+    queryTimeout: parseInt(process.env.DB_QUERY_TIMEOUT || '30000'),
+    idleTimeout: parseInt(process.env.DB_IDLE_TIMEOUT || '600000'), // 10 minutes
+    acquireTimeout: parseInt(process.env.DB_ACQUIRE_TIMEOUT || '60000'), // 1 minute
     logLevel: isDevelopment ? 'query' : 'error',
+    poolSize: parseInt(process.env.DB_POOL_SIZE || (isProduction ? '20' : '5')),
+    poolTimeout: parseInt(process.env.DB_POOL_TIMEOUT || '30000'),
+    retryAttempts: parseInt(process.env.DB_RETRY_ATTEMPTS || '3'),
+    retryDelay: parseInt(process.env.DB_RETRY_DELAY || '1000'),
   };
 };
 
@@ -65,6 +79,15 @@ export function getPrismaClient(): PrismaClient {
   }
 
   return prisma;
+}
+
+/**
+ * Get optimized Prisma client with connection pooling
+ */
+export function getOptimizedPrismaClient(): PrismaClient {
+  // Import the connection pool manager
+  const { connectionPool } = require('../lib/connectionPool');
+  return connectionPool.getClient();
 }
 
 /**

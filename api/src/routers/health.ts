@@ -8,6 +8,9 @@ import {
 import { HealthCheckOptions } from '../types/health';
 import { getDatabaseMonitor } from '../lib/monitoring';
 import { getDatabaseHealthMetrics } from '../middleware/databaseHealth';
+import { connectionPool } from '../lib/connectionPool';
+import { queryOptimizer } from '../lib/queryOptimizer';
+import { getPerformanceReport } from '../middleware/dbPerformance';
 
 // Input validation schemas
 const healthCheckInputSchema = z.object({
@@ -217,6 +220,59 @@ export const healthRouter = router({
     return {
       success: true,
       message: 'Database monitoring metrics reset',
+      timestamp: new Date().toISOString(),
+    };
+  }),
+
+  // Connection pool health
+  connectionPool: publicProcedure.query(async () => {
+    const poolHealth = await connectionPool.getPoolHealth();
+    const poolStats = await connectionPool.getPoolStats();
+
+    return {
+      health: poolHealth,
+      stats: poolStats,
+      timestamp: new Date().toISOString(),
+    };
+  }),
+
+  // Query performance analysis
+  queryPerformance: publicProcedure.query(async () => {
+    const performance = queryOptimizer.analyzePerformance();
+    const stats = queryOptimizer.getPerformanceStats();
+
+    return {
+      analysis: performance,
+      stats,
+      timestamp: new Date().toISOString(),
+    };
+  }),
+
+  // Overall performance report
+  performanceReport: publicProcedure.query(async () => {
+    return await getPerformanceReport();
+  }),
+
+  // Get query optimization suggestions
+  querySuggestions: publicProcedure
+    .input(z.object({ query: z.string() }))
+    .query(async ({ input }) => {
+      const suggestions = queryOptimizer.getQuerySuggestions(input.query);
+
+      return {
+        query: input.query,
+        suggestions,
+        timestamp: new Date().toISOString(),
+      };
+    }),
+
+  // Clear performance metrics
+  clearPerformanceMetrics: publicProcedure.mutation(async () => {
+    queryOptimizer.clearHistory();
+
+    return {
+      success: true,
+      message: 'Performance metrics cleared',
       timestamp: new Date().toISOString(),
     };
   }),

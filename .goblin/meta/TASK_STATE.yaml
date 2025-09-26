@@ -7,10 +7,9 @@ instructions: |
 
 active_card: null
 breadcrumb:
-  last_commit: 'feat: integrate Prisma with tRPC procedures for type-safe database operations [CARD-047]'
-  next_action: CARD-048
+  last_commit: 'feat: implement database connection pooling and optimization with performance monitoring [CARD-048]'
+  next_action: CARD-049
 queue:
-  - CARD-048
   - CARD-049
   - CARD-050
   - CARD-051
